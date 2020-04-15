@@ -3,18 +3,46 @@
 	<head>
 		<script src="./jquery-3.4.1.slim.min.js"></script>
 		<script type="text/javascript" src="./app.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		
 		<title>Packman</title>
 		<link rel="stylesheet" href="style.css">
 	</head>
 
 	<body>
 		<div id="menu">
+			<ul>
+				<li><a href="#about">About</a></li>
+				<li><a href="#register">Register</a></li>
+				<li><a href="#login">Login</a></li>
+				<li><a href="#welcom">Welcom</a></li>
+			</ul>
+		</div>
+		<section id="Login_Register_buttons">
+			<div id="Welcom_buttons" class="section">
+				<input type="button" value="Login" alt="Login" width="50%">
+				<input type="button" value="Register">
+			</div>
+			<div id="Login" hidden>
+				<div id="loginForm">
+					<br/>
+					<div id="userName">
+						<input type="text" name="name" id="name" size="23" placeholder="User name" required>
+					</div>
+					<br/>
+					<div id="serPassword">
+						<input type="text" name="serPassword" id="serPassword" size="23" placeholder="Password">
+					</div>
+					
+				</div>
+			</div>
+			<div id="Register"></div>
 
-		</div>
-		<div id="Welcom">
-			
-		</div>
-		<div id="score">
+
+		</section>
+
+		
+<!-- 		<div id="score">
 			<label for="lblScore">SCORE: </label>
 			<input id="lblScore" type="text" />
 		</div>
@@ -24,6 +52,19 @@
 		</div>
 		<div id="game">
 			<canvas id="canvas" height="600" width="600"></canvas>
-		</div>
+		</div> -->
+
+
+
+		<script>
+		$(document).ready(function(){
+			$("#Login").click(function(){
+			  $("Login_Register_buttons").hide();
+			});
+			$("#loginForm").click(function(){
+			  $("loginForm").show();
+			});
+		  });
+		</script>
 	</body>
 </html>
