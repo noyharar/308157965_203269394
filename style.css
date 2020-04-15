@@ -1,3 +1,19 @@
 body{
     background-image: url("image/background.jpg");
 }
+* {
+    box-sizing: border-box;
+  }
+  
+  img {
+    vertical-align: middle;
+  }
+ section{
+    margin: auto;
+    padding: 4em; 
+    width: 1000px;
+    position: absolute;
+}
+section#Login_Register_buttons{
+    background-image: url(image/welcom.jpg);
+} 
