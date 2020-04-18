@@ -1,48 +1,65 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<script src="./jquery-3.4.1.slim.min.js"></script>
-		<script type="text/javascript" src="./app.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		
-		<title>Packman</title>
-		<link rel="stylesheet" href="style.css">
-	</head>
 
-	<body>
-		<div id="menu">
-			<ul>
-				<li><a href="#about">About</a></li>
-				<li><a href="#register">Register</a></li>
-				<li><a href="#login">Login</a></li>
-				<li><a href="#welcom">Welcom</a></li>
-			</ul>
-		</div>
-		<section id="Login_Register_buttons">
-			<div id="Welcom_buttons" class="section">
-				<input type="button" value="Login" alt="Login" width="50%">
-				<input type="button" value="Register">
+<head>
+	<script src="./jquery-3.4.1.slim.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<title>Packman Game</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div id="menu">
+		<!-- Trigger/Open The Modal -->
+		<button id="myBtn" onclick="open_about()">About</button>
+		<!-- The Modal -->
+		<div id="myModal" class="modal">
+
+			<!-- Modal content -->
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<p>Noy Harari & Noa Gorengot - Do you know jesus??</p>
 			</div>
-			<div id="Login" hidden>
-				<div id="loginForm">
+
+		</div>
+
+		<br><br><br><br>
+		<ul>
+			<li><a href="#register">Register</a></li>
+			<li><a href="#login">Login</a></li>
+			<li><a href="#welcom">Welcom</a></li>
+		</ul>
+	</div>
+	<section id="Login_Register_buttons">
+		<div id="Welcom_buttons" class="section">
+			<button id="myButton" class="button_login" onclick="open_login_window()" value="Login" >Login</button>
+			<button id="regisret" class="button_register">Register</button>
+		</div>
+		<div id="Login_button" style="display: none;">
+			<form action="">
+				<div id="loginForm" style="text-align: center;">
 					<br/>
 					<div id="userName">
 						<input type="text" name="name" id="name" size="23" placeholder="User name" required>
 					</div>
 					<br/>
 					<div id="serPassword">
-						<input type="text" name="serPassword" id="serPassword" size="23" placeholder="Password">
+						<input type="text" name="serPassword" id="serPassword" size="23" placeholder="Password" required>
 					</div>
-					
+					<br/>
+					<div id="enterGame">
+						<button id="enterTheGame">Enter</button>
+					</div>
 				</div>
-			</div>
-			<div id="Register"></div>
+			</form>
+		</div>
+		<div id="Register"></div>
+	</section>
 
 
-		</section>
-
-		
-<!-- 		<div id="score">
+	<!-- 		<div id="score">
 			<label for="lblScore">SCORE: </label>
 			<input id="lblScore" type="text" />
 		</div>
@@ -54,17 +71,6 @@
 			<canvas id="canvas" height="600" width="600"></canvas>
 		</div> -->
 
+</body>
 
-
-		<script>
-		$(document).ready(function(){
-			$("#Login").click(function(){
-			  $("Login_Register_buttons").hide();
-			});
-			$("#loginForm").click(function(){
-			  $("loginForm").show();
-			});
-		  });
-		</script>
-	</body>
 </html>

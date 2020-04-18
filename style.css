@@ -1,5 +1,43 @@
 body{
+  font-family: Arial, Helvetica, sans-serif;
     background-image: url("image/background.jpg");
+}
+/* The Modal (background) */
+.modal{
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 * {
     box-sizing: border-box;
@@ -11,9 +49,40 @@ body{
  section{
     margin: auto;
     padding: 4em; 
-    width: 1000px;
+    width: 100%;
+    /* width: 1000px; */
     position: absolute;
 }
 section#Login_Register_buttons{
     background-image: url(image/welcom.jpg);
 } 
+.loginForm{
+  padding: -1000px;
+}
+.button_login,.button_register{
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.button_login{
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+/* section#loginForm{
+  background: url(image/welcom.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+    background-attachment: scroll; 
+	background-size:cover;
+    width: 500px;
+} */
