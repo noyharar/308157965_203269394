@@ -1,0 +1,189 @@
+.navbar {
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+  }
+  .navbar-inverse {
+    background-color:#4db8ff;
+    border-color: #080808;
+  }
+  .navbar-fixed-top {
+    top: 0;
+    border-width: 0 0 1px;
+  }
+  .container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  
+  navbar-fixed-bottom, .navbar-fixed-top {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+  }
+  .topnav ul {
+    position: fixed;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #42f5ef;
+  }
+  .topnav li {
+    float: left;
+  }
+  .topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color:#42f5ef ;
+    float: left;
+    font-family: 'Alef', serif;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+
+.registerForm{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    font-family: 'Alef', serif;
+    font-size: 16px;
+    color: white;
+    
+}
+
+.btnR {
+    position: fixed;
+    margin-left: 100px;
+    margin-right: auto;
+    background-color: #42f5ef;
+    color: whitesmoke;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .btnL {
+    position: fixed;
+    margin-left: 270px;
+    margin-right: 100px;
+    background-color: #42f5ef;
+    color: whitesmoke;
+    font-size: 16px;
+    padding: 12px 35px;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .section{
+    position: fixed;
+    top: 10%;
+    left: 35%; 
+  }
+
+@font-face {
+    font-family: 'Alef';
+    font-weight: 400;
+    font-style: normal;
+    src: url('https://s3-eu-west-1.amazonaws.com/fonts-project/fonts/Alef/400.woff') format('woff');
+  }
+
+  .registerSubmit{
+    position: fixed;
+    margin-left: 100px;
+    margin-right: 150px;
+    background-color: #42f5ef;
+    color: whitesmoke;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    text-align: center;
+  }
+  body{
+    background-image: url("image/welcom.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+* {
+    box-sizing: border-box;
+  }
+  
+  img {
+    vertical-align: middle;
+  }
+ section{
+    margin: auto;
+    padding: 4em; 
+    width: 1000px;
+    position: absolute;
+}
+section#Login_Register_buttons{
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(image/welcom.jpg);
+} 
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  .settingClass{
+    display: block;
+    font-family: 'Alef', serif;
+    font-size: 16px;
+    color: white;
+  }
+  /* The Modal (background) */
+.modal{
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}

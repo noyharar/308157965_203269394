@@ -7,7 +7,69 @@ var start_time;
 var time_elapsed;
 var interval;
 
-$(document).ready(function() {
+
+function myFunctionLogin() {
+	$(document.getElementById("welcome")).hide();
+	$(document.getElementById("about")).hide();
+	$(document.getElementById("register")).hide();
+	$(document.getElementById("login")).show();
+}
+
+function open_about() {
+	// Get the modal
+	var modal = document.getElementById("myModal");
+
+	// Get the button that opens the modal
+	var btn = document.getElementById("myBtn");
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+
+	// When the user clicks the button, open the modal 
+	btn.onclick = function () {
+		modal.style.display = "block";
+	}
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function () {
+		modal.style.display = "none";
+	}
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function (event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+
+/* 	document.keysDown = function (event) {
+		event = event || window.event;
+		var isEsc = false;
+
+		if("key" in event){
+			isEsc = (event.key === "Escape" || event.key === "Esc");
+		}
+		else{
+			isEscape = (event.keyCode === 27);
+		}
+		if(isEsc){
+			modal.style.display = "none";
+		}
+
+	} */
+}
+
+
+function myFunction() {
+	$('#welcome').css("display", "none");
+	$(document.getElementById("about")).hide();
+	$(document.getElementById("login")).hide();
+	$(document.getElementById("register")).show();
+	$("#register").show(300);
+}
+
+
+
+
+$(document).ready(function () {
 	context = canvas.getContext("2d");
 	Start();
 });
@@ -57,14 +119,14 @@ function Start() {
 	keysDown = {};
 	addEventListener(
 		"keydown",
-		function(e) {
+		function (e) {
 			keysDown[e.keyCode] = true;
 		},
 		false
 	);
 	addEventListener(
 		"keyup",
-		function(e) {
+		function (e) {
 			keysDown[e.keyCode] = false;
 		},
 		false
@@ -170,3 +232,38 @@ function UpdatePosition() {
 		Draw();
 	}
 }
+
+function open_login_window() {
+	/* 	var btn = document.getElementById("myButton");
+		if (btn.value == "Login") {
+			btn.value = "Click To Close";
+			btn.innerHTML = "Click To Close";
+		}
+		else {
+			btn.value = "Login";
+			btn.innerHTML = "Login";
+		} */
+	document.getElementById("Welcom_buttons").hidden = true;
+	var x = document.getElementById("Login_button");
+	if (x.style.display == "none") {
+		x.style.display = "block";
+	}
+	else {
+		x.style.display = "none";
+	}
+}
+
+/* function press_on_about(){
+	document.getElementById("register").hidden = true;
+	document.getElementById("register").hide();
+	("#welcome").css(display = "none");
+	("#about").show(300);
+}
+
+function press_on_welcome(){
+	document.getElementById("about").hidden = true;
+	document.getElementById("register").hidden = true;
+	document.getElementById("login").hidden = true;
+	('#welcome').css(display =  "block");
+} */
+
