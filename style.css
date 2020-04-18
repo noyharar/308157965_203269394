@@ -1,8 +1,156 @@
-body{
-  font-family: Arial, Helvetica, sans-serif;
-    background-image: url("image/background.jpg");
+.navbar {
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+  }
+  .navbar-inverse {
+    background-color:#4db8ff;
+    border-color: #080808;
+  }
+  .navbar-fixed-top {
+    top: 0;
+    border-width: 0 0 1px;
+  }
+  .container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  
+  navbar-fixed-bottom, .navbar-fixed-top {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+  }
+  .topnav ul {
+    position: fixed;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #42f5ef;
+  }
+  .topnav li {
+    float: left;
+  }
+  .topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color:#42f5ef ;
+    float: left;
+    font-family: 'Alef', serif;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+
+.registerForm{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    font-family: 'Alef', serif;
+    font-size: 16px;
+    color: white;
+    
 }
-/* The Modal (background) */
+
+.btnR {
+    position: fixed;
+    margin-left: 100px;
+    margin-right: auto;
+    background-color: #42f5ef;
+    color: whitesmoke;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .btnL {
+    position: fixed;
+    margin-left: 270px;
+    margin-right: 100px;
+    background-color: #42f5ef;
+    color: whitesmoke;
+    font-size: 16px;
+    padding: 12px 35px;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .section{
+    position: fixed;
+    top: 10%;
+    left: 35%; 
+  }
+
+@font-face {
+    font-family: 'Alef';
+    font-weight: 400;
+    font-style: normal;
+    src: url('https://s3-eu-west-1.amazonaws.com/fonts-project/fonts/Alef/400.woff') format('woff');
+  }
+
+  .registerSubmit{
+    position: fixed;
+    margin-left: 100px;
+    margin-right: 150px;
+    background-color: #42f5ef;
+    color: whitesmoke;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    text-align: center;
+  }
+  body{
+    background-image: url("image/welcom.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+* {
+    box-sizing: border-box;
+  }
+  
+  img {
+    vertical-align: middle;
+  }
+ section{
+    margin: auto;
+    padding: 4em; 
+    width: 1000px;
+    position: absolute;
+}
+section#Login_Register_buttons{
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(image/welcom.jpg);
+} 
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  .settingClass{
+    display: block;
+    font-family: 'Alef', serif;
+    font-size: 16px;
+    color: white;
+  }
+  /* The Modal (background) */
 .modal{
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -39,50 +187,3 @@ body{
   text-decoration: none;
   cursor: pointer;
 }
-* {
-    box-sizing: border-box;
-  }
-  
-  img {
-    vertical-align: middle;
-  }
- section{
-    margin: auto;
-    padding: 4em; 
-    width: 100%;
-    /* width: 1000px; */
-    position: absolute;
-}
-section#Login_Register_buttons{
-    background-image: url(image/welcom.jpg);
-} 
-.loginForm{
-  padding: -1000px;
-}
-.button_login,.button_register{
-  cursor: pointer;
-  position: absolute;
-  top: 40%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
-  color: black;
-  font-weight: bold;
-  font-size: 20px;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-.button_login{
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-/* section#loginForm{
-  background: url(image/welcom.jpg);
-	background-position: center;
-	background-repeat: no-repeat;
-    background-attachment: scroll; 
-	background-size:cover;
-    width: 500px;
-} */
