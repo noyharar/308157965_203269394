@@ -1,13 +1,7 @@
-.ourInfo{
-  position: inherit;
-  display: block;
-  margin-left: auto;
-  margin-right: -550px;
-  padding-top: 10;
-}
+
 .navbar {
   position:fixed;
-    min-height: 50px;
+    min-height: 30px;
     margin-bottom: 20px;
     border: 1px solid transparent;
   }
@@ -28,6 +22,7 @@
   }  
   .navbar-fixed-bottom, .navbar-fixed-top {
     position: fixed;
+    min-height: 45px;
     right: 0;
     left: 0;
     z-index: 1030;
@@ -35,12 +30,14 @@
   .topnav ul {
     position: fixed;
     list-style-type: none;
+    min-height: 35px;
     margin: 0;
     padding: 0;
     background-color: #42f5ef;
   }
   .topnav li {
     float: left;
+    min-height: 35px;
   }
   .topnav li a {
     display: block;
@@ -51,8 +48,10 @@
     background-color:#42f5ef ;
     float: left;
     font-family: 'Alef', serif;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: bold;
+    min-height: 5px;
+
   }
 
   .registerForm{
@@ -68,6 +67,7 @@
 
 .btnR {
   position: fixed;
+  margin-top: 200px;
   margin-left: 200px;
   margin-right: 100px;
   background-color: #42f5ef;
@@ -82,6 +82,7 @@
 
 .btnL {
   position: fixed;
+  margin-top: 200px;
  /* margin-left: 270px;
   margin-right: 100px;*/
   margin-left: auto;
@@ -194,11 +195,11 @@ section#Login_Register_buttons{
 }
 
 .logo{
+  position: fixed;
   display: block;
   width:27%;
   margin-left: auto;
   align-self: center;
-  position: inherit;
 }
 
 .header {
@@ -226,4 +227,42 @@ section#Login_Register_buttons{
   cursor: pointer;
   border-radius: 12px;
   text-align: center;
+}
+
+.footerClass{
+  position: fixed;
+  min-height: 30px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color:  #42f5ef;
+  color: white;
+  min-height: auto;
+  font-size: 11px;
+  font-weight: bolder;
+}
+
+.logoClass{
+  align-items: center;
+  position: fixed;
+  min-height: 30px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color:  black;
+  color: white;
+  margin-left: auto;
+  margin-right: -550px;
+  padding-top: 10;
+  text-align: center;
+  font-family: 'Alef', serif;
+
+}
+.ourInfo{
+  position: fixed;
+  display: block;
+  margin-left: auto;
+  margin-right: -550px;
+  padding-top: 10;
+  text-align: center
 }
