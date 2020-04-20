@@ -1,25 +1,32 @@
+.ourInfo{
+  position: inherit;
+  display: block;
+  margin-left: auto;
+  margin-right: -550px;
+  padding-top: 10;
+}
 .navbar {
+  position:fixed;
     min-height: 50px;
     margin-bottom: 20px;
     border: 1px solid transparent;
   }
   .navbar-inverse {
-    background-color:#4db8ff;
+    background-color:#42f5ef;
     border-color: #080808;
   }
   .navbar-fixed-top {
-    top: 0;
+    top: 30;
     border-width: 0 0 1px;
   }
   .container-fluid {
+    position: fixed;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-  }
-
-  
-  navbar-fixed-bottom, .navbar-fixed-top {
+  }  
+  .navbar-fixed-bottom, .navbar-fixed-top {
     position: fixed;
     right: 0;
     left: 0;
@@ -48,52 +55,56 @@
     font-weight: bold;
   }
 
-
-.registerForm{
+  .registerForm{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 20%;
+    width: 60%;
     font-family: 'Alef', serif;
     font-size: 16px;
-    color: white;
-    
+    color: white;    
 }
 
+
 .btnR {
-    position: fixed;
-    margin-left: 100px;
-    margin-right: auto;
-    background-color: #42f5ef;
-    color: whitesmoke;
-    font-size: 16px;
-    padding: 12px 24px;
-    border: none;
-    cursor: pointer;
-    border-radius: 12px;
-    text-align: center;
-  }
+  position: fixed;
+  margin-left: 200px;
+  margin-right: 100px;
+  background-color: #42f5ef;
+  color: whitesmoke;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  text-align: center;
+}
 
-  .btnL {
-    position: fixed;
-    margin-left: 270px;
-    margin-right: 100px;
-    background-color: #42f5ef;
-    color: whitesmoke;
-    font-size: 16px;
-    padding: 12px 35px;
-    border: none;
-    cursor: pointer;
-    border-radius: 12px;
-    text-align: center;
-  }
+.btnL {
+  position: fixed;
+ /* margin-left: 270px;
+  margin-right: 100px;*/
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #42f5ef;
+  color: whitesmoke;
+  font-size: 16px;
+  padding: 12px 35px;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  text-align: center;
+}
 
-  .section{
+  .sectionWelcome{
     position: fixed;
     top: 10%;
     left: 35%; 
   }
-
+  .sectionHeader{
+    position: fixed;
+    top: -20%;
+  }
 @font-face {
     font-family: 'Alef';
     font-weight: 400;
@@ -102,7 +113,7 @@
   }
 
   .registerSubmit{
-    position: fixed;
+    position: inherit;
     margin-left: 100px;
     margin-right: 150px;
     background-color: #42f5ef;
@@ -114,35 +125,29 @@
     border-radius: 12px;
     text-align: center;
   }
+
   body{
     background-image: url("image/welcom.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-}
-* {
-    box-sizing: border-box;
-  }
-  
-  img {
-    vertical-align: middle;
-  }
- section{
+}  
+ 
+ /* section{
     margin: auto;
     padding: 4em; 
     width: 1000px;
     position: absolute;
-}
+} */
 section#Login_Register_buttons{
     margin-left: auto;
     margin-right: auto;
     background-image: url(image/welcom.jpg);
 } 
 .center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-  }
+  display: block;
+  margin-left: 90px;
+  width: 30%;
+}
 
   .settingClass{
     display: block;
@@ -155,7 +160,7 @@ section#Login_Register_buttons{
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  padding-top: 250px; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -186,4 +191,39 @@ section#Login_Register_buttons{
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.logo{
+  display: block;
+  width:27%;
+  margin-left: auto;
+  align-self: center;
+  position: inherit;
+}
+
+.header {
+  padding: auto;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.loginClass{
+  display: block;
+  margin-left: 40%;
+  margin-top: 10%;
+  width: 50%;
+}
+
+
+.loginSubmit{
+  position: inherit;
+  margin-left: 30px;
+  background-color: #42f5ef;
+  color: whitesmoke;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  text-align: center;
 }
