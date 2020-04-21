@@ -64,46 +64,49 @@
             </div>
             <br />
             <div id="serPassword">
-                <input type="text" name="serPassword" id="serPassword" size="23" placeholder="Password">
+                <input type="password" id="userPassword" size="23" placeholder="Password" required>
             </div>
             <div class="enterBtn">
 				<br>
-                <input type="button" class="loginSubmit" value="Enter Game" />
+                <input type="button" class="loginSubmit" value="Enter Game" onclick="load_user()"/>
             </div>
 
         </div>
     </div>
 
+    <div id="result">
+
+    </div>
     <form class=registerForm>
         <div id="register" style="display:none" style="width: 50%;">
             <br>
             <h1>Register</h1>
             <p>Please fill the register form:</p>
             <label for="userName"><b>user Name:</b></label>
-            <input type="text" placeholder="Enter your user name" name="email" required>
+            <input type="text" id="userName" placeholder="Enter your user name" name="email" required>
             <br>
             <br>
             <label for="psw"><b>Password:</b></label>
-            <input type="password" placeholder="Enter your Password" name="psw" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" required>
+            <input type="password" id = "userPassword" placeholder="Enter your Password" name="psw" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" required>
             <br>
             <br>
             <label for="firstName"><b>Fisrt Name:</b></label>
-            <input type="firstName" placeholder="Enter your first name" name="firstName" pattern="^[A-Za-z]+" required>
+            <input type="firstName" id = "userFirstName" placeholder="Enter your first name" name="firstName" pattern="^[A-Za-z]+" required>
             <br>
             <br>
             <label for="lastName"><b>Last Name:</b></label>
-            <input type="lastName" placeholder="Enter your last name" name="lastName" pattern="[A-Za-z]+" required>
+            <input type="lastName" id = "userLastName" placeholder="Enter your last name" name="lastName" pattern="[A-Za-z]+" required>
             <br>
             <br>
             <label for="email"><b>Email:</b></label>
-            <input type="text" placeholder="Enter your Email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+            <input type="text" id = "userMail" placeholder="Enter your Email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
             <br>
             <br>
             <label for="birthday">Please insert your birthday:</label>
             <input type="date" id="birthday" name="birthday" required>
             <br>
             <br>
-            <input type="submit" class="registerSubmit" value="Register" />
+            <input type="submit" class="registerSubmit" value="Register" onclick="save_user()" />
         </div>
     </form>
     <br>
@@ -139,11 +142,11 @@
 </div>
 <footer class="footerClass">
     <!-- <footer id="footer" class=footerClass style="text-decoration: white;"> -->
-	<p><Strong>Pacman</Strong> | Noa Gorengot - goren?????@post.bgu.ac.il | Noy Harari - noyHarar@post.bgu.ac.il</p>
+	<p><Strong>Pacman</Strong> | Noa Gorengot - noagoren@post.bgu.ac.il | Noy Harari - noyHarar@post.bgu.ac.il</p>
     <!-- </footer> -->
 </footer>
 
-<script>
+<!-- <script>
     $(document).ready(function() {
         $("#registerBtn").click(function() {
             $('#welcome').css("display", "none");
@@ -153,9 +156,9 @@
 
         });
     });
-</script>
+</script> -->
 
-<script>
+<!-- <script>
     $(document).ready(function() {
         $("#aboutBtn").click(function() {
             $('#welcome').css("display", "none");
@@ -165,9 +168,9 @@
 
         });
     });
-</script>
+</script> -->
 
-<script>
+<!-- <script>
     $(document).ready(function() {
         $("#welcomeBtn").click(function() {
             $(document.getElementById("about")).hide();
@@ -177,8 +180,8 @@
 
         });
     });
-</script>
-
+</script> -->
+<!-- 
 <script>
     $(document).ready(function() {
         $("#loginBtn").click(function() {
@@ -189,7 +192,7 @@
 
         });
     });
-</script>
+</script> -->
 
 <!-- </html>
 

@@ -14,6 +14,76 @@ function myFunctionLogin() {
 	$(document.getElementById("register")).hide();
 	$(document.getElementById("login")).show();
 }
+$(document).ready(function () {
+	$("#aboutBtn").click(function () {
+		$('#welcome').css("display", "none");
+		$(document.getElementById("register")).hide();
+		$(document.getElementById("login")).hide();
+		$("#about").show(300);
+
+	});
+});
+
+$(document).ready(function () {
+	$("#welcomeBtn").click(function () {
+		$(document.getElementById("about")).hide();
+		$(document.getElementById("register")).hide();
+		$(document.getElementById("login")).hide();
+		$('#welcome').css("display", "block");
+
+	});
+});
+
+$(document).ready(function () {
+	$("#loginBtn").click(function () {
+		$(document.getElementById("welcome")).hide();
+		$(document.getElementById("about")).hide();
+		$(document.getElementById("register")).hide();
+		$(document.getElementById("login")).show(300);
+
+	});
+});
+
+$(document).ready(function () {
+	$("#registerBtn").click(function () {
+		$('#welcome').css("display", "none");
+		$(document.getElementById("about")).hide();
+		$(document.getElementById("login")).hide();
+		$("#register").show(300);
+
+	});
+});
+
+
+
+function save_user() {
+
+/* 	var myFormData = document.getElementsByName("register");
+	localStorage.setItem('myFormData', JSON.stringify(myFormData)); */
+
+	let formData = [];
+	let data = {
+		userName : document.getElementById("userName").value,
+		userPassword : document.getElementById("userPassword").value,
+		firstName : document.getElementById("userFirstName").value,
+		lastName : document.getElementById("userLastName").value,
+		mail : document.getElementById("userMail").value,
+		birthDay : document.getElementById("birthday").value
+	}
+	formData.push(data);
+	document.forms[0].reset();
+}
+
+function load_user() {
+	var userName = document.getElementById("name").value;
+	var userPassword = document.getElementById("serPassword").value;
+	var myFormData = JSON.parse(localStorage.getItem('myFormData'));
+	if (userPassword == myFormData.find()) {
+		$('#login').css('display', 'none');
+		$('#setting').css('displa', 'block');
+	}
+
+}
 
 function open_about() {
 	// Get the modal
@@ -40,21 +110,21 @@ function open_about() {
 		}
 	}
 
-/* 	document.keysDown = function (event) {
-		event = event || window.event;
-		var isEsc = false;
-
-		if("key" in event){
-			isEsc = (event.key === "Escape" || event.key === "Esc");
-		}
-		else{
-			isEscape = (event.keyCode === 27);
-		}
-		if(isEsc){
-			modal.style.display = "none";
-		}
-
-	} */
+	/* 	document.keysDown = function (event) {
+			event = event || window.event;
+			var isEsc = false;
+	
+			if("key" in event){
+				isEsc = (event.key === "Escape" || event.key === "Esc");
+			}
+			else{
+				isEscape = (event.keyCode === 27);
+			}
+			if(isEsc){
+				modal.style.display = "none";
+			}
+	
+		} */
 }
 
 
@@ -65,9 +135,6 @@ function myFunction() {
 	$(document.getElementById("register")).show();
 	$("#register").show(300);
 }
-
-
-
 
 $(document).ready(function () {
 	context = canvas.getContext("2d");
