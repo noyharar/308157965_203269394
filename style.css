@@ -130,7 +130,7 @@
   }
 
   body{
-    background-image: url("image/welcom.jpg");
+    background-image: url("image/welcom.jpg");  
     background-repeat: no-repeat;
     background-size: cover;
 }  
@@ -156,7 +156,7 @@ section#Login_Register_buttons{
     display: block;
     font-family: 'Alef', serif;
     font-size: 16px;
-    color: white;
+    color: blue;
   }
   /* The Modal (background) */
 .modal{

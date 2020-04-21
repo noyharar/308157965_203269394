@@ -109,37 +109,53 @@
     <br>
 </body>
 
-<div id="setting" class="settingClass" style="display:none">
+<form id="setting"  onsubmit="statForNow()" class="settingClass" style="display:bloack">
     <div class="settingClass">
         <br />
         <h1>Setting</h1>
         <br />
         <label>Enter your UP button:</label>
-        <input type="text" placeholder="UP button" pattern="{1}">
+        <input id=#upId type="text" placeholder="UP button" onkeypress="changeValueToKey(event)" pattern="{1}">
         <br>
         <label>Enter your DOWN button:</label>
-        <input type="text" placeholder="DOWN button" pattern="{1}">
+        <input id=#downId type="text" placeholder="DOWN button" onkeypress="changeValueToKey(event)" pattern="{1}">
         <br>
         <label>Enter your RIGHT button:</label>
-        <input type="text" placeholder="RIGHT button" pattern="{1}">
+        <input id=#rightId type="text" placeholder="RIGHT button" onkeypress="changeValueToKey(event)" pattern="{1}">
         <br>
         <label>Enter your LEFT button:</label>
-        <input type="text" placeholder="LEFT button" pattern="{1}">
+        <input id=#leftId type="text" placeholder="LEFT button" onkeypress="changeValueToKey(event)" pattern="{1}">
         <br>
         <label>Enter num of balls to the game:</label>
-        <input type="number" min="50" max="90">
+        <input id="balls" type="number" min="50" max="90">
 
         <br>
         <label>Enter num of seconds to the game:</label>
-        <input type="number" min="60">
+        <input id="timeToPlay" type="number" min="60">
         <br>
         <label>Enter num of monsters</label>
-        <input type="number" min="1" max="4">
+        <input id="monsters" type="number" min="1" max="4">
+        <br>
+        <button id="settingSubmit" type="submit">Submit</button>
+        <button id="settingSubmit" onclick="randomSetting()" type="submit">Random</button>
+
     </div>
-</div>
+</form>
+<div style="display:block">
+    <div id="score">
+        <label for="lblScore">SCORE:</label>
+        <input id="lblScore" type="text" />
+    </div>
+    <div id="time">
+        <label for="lblTime">TIME:</label>
+        <input id="lblTime" type="text" />
+    </div>
+    <div id="game">
+        <canvas id="canvas" height="600" width="600"></canvas>
+        </div>
 <footer class="footerClass">
     <!-- <footer id="footer" class=footerClass style="text-decoration: white;"> -->
-	<p><Strong>Pacman</Strong> | Noa Gorengot - goren??????@post.bgu.ac.il | Noy Harari - noyHarar@post.bgu.ac.il</p>
+	<p><Strong>Pacman</Strong> | Noa Gorengot - goren?????@post.bgu.ac.il | Noy Harari - noyHarar@post.bgu.ac.il</p>
     <!-- </footer> -->
 </footer>
 
