@@ -114,8 +114,6 @@ function load_user() {
 	}
 
 	}
-
-
 }
 
 function open_about() {
