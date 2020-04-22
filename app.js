@@ -81,9 +81,11 @@ function myFunction() {
 }
 
 
-function statForNow(){
+function startForNow(e){
+	e.preventDefault();
 	context = canvas.getContext("2d");
 	Start();
+	return false;
 }
 
 
@@ -97,9 +99,9 @@ function Start() {
 	var cnt = 100;
 	var pacman_remain = 1;
 	if(food_remain == 0 && num_of_monsters == 0 && timeToPlay == 0){
-	food_remain = parseInt($(document.getElementById("balls")).val());
+	food_remain = parseInt($(document.getElementById("food")).val());
 	num_of_monsters = parseInt($(document.getElementById("monsters")).val());
-	timeToPlay = parseInt($(document.getElementById("timeToPlay")).val());
+	timeToPlay = parseInt($(document.getElementById("lbltime")).val());
 	}
 	start_time = new Date();
 	for (var i = 0; i < 10; i++) {
@@ -157,6 +159,7 @@ function Start() {
 		false
 	);
 	interval = setInterval(UpdatePosition, 250);
+	
 }
 
 function findRandomEmptyCell(board) {
@@ -210,6 +213,9 @@ function changeValueToKey(event) {
 	while(timeToPlay < 60){
 		timeToPlay = parseInt(100 * Math.random());
 	}
+	food.value = food_remain;
+	monsters.value = num_of_monsters;
+	lbltime.value = timeToPlay;
   }
 
 function Draw() {
@@ -252,6 +258,7 @@ function Draw() {
 }
 
 function UpdatePosition() {
+
 	board[shape.i][shape.j] = 0;
 	var x = GetKeyPressed();
 	if (x == 1) {
@@ -280,11 +287,17 @@ function UpdatePosition() {
 	board[shape.i][shape.j] = 2;
 	var currentTime = new Date();
 	time_elapsed = (currentTime - start_time) / 1000;
-	if(time_elapsed >= timeToPlay){
-		window.alert("Time passed!");
-	}
+
 	if (score >= 20 && time_elapsed <= 10) {
 		pac_color = "green";
+	}
+	if(time_elapsed >= timeToPlay){
+		window.clearInterval(interval);
+		lblTime.value = timeToPlay;
+		window.alert("Time passed!");
+	}
+	else{
+		Draw();
 	}
 	if (score == 50) {
 		window.clearInterval(interval);

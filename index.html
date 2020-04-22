@@ -109,38 +109,37 @@
     <br>
 </body>
 
-<form id="setting"  onsubmit="statForNow()" class="settingClass" style="display:bloack">
+<form id="setting"  onsubmit="startForNow(event)" class="settingClass" style="display:block">
     <div class="settingClass">
         <br />
         <h1>Setting</h1>
         <br />
-        <label>Enter your UP button:</label>
-        <input id=#upId type="text" placeholder="UP button" onkeypress="changeValueToKey(event)" pattern="{1}">
+        <label for="upId">Enter your UP button:</label>
+        <input id="upId" type="text" placeholder="UP button" onkeypress="changeValueToKey(event)" pattern="{1}">
         <br>
-        <label>Enter your DOWN button:</label>
-        <input id=#downId type="text" placeholder="DOWN button" onkeypress="changeValueToKey(event)" pattern="{1}">
+        <label for="downId">Enter your DOWN button:</label>
+        <input id="downId" type="text" placeholder="DOWN button" onkeypress="changeValueToKey(event)" pattern="{1}">
         <br>
-        <label>Enter your RIGHT button:</label>
-        <input id=#rightId type="text" placeholder="RIGHT button" onkeypress="changeValueToKey(event)" pattern="{1}">
+        <label for="rightId">Enter your RIGHT button:</label>
+        <input id="rightId" type="text" placeholder="RIGHT button" onkeypress="changeValueToKey(event)" pattern="{1}">
         <br>
-        <label>Enter your LEFT button:</label>
-        <input id=#leftId type="text" placeholder="LEFT button" onkeypress="changeValueToKey(event)" pattern="{1}">
+        <label for="leftId">Enter your LEFT button:</label>
+        <input id="leftId" type="text" placeholder="LEFT button" onkeypress="changeValueToKey(event)" pattern="{1}">
         <br>
-        <label>Enter num of balls to the game:</label>
-        <input id="balls" type="number" min="50" max="90">
-
+        <label for="food">Enter num of balls to the game:</label>
+        <input id="food" type="number" min="50" max="90">
         <br>
-        <label>Enter num of seconds to the game:</label>
-        <input id="timeToPlay" type="number" min="60">
+        <label for="lbltime">Enter num of seconds to the game:</label>
+        <input id="lbltime" type="number" min="60">
         <br>
-        <label>Enter num of monsters</label>
+        <label for="monsters">Enter num of monsters</label>
         <input id="monsters" type="number" min="1" max="4">
         <br>
         <button id="settingSubmit" type="submit">Submit</button>
-        <button id="settingSubmit" onclick="randomSetting()" type="submit">Random</button>
-
     </div>
 </form>
+<button onclick="randomSetting()" type="submit">Random</button>
+
 <div style="display:block">
     <div id="score">
         <label for="lblScore">SCORE:</label>
