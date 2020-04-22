@@ -53,6 +53,19 @@ $(document).ready(function () {
 	});
 });
 
+$(document).ready(function(){
+	
+	let defUserName = {
+		userName : "p",
+		userPassword : "p",
+		firstName : "p",
+		lastName : "p",
+		mail : "p",
+		birthDay : Date.now()
+	};
+	let str = JSON.stringify(defUserName);
+	localStorage.setItem("p" ,str);
+});
 
 
 function save_user() {
@@ -78,20 +91,30 @@ function load_user() {
 	let userPassword = document.getElementById("userPassword").value;
 	//console.log(userPassword);
 	let originalData = localStorage.getItem(userName);
-	//console.log(originalData); // just to check if good
-	let dataObj = JSON.parse(originalData);
-	// test to see the object
-	//console.log(dataObj);
-	let psd = dataObj.userPassword;
-	//console.log(psd);
-	let name = dataObj.userName;
-	//console.log(name);
-	if(userName == name && userPassword == psd){
-		//console.log(true);
-		//console.log("welcome");
-		$('#login').css('display', 'none');
-		$('#setting').css('display', 'block');
+	if(originalData == null){
+		console.log(false);
+		alert("You have to register in order to play");		
 	}
+	else{
+		
+		//console.log(originalData); // just to check if good
+		let dataObj = JSON.parse(originalData);
+		// test to see the object
+		//console.log(dataObj);
+		let psd = dataObj.userPassword;
+		//console.log(psd);
+		let name = dataObj.userName;
+		//console.log(name);
+		if(userName == name && userPassword == psd){
+			
+			//console.log(true);
+			//console.log("welcome");
+			$('#login').css('display', 'none');
+			$('#setting').css('display', 'block');
+	}
+
+	}
+
 
 }
 
