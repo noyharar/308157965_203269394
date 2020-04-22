@@ -13,6 +13,11 @@ var right = 39;
 var food_remain = 0;
 var num_of_monsters = 0;
 var timeToPlay = 0;
+var extra_food = 2;
+var pacman_right = true;
+var pacman_left = false;
+var pacman_up = false;
+var pacman_down = false;
 
 
 
@@ -133,6 +138,12 @@ function Start() {
 			}
 		}
 	}
+	while(extra_food > 0){
+		var emptyCell = findRandomEmptyCell(board);
+		board[emptyCell[0]][emptyCell[1]] = 8;
+		extra_food--;
+	}
+
 	while(num_of_monsters > 0){
 		var emptyCell = findRandomEmptyCell(board);
 		board[emptyCell[0]][emptyCell[1]] = 9;
@@ -223,16 +234,39 @@ function Draw() {
 	lblScore.value = score;
 	lblTime.value = time_elapsed;
 	var sprite = new Image();
-	sprite.src = "monster.png";
-	// sprite.src = "luigi.jpg";
+	sprite.src = "image/monster.png";
+	var burger = new Image();
+	burger.src ="image/burger.png"
 	for (var i = 0; i < 10; i++) {
 		for (var j = 0; j < 10; j++) {
 			var center = new Object();
 			center.x = i * 60 + 30;
 			center.y = j * 60 + 30;
-			if (board[i][j] == 9) {
+			if (board[i][j] == 8) {
+				context.drawImage(burger, center.x-25, center.y-25);
+			} else if (board[i][j] == 9) {
 				context.drawImage(sprite, center.x-20, center.y-20);
-			} else if (board[i][j] == 2) {
+			} else if (board[i][j] == 2 && pacman_left == true) {
+				context.beginPath();
+				context.arc(center.x, center.y, 30, -0.85 * Math.PI, 0.85 * Math.PI); // half circle
+				context.lineTo(center.x, center.y);
+				context.fillStyle = pac_color; //color
+				context.fill();
+				context.beginPath();
+				context.arc(center.x + 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
+				context.fillStyle = "black"; //color
+				context.fill();
+			} else if(board[i][j] == 2 && pacman_up == true){
+				context.beginPath();
+				context.arc(center.x, center.y, 30, 1.7 * Math.PI, 1.35 * Math.PI); // half circle
+				context.lineTo(center.x, center.y);
+				context.fillStyle = pac_color; //color
+				context.fill();
+				context.beginPath();
+				context.arc(center.x+15, center.y+5, 5, 0, 2 * Math.PI); // circle
+				context.fillStyle = "black"; //color
+				context.fill();
+			} else if(board[i][j] == 2 && pacman_right == true){
 				context.beginPath();
 				context.arc(center.x, center.y, 30, 0.15 * Math.PI, 1.85 * Math.PI); // half circle
 				context.lineTo(center.x, center.y);
@@ -240,6 +274,16 @@ function Draw() {
 				context.fill();
 				context.beginPath();
 				context.arc(center.x + 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
+				context.fillStyle = "black"; //color
+				context.fill();
+			} else if(board[i][j] == 2 && pacman_down == true){
+				context.beginPath();
+				context.arc(center.x, center.y, 30, 0.75 * Math.PI, 0.35 * Math.PI); // half circle
+				context.lineTo(center.x, center.y);
+				context.fillStyle = pac_color; //color
+				context.fill();
+				context.beginPath();
+				context.arc(center.x+15, center.y - 10, 5, 0, 2 * Math.PI); // circle
 				context.fillStyle = "black"; //color
 				context.fill();
 			} else if (board[i][j] == 1) {
@@ -258,31 +302,49 @@ function Draw() {
 }
 
 function UpdatePosition() {
-
 	board[shape.i][shape.j] = 0;
 	var x = GetKeyPressed();
 	if (x == 1) {
+		pacman_up= true;
+		pacman_right = false;
+		pacman_left= false;
+		pacman_down = false;
 		if (shape.j > 0 && board[shape.i][shape.j - 1] != 4) {
 			shape.j--;
 		}
 	}
 	if (x == 2) {
+		pacman_down = true;
+		pacman_left = false;
+		pacman_up = false;
+		pacman_right = false;
 		if (shape.j < 9 && board[shape.i][shape.j + 1] != 4) {
 			shape.j++;
 		}
 	}
 	if (x == 3) {
+		pacman_left = true;
+		pacman_right = false;
+		pacman_up = false;
+		pacman_down = false;
 		if (shape.i > 0 && board[shape.i - 1][shape.j] != 4) {
 			shape.i--;
 		}
 	}
 	if (x == 4) {
+		pacman_right = true;
+		pacman_left = false;
+		pacman_up = false;
+		pacman_down = false;
 		if (shape.i < 9 && board[shape.i + 1][shape.j] != 4) {
 			shape.i++;
 		}
 	}
 	if (board[shape.i][shape.j] == 1) {
 		score++;
+	}
+	if(board[shape.i][shape.j] == 8){
+		score = score + 10;
 	}
 	board[shape.i][shape.j] = 2;
 	var currentTime = new Date();
@@ -291,21 +353,23 @@ function UpdatePosition() {
 	if (score >= 20 && time_elapsed <= 10) {
 		pac_color = "green";
 	}
-	if(time_elapsed >= timeToPlay){
-		window.clearInterval(interval);
-		lblTime.value = timeToPlay;
-		window.alert("Time passed!");
-	}
-	else{
-		Draw();
-	}
+
 	if (score == 50) {
 		window.clearInterval(interval);
 		window.alert("Game completed");
-	} else {
+	}else if(time_elapsed >= timeToPlay){
+		time_elapsed = timeToPlay;
+		lblTime.value = time_elapsed;
+		window.clearInterval(interval);
+		timePassed();
+	}else{
 		Draw();
 	}
 }
+
+function timePassed() {
+	setTimeout(function(){ alert("Time Passed"); }, timeToPlay);
+  }
 
 function open_login_window() {
 	/* 	var btn = document.getElementById("myButton");
