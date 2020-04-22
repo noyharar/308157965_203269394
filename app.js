@@ -7,7 +7,6 @@ var start_time;
 var time_elapsed;
 var interval;
 
-
 function myFunctionLogin() {
 	$(document.getElementById("welcome")).hide();
 	$(document.getElementById("about")).hide();
@@ -57,30 +56,41 @@ $(document).ready(function () {
 
 
 function save_user() {
-
-/* 	var myFormData = document.getElementsByName("register");
-	localStorage.setItem('myFormData', JSON.stringify(myFormData)); */
-
-	let formData = [];
+	let nameForKey = document.getElementById("user_name").value;
 	let data = {
-		userName : document.getElementById("userName").value,
-		userPassword : document.getElementById("userPassword").value,
+		userName : document.getElementById("user_name").value,
+		userPassword : document.getElementById("user_password").value,
 		firstName : document.getElementById("userFirstName").value,
 		lastName : document.getElementById("userLastName").value,
 		mail : document.getElementById("userMail").value,
 		birthDay : document.getElementById("birthday").value
-	}
-	formData.push(data);
+	};
 	document.forms[0].reset();
+	let str = JSON.stringify(data);
+	localStorage.setItem(nameForKey ,str);
+	$('#register').css('display', 'none');
+	$('#setting').css('display', 'block');
 }
 
 function load_user() {
-	var userName = document.getElementById("name").value;
-	var userPassword = document.getElementById("serPassword").value;
-	var myFormData = JSON.parse(localStorage.getItem('myFormData'));
-	if (userPassword == myFormData.find()) {
+	let userName = document.getElementById("name").value;
+	//console.log(userName);
+	let userPassword = document.getElementById("userPassword").value;
+	//console.log(userPassword);
+	let originalData = localStorage.getItem(userName);
+	//console.log(originalData); // just to check if good
+	let dataObj = JSON.parse(originalData);
+	// test to see the object
+	//console.log(dataObj);
+	let psd = dataObj.userPassword;
+	//console.log(psd);
+	let name = dataObj.userName;
+	//console.log(name);
+	if(userName == name && userPassword == psd){
+		//console.log(true);
+		//console.log("welcome");
 		$('#login').css('display', 'none');
-		$('#setting').css('displa', 'block');
+		$('#setting').css('display', 'block');
 	}
 
 }
