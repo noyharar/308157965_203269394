@@ -7,6 +7,18 @@ var start_time;
 var time_elapsed;
 var interval;
 
+/* $(document).ready(function () {
+	let userScreenWidth = window.innerWidth;
+	console.log(userScreenWidth);
+	let userScreenHeigth = window.innerHeight;
+	console.log(userScreenHeigth);
+	if (userScreenHeigth < 768 || userScreenWidth < 1366) {
+		window.resizeTo(1366 , 768);
+		window.focus();
+		console.log("working");
+	}
+}); */
+
 function myFunctionLogin() {
 	$(document.getElementById("welcome")).hide();
 	$(document.getElementById("about")).hide();
@@ -52,37 +64,41 @@ $(document).ready(function () {
 
 	});
 });
+/* defult user */
+$(document).ready(function () {
 
-$(document).ready(function(){
-	
 	let defUserName = {
-		userName : "p",
-		userPassword : "p",
-		firstName : "p",
-		lastName : "p",
-		mail : "p",
-		birthDay : Date.now()
+		userName: "p",
+		userPassword: "p",
+		firstName: "p",
+		lastName: "p",
+		mail: "p",
+		birthDay: Date.now()
 	};
 	let str = JSON.stringify(defUserName);
-	localStorage.setItem("p" ,str);
+	localStorage.setItem("p", str);
 });
 
 
 function save_user() {
 	let nameForKey = document.getElementById("user_name").value;
-	let data = {
-		userName : document.getElementById("user_name").value,
-		userPassword : document.getElementById("user_password").value,
-		firstName : document.getElementById("userFirstName").value,
-		lastName : document.getElementById("userLastName").value,
-		mail : document.getElementById("userMail").value,
-		birthDay : document.getElementById("birthday").value
-	};
-	document.forms[0].reset();
-	let str = JSON.stringify(data);
-	localStorage.setItem(nameForKey ,str);
-	$('#register').css('display', 'none');
-	$('#setting').css('display', 'block');
+	if(localStorage.getItem(nameForKey) == null){
+		let data = {
+			userName: document.getElementById("user_name").value,
+			userPassword: document.getElementById("user_password").value,
+			firstName: document.getElementById("userFirstName").value,
+			lastName: document.getElementById("userLastName").value,
+			mail: document.getElementById("userMail").value,
+			birthDay: document.getElementById("birthday").value
+		};
+		document.forms[0].reset();
+		let str = JSON.stringify(data);
+		localStorage.setItem(nameForKey, str);
+		$('#register').css('display', 'none');
+		$('#setting').css('display', 'block');
+	}
+	alert("this user already exist");
+
 }
 
 function load_user() {
@@ -91,12 +107,12 @@ function load_user() {
 	let userPassword = document.getElementById("userPassword").value;
 	//console.log(userPassword);
 	let originalData = localStorage.getItem(userName);
-	if(originalData == null){
+	if (originalData == null) {
 		console.log(false);
-		alert("You have to register in order to play");		
+		alert("You have to register in order to play");
 	}
-	else{
-		
+	else {
+
 		//console.log(originalData); // just to check if good
 		let dataObj = JSON.parse(originalData);
 		// test to see the object
@@ -105,13 +121,13 @@ function load_user() {
 		//console.log(psd);
 		let name = dataObj.userName;
 		//console.log(name);
-		if(userName == name && userPassword == psd){
-			
-			//console.log(true);
-			//console.log("welcome");
+		if (userName == name && userPassword == psd) {
+
+			console.log(true);
+			console.log("welcome");
 			$('#login').css('display', 'none');
 			$('#setting').css('display', 'block');
-	}
+		}
 
 	}
 }
@@ -140,24 +156,14 @@ function open_about() {
 			modal.style.display = "none";
 		}
 	}
-
-	/* 	document.keysDown = function (event) {
-			event = event || window.event;
-			var isEsc = false;
-	
-			if("key" in event){
-				isEsc = (event.key === "Escape" || event.key === "Esc");
-			}
-			else{
-				isEscape = (event.keyCode === 27);
-			}
-			if(isEsc){
-				modal.style.display = "none";
-			}
-	
-		} */
+	// when user clicks on the Esc button, close it
+	document.onkeydown = function (event) {
+		var x = event.keyCode;
+		if (x == 27) {
+			modal.style.display = "none";
+		}
+	}
 }
-
 
 function myFunction() {
 	$('#welcome').css("display", "none");
@@ -332,15 +338,6 @@ function UpdatePosition() {
 }
 
 function open_login_window() {
-	/* 	var btn = document.getElementById("myButton");
-		if (btn.value == "Login") {
-			btn.value = "Click To Close";
-			btn.innerHTML = "Click To Close";
-		}
-		else {
-			btn.value = "Login";
-			btn.innerHTML = "Login";
-		} */
 	document.getElementById("Welcom_buttons").hidden = true;
 	var x = document.getElementById("Login_button");
 	if (x.style.display == "none") {
@@ -350,18 +347,4 @@ function open_login_window() {
 		x.style.display = "none";
 	}
 }
-
-/* function press_on_about(){
-	document.getElementById("register").hidden = true;
-	document.getElementById("register").hide();
-	("#welcome").css(display = "none");
-	("#about").show(300);
-}
-
-function press_on_welcome(){
-	document.getElementById("about").hidden = true;
-	document.getElementById("register").hidden = true;
-	document.getElementById("login").hidden = true;
-	('#welcome').css(display =  "block");
-} */
 
