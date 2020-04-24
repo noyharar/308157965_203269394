@@ -8,20 +8,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <br/>
-    <br/>
-    <br/>
+    <br />
+    <br />
+    <br />
 </head>
 <br>
+
 <body>
     <section class="sectionHeader">
-	<div class="logoClass">
-        <header id="header" style="color: azure;">
-				<img src="image/logo.jpg" alt="logo_pic" style="width:15%">
-				<br>
+        <div class="logoClass">
+            <header id="header" style="color: azure;">
+                <img src="image/logo.jpg" alt="logo_pic" style="width:15%">
+                <br>
                 <label> Noy Harari- 308157965 | Noa Gorengot - 203269394</label>
-		</header>
-	</div>
+            </header>
+        </div>
     </section>
     <!-- Trigger/Open The Modal -->
     <!-- <button id="myBtn" onclick="open_about()">About</button>-->
@@ -50,8 +51,8 @@
     </section>
     <div id="welcome" class="sectionWelcome" style="display:block">
         <br>
-		<br>
-		<br>
+        <br>
+        <br>
         <br>
         <br>
         <img src="welcome.png" style="position: fixed; margin-left: auto; margin-right: auto; width: 30%;">
@@ -69,8 +70,8 @@
                 <input type="password" id="userPassword" size="23" placeholder="Password" required>
             </div>
             <div class="enterBtn">
-				<br>
-                <input type="button" class="loginSubmit" value="Enter Game" onclick="load_user()"/>
+                <br>
+                <input type="button" class="loginSubmit" value="Enter Game" onclick="load_user()" />
             </div>
 
         </div>
@@ -89,19 +90,23 @@
             <br>
             <br>
             <label for="psw"><b>Password:</b></label>
-            <input type="password" id = "user_password" placeholder="Enter your Password" name="userPassword" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" required>
+            <input type="password" id="user_password" placeholder="Enter your Password" name="userPassword"
+                pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" required>
             <br>
             <br>
             <label for="firstName"><b>Fisrt Name:</b></label>
-            <input type="firstName" id = "userFirstName" placeholder="Enter your first name" name="firstName" pattern="^[A-Za-z]+" required>
+            <input type="firstName" id="userFirstName" placeholder="Enter your first name" name="firstName"
+                pattern="^[A-Za-z]+" required>
             <br>
             <br>
             <label for="lastName"><b>Last Name:</b></label>
-            <input type="lastName" id = "userLastName" placeholder="Enter your last name" name="lastName" pattern="[A-Za-z]+" required>
+            <input type="lastName" id="userLastName" placeholder="Enter your last name" name="lastName"
+                pattern="[A-Za-z]+" required>
             <br>
             <br>
             <label for="email"><b>Email:</b></label>
-            <input type="text" id = "userMail" placeholder="Enter your Email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+            <input type="text" id="userMail" placeholder="Enter your Email" name="email"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
             <br>
             <br>
             <label for="birthday">Please insert your birthday:</label>
@@ -114,7 +119,7 @@
     <br>
 </body>
 
-<form id="setting"  onsubmit="startForNow(event)" class="settingClass" style="display:block">
+<form id="setting" onsubmit="startForNow(event)" class="settingClass" style="display:none">
     <div class="settingClass">
         <br />
         <h1>Setting</h1>
@@ -149,13 +154,16 @@
         <br>
         <label for="monsters">Enter num of monsters</label>
         <input id="monsters" type="number" min="1" max="4">
-        <br>
-        <button id="settingSubmit" class="registerSubmit" type="submit"> Submit  </button>
+        <br/>
+        <br/>
+        <button id="settingSubmit" onclick="submit_setting()" class="registerSubmit" type="submit"> Submit </button>
+        <button onclick="randomSetting()" class="registerSubmit" type="submit">Random</button>
+        <br/>
+        <br/>
     </div>
 </form>
-<button onclick="randomSetting()" class="registerSubmit" type="submit">Random</button>
 
-<div style="display:block">
+<div style="display:none" id="score_time_life">
     <div id="score">
         <label for="lblScore">SCORE:</label>
         <input id="lblScore" type="text" />
@@ -166,62 +174,17 @@
     </div>
     <div id="game">
         <canvas id="canvas" height="600" width="600"></canvas>
-        </div>
-<footer class="footerClass">
-    <!-- <footer id="footer" class=footerClass style="text-decoration: white;"> -->
-	<p><Strong>Pacman</Strong> | Noa Gorengot - noagoren@post.bgu.ac.il | Noy Harari - noyHarar@post.bgu.ac.il</p>
-    <!-- </footer> -->
-</footer>
+    </div>
+</div>   
 
-<!-- <script>
-    $(document).ready(function() {
-        $("#registerBtn").click(function() {
-            $('#welcome').css("display", "none");
-            $(document.getElementById("about")).hide();
-            $(document.getElementById("login")).hide();
-            $("#register").show(300);
+    <footer class="footerClass">
+        <!-- <footer id="footer" class=footerClass style="text-decoration: white;"> -->
+        <p><Strong>Pacman</Strong> | Noa Gorengot - noagoren@post.bgu.ac.il | Noy Harari - noyHarar@post.bgu.ac.il</p>
+        <!-- </footer> -->
+    </footer>
 
-        });
-    });
-</script> -->
 
-<!-- <script>
-    $(document).ready(function() {
-        $("#aboutBtn").click(function() {
-            $('#welcome').css("display", "none");
-            $(document.getElementById("register")).hide();
-            $(document.getElementById("login")).hide();
-            $("#about").show(300);
-
-        });
-    });
-</script> -->
-
-<!-- <script>
-    $(document).ready(function() {
-        $("#welcomeBtn").click(function() {
-            $(document.getElementById("about")).hide();
-            $(document.getElementById("register")).hide();
-            $(document.getElementById("login")).hide();
-            $('#welcome').css("display", "block");
-
-        });
-    });
-</script> -->
-<!-- 
-<script>
-    $(document).ready(function() {
-        $("#loginBtn").click(function() {
-            $(document.getElementById("welcome")).hide();
-            $(document.getElementById("about")).hide();
-            $(document.getElementById("register")).hide();
-            $(document.getElementById("login")).show(300);
-
-        });
-    });
-</script> -->
-
-<!-- </html>
+    <!-- </html>
 
 	<body>
 		<div style="display:block">

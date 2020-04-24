@@ -21,17 +21,11 @@ var pacman_down = false;
 
 
 
-/* $(document).ready(function () {
-	let userScreenWidth = window.innerWidth;
-	console.log(userScreenWidth);
-	let userScreenHeigth = window.innerHeight;
-	console.log(userScreenHeigth);
-	if (userScreenHeigth < 768 || userScreenWidth < 1366) {
-		window.resizeTo(1366 , 768);
-		window.focus();
-		console.log("working");
-	}
-}); */
+function submit_setting(){
+	$("#setting").css("display", "none");
+	$('#score_time_life').css('display', 'block');
+
+}
 
 function myFunctionLogin() {
 	$(document.getElementById("welcome")).hide();
@@ -80,7 +74,6 @@ $(document).ready(function () {
 });
 /* defult user */
 $(document).ready(function () {
-
 	let defUserName = {
 		userName: "p",
 		userPassword: "p",
@@ -117,30 +110,20 @@ function save_user() {
 
 function load_user() {
 	let userName = document.getElementById("name").value;
-	//console.log(userName);
 	let userPassword = document.getElementById("userPassword").value;
-	//console.log(userPassword);
 	let originalData = localStorage.getItem(userName);
 	if (originalData == null) {
-		console.log(false);
-		alert("You have to register in order to play");
+		alert("You have to login or register first");
 	}
 	else {
-
-		//console.log(originalData); // just to check if good
 		let dataObj = JSON.parse(originalData);
-		// test to see the object
-		//console.log(dataObj);
 		let psd = dataObj.userPassword;
-		//console.log(psd);
 		let name = dataObj.userName;
-		//console.log(name);
 		if (userName == name && userPassword == psd) {
-
-			console.log(true);
-			console.log("welcome");
 			$('#login').css('display', 'none');
 			$('#setting').css('display', 'block');
+			
+
 		}
 
 	}
@@ -377,6 +360,8 @@ function changeValueToKey(event) {
 	food.value = food_remain;
 	monsters.value = num_of_monsters;
 	lbltime.value = timeToPlay;
+	$("#setting").css("display", "none");
+	$('#score_time_life').css("display", "block");
   }
 
 function Draw() {
