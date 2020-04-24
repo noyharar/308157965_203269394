@@ -3,6 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAC-MAN</title>
     <script src="./jquery-3.4.1.slim.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
@@ -113,34 +114,59 @@
     <br>
 </body>
 
-<div id="setting" class="settingClass" style="display:none">
+<form id="setting"  onsubmit="startForNow(event)" class="settingClass" style="display:block">
     <div class="settingClass">
         <br />
         <h1>Setting</h1>
         <br />
-        <label>Enter your UP button:</label>
-        <input type="text" placeholder="UP button" pattern="{1}">
+        <label for="upId">Enter your UP button:</label>
+        <input id="upId" type="text" placeholder="UP button" onkeypress="changeValueToKey(event)" pattern="{1}">
         <br>
-        <label>Enter your DOWN button:</label>
-        <input type="text" placeholder="DOWN button" pattern="{1}">
+        <label for="downId">Enter your DOWN button:</label>
+        <input id="downId" type="text" placeholder="DOWN button" onkeypress="changeValueToKey(event)" pattern="{1}">
         <br>
-        <label>Enter your RIGHT button:</label>
-        <input type="text" placeholder="RIGHT button" pattern="{1}">
+        <label for="rightId">Enter your RIGHT button:</label>
+        <input id="rightId" type="text" placeholder="RIGHT button" onkeypress="changeValueToKey(event)" pattern="{1}">
         <br>
-        <label>Enter your LEFT button:</label>
-        <input type="text" placeholder="LEFT button" pattern="{1}">
+        <label for="leftId">Enter your LEFT button:</label>
+        <input id="leftId" type="text" placeholder="LEFT button" onkeypress="changeValueToKey(event)" pattern="{1}">
         <br>
-        <label>Enter num of balls to the game:</label>
-        <input type="number" min="50" max="90">
-
+        <label for="food">Enter num of balls to the game:</label>
+        <input id="food" type="number" min="50" max="90">
+        <p>Please choose the colors of the balls:</p>
+        <label for="favcolor5">Select your color for ball with 5 points:</label>
+        <input type="color" id="favcolor5" name="favcolor" value="#ff0000">
         <br>
-        <label>Enter num of seconds to the game:</label>
-        <input type="number" min="60">
+        <label for="favcolor15">Select your color for ball with 15 points:</label>
+        <input type="color" id="favcolor15" name="favcolor" value="#0000ff">
         <br>
-        <label>Enter num of monsters</label>
-        <input type="number" min="1" max="4">
+        <label for="favcolor25">Select your color for ball with 25 points:</label>
+        <input type="color" id="favcolor25" name="favcolor" value="#ffff00">
+        <br>
+        <br>
+        <label for="lbltime">Enter num of seconds to the game:</label>
+        <input id="lbltime" type="number" min="60">
+        <br>
+        <label for="monsters">Enter num of monsters</label>
+        <input id="monsters" type="number" min="1" max="4">
+        <br>
+        <button id="settingSubmit" class="registerSubmit" type="submit"> Submit  </button>
     </div>
-</div>
+</form>
+<button onclick="randomSetting()" class="registerSubmit" type="submit">Random</button>
+
+<div style="display:block">
+    <div id="score">
+        <label for="lblScore">SCORE:</label>
+        <input id="lblScore" type="text" />
+    </div>
+    <div id="time">
+        <label for="lblTime">TIME:</label>
+        <input id="lblTime" type="text" />
+    </div>
+    <div id="game">
+        <canvas id="canvas" height="600" width="600"></canvas>
+        </div>
 <footer class="footerClass">
     <!-- <footer id="footer" class=footerClass style="text-decoration: white;"> -->
 	<p><Strong>Pacman</Strong> | Noa Gorengot - noagoren@post.bgu.ac.il | Noy Harari - noyHarar@post.bgu.ac.il</p>

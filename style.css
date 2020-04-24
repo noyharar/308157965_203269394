@@ -130,7 +130,7 @@
   }
 
   body{
-    background-image: url("image/welcom.jpg");
+    background-image: url("image/welcom.jpg");  
     background-repeat: no-repeat;
     background-size: cover;
 }  
