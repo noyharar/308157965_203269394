@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <title>PAC-MAN</title>
     <script src="./jquery-3.4.1.slim.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
@@ -128,6 +129,16 @@
         <br>
         <label for="food">Enter num of balls to the game:</label>
         <input id="food" type="number" min="50" max="90">
+        <p>Please choose the colors of the balls:</p>
+        <label for="favcolor5">Select your color for ball with 5 points:</label>
+        <input type="color" id="favcolor5" name="favcolor" value="#ff0000">
+        <br>
+        <label for="favcolor15">Select your color for ball with 15 points:</label>
+        <input type="color" id="favcolor15" name="favcolor" value="#0000ff">
+        <br>
+        <label for="favcolor25">Select your color for ball with 25 points:</label>
+        <input type="color" id="favcolor25" name="favcolor" value="#ffff00">
+        <br>
         <br>
         <label for="lbltime">Enter num of seconds to the game:</label>
         <input id="lbltime" type="number" min="60">
@@ -135,10 +146,10 @@
         <label for="monsters">Enter num of monsters</label>
         <input id="monsters" type="number" min="1" max="4">
         <br>
-        <button id="settingSubmit" type="submit">Submit</button>
+        <button id="settingSubmit" class="registerSubmit" type="submit"> Submit  </button>
     </div>
 </form>
-<button onclick="randomSetting()" type="submit">Random</button>
+<button onclick="randomSetting()" class="registerSubmit" type="submit">Random</button>
 
 <div style="display:block">
     <div id="score">

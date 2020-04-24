@@ -10,9 +10,9 @@ var up = 38;
 var down = 40;
 var left = 37;
 var right = 39;
-var food_remain = 0;
-var num_of_monsters = 0;
-var timeToPlay = 0;
+var food_remain = -1;
+var num_of_monsters = -1;
+var timeToPlay = -1;
 var extra_food = 2;
 var pacman_right = true;
 var pacman_left = false;
@@ -71,11 +71,6 @@ function open_about() {
 	} */
 }
 
-function showInput() {
-	food_remain = $(document.getElementById("balls")).value;
-	num_of_monsters = $(document.getElementById("monsters")).value;
-
-}
 
 function myFunction() {
 	$('#welcome').css("display", "none");
@@ -103,11 +98,14 @@ function Start() {
 	pac_color = "yellow";
 	var cnt = 100;
 	var pacman_remain = 1;
-	if(food_remain == 0 && num_of_monsters == 0 && timeToPlay == 0){
+	if(food_remain == -1 && num_of_monsters == -1 && timeToPlay == -1){
 	food_remain = parseInt($(document.getElementById("food")).val());
 	num_of_monsters = parseInt($(document.getElementById("monsters")).val());
 	timeToPlay = parseInt($(document.getElementById("lbltime")).val());
 	}
+	var num_of_5_pt = parseInt(0.6 * food_remain);
+	var num_of_15_pt = parseInt(0.3 * food_remain);
+	var num_of_25_pt =  parseInt(0.1 * food_remain);
 	start_time = new Date();
 	for (var i = 0; i < 10; i++) {
 		board[i] = new Array();
@@ -124,13 +122,31 @@ function Start() {
 			} else {
 				var randomNum = Math.random();
 				if (randomNum <= (1.0 * food_remain) / cnt) {
-					food_remain--;
-					board[i][j] = 1;
-				} else if (randomNum < (1.0 * (pacman_remain + food_remain)) / cnt) {
+					// if(num_of_5_pt > 0){
+						board[i][j] = 1;
+						// num_of_5_pt--;
+						food_remain--;
+					// }
+				// }else if(randomNum <= (1.0 * num_of_15_pt) / cnt) {
+				// 	if(num_of_15_pt > 0){
+				// 		board[i][j] = 6;
+				// 		num_of_15_pt--;
+				// 		food_remain--;
+				// 	}
+				// }
+				// else if(randomNum <= (1.0 * num_of_25_pt)/ cnt){	
+				// 	if(num_of_25_pt > 0){
+				// 		board[i][j] = 7;
+				// 		num_of_25_pt--;
+				// 		food_remain--;
+				// 	}
+				} else if (randomNum < (1.0 * (pacman_remain +food_remain)) / cnt) {
 					shape.i = i;
 					shape.j = j;
 					pacman_remain--;
+					if(pacman_remain > 0){
 					board[i][j] = 2;
+					}
 				} else {
 					board[i][j] = 0;
 				}
@@ -149,7 +165,34 @@ function Start() {
 		board[emptyCell[0]][emptyCell[1]] = 9;
 		num_of_monsters--;
 	}
-	while (food_remain > 0) {
+
+
+	// while (food_remain > 0) {
+	// while((num_of_5_pt + num_of_15_pt + num_of_25_pt) > 0 ){
+	// 	while(num_of_5_pt > 0){
+	// 		var emptyCell = findRandomEmptyCell(board);
+	// 		board[emptyCell[0]][emptyCell[1]] = 1;	
+	// 		num_of_5_pt--;
+	// 		food_remain--;
+	// 	}
+	// 	while(num_of_15_pt > 0){
+	// 		var emptyCell = findRandomEmptyCell(board);
+	// 		board[emptyCell[0]][emptyCell[1]] = 6;
+	// 		num_of_15_pt--;
+	// 		food_remain--;
+	// 	}
+	// 	while(num_of_25_pt > 0){
+	// 		var emptyCell = findRandomEmptyCell(board);
+	// 		board[emptyCell[0]][emptyCell[1]] = 7;
+	// 		num_of_25_pt--;
+	// 		food_remain--;
+	// 	}
+	// }else{
+	// 	food_remain--;
+
+	// }	
+	// }
+	while (food_remain> 0) {
 		var emptyCell = findRandomEmptyCell(board);
 		board[emptyCell[0]][emptyCell[1]] = 1;
 		food_remain--;
@@ -169,7 +212,7 @@ function Start() {
 		},
 		false
 	);
-	interval = setInterval(UpdatePosition, 250);
+	interval = setInterval(UpdatePosition, 100);
 	
 }
 
@@ -289,8 +332,27 @@ function Draw() {
 			} else if (board[i][j] == 1) {
 				context.beginPath();
 				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-				context.fillStyle = "white"; //color
+				context.fillStyle = favcolor5.value; //color
 				context.fill();
+				context.fillStyle = "white"; //color
+				context.font = "bold 10px Arial";
+				context.fillText("5", center.x-5, center.y);
+			} else if (board[i][j] == 6) {
+				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+				context.fillStyle = favcolor15.value; //color
+				context.fill();
+				context.beginPath();
+				context.fillStyle = "white"; //color
+				context.font = "bold 10px Arial";
+				context.fillText("15", center.x-5, center.y);
+			} else if (board[i][j] == 7) {
+				context.beginPath();
+				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+				context.fillStyle = favcolor25.value; //color
+				context.fill();
+				context.fillStyle = "white"; //color
+				context.font = "bold 10px Arial";
+				context.fillText("25", center.x-5, center.y);
 			} else if (board[i][j] == 4) {
 				context.beginPath();
 				context.rect(center.x - 30, center.y - 30, 60, 60);
@@ -341,9 +403,13 @@ function UpdatePosition() {
 		}
 	}
 	if (board[shape.i][shape.j] == 1) {
+		var audio = new Audio('audio/pacman_eatfruit.wav');
+		audio.play();
 		score++;
 	}
 	if(board[shape.i][shape.j] == 8){
+		var audio = new Audio('audio/pacman_eatghost.wav');
+		audio.play();
 		score = score + 10;
 	}
 	board[shape.i][shape.j] = 2;
