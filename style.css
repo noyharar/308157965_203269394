@@ -6,7 +6,7 @@
     border: 1px solid transparent;
   }
   .navbar-inverse {
-    background-color:#42f5ef;
+    /* background-color:#42f5ef; */
     border-color: #080808;
   }
   .navbar-fixed-top {
@@ -33,7 +33,7 @@
     min-height: 35px;
     margin: 0;
     padding: 0;
-    background-color: #42f5ef;
+    /* background-color: #42f5ef; */
   }
   .topnav li {
     float: left;
@@ -41,13 +41,15 @@
   }
   .topnav li a {
     display: block;
-    color: white;
+    color: #3c3cef;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    background-color:#42f5ef ;
+    background-color:black ;
+    background-blend-mode: lighten;
     float: left;
-    font-family: 'Alef', serif;
+    font-family: 'Pixeled';
+    /* font-family: 'Alef', serif; */
     font-size: 12px;
     font-weight: bold;
     min-height: 5px;
@@ -72,11 +74,12 @@
   margin-right: auto;
   /* margin-left: 200px;
   margin-right: 100px; */
-  background-color: #42f5ef;
+  background-color: black;
   color: whitesmoke;
   font-size: 16px;
   padding: 12px 24px;
-  border: none;
+  border-color: #3c3cef;
+  /* border: none; */
   cursor: pointer;
   border-radius: 12px;
   text-align: center;
@@ -89,11 +92,11 @@
   margin-right: 100px;*/
   margin-left: 5%;
   margin-right: auto;
-  background-color: #42f5ef;
+  background-color: black;
   color: whitesmoke;
   font-size: 16px;
   padding: 12px 35px;
-  border: none;
+  border-color: #3c3cef;
   cursor: pointer;
   border-radius: 12px;
   text-align: center;
@@ -113,6 +116,12 @@
     font-weight: 400;
     font-style: normal;
     src: url('https://s3-eu-west-1.amazonaws.com/fonts-project/fonts/Alef/400.woff') format('woff');
+  }
+  @font-face {
+    font-family: 'Pixeled';
+    font-weight: 400;
+    font-style: normal;
+    src: url('Pixeled.ttf');
   }
 
   .registerSubmit{
@@ -237,8 +246,8 @@ section#Login_Register_buttons{
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color:  #42f5ef;
-  color: black;
+  background-color:  black;
+  color: #3c3cef;
   min-height: auto;
   font-size: 11px;
   font-weight: bolder;
