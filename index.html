@@ -39,10 +39,10 @@
             <div class="container-fluid">
                 <div class="navbar-header topnav">
                     <ul>
-                        <li><a id="welcomeBtn" href="#welcome">Welcome</a></li>
-                        <li><a id="registerBtn" href="#register">Register</a></li>
-                        <li><a id="loginBtn" href="#login">Login</a></li>
-                        <li><a id="myBtn" onclick="open_about()" type="button" href="#about">About</a></li>
+                        <li><a id="welcomeBtn" href="#welcome">WELCOME</a></li>
+                        <li><a id="registerBtn" href="#register">REGISTER</a></li>
+                        <li><a id="loginBtn" href="#login">LOGIN</a></li>
+                        <li><a id="myBtn" onclick="open_about()" type="button" href="#about">ABOUT</a></li>
                     </ul>
                 </div>
             </div>
@@ -50,7 +50,6 @@
 
     </section>
     <div id="welcome" class="sectionWelcome" style="display:block">
-        <br>
         <br>
         <br>
         <br>
@@ -63,15 +62,15 @@
     <div id="login" style="display:none">
         <div id="loginForm" class="loginClass">
             <div id="userName">
-                <input type="text" name="name" id="name" size="23" placeholder="User name" required>
+                <input type="text" name="name" id="name" size="25" placeholder="User name" required>
             </div>
             <br />
             <div id="serPassword">
-                <input type="password" id="userPassword" size="23" placeholder="Password" required>
+                <input type="password" id="userPassword" size="25" placeholder="Password" required>
             </div>
             <div class="enterBtn">
                 <br>
-                <input type="button" class="loginSubmit" value="Enter Game" onclick="load_user()" />
+                <input type="button" class="loginSubmit" value="ENTER GAME" onclick="load_user()" />
             </div>
 
         </div>
@@ -165,17 +164,24 @@
 
 <div id="score_time_life" class="theGame" hidden>
     <div id="score">
-        <label for="lblScore" style="color: aliceblue;">SCORE:</label>
+        <label for="lblScore">SCORE:</label>
         <input id="lblScore" type="text" />
     </div>
     <div id="time">
-        <label for="lblTime" style="color: aliceblue;">TIME:&nbsp;&nbsp;&nbsp;</label>
+        <label for="lblTime">TIME:&nbsp;&nbsp;&nbsp;</label>
         <input id="lblTime" type="text" />
+    </div>
+    <div id="lives">
+        <label for="lblLives">Live:&nbsp;&nbsp;&nbsp;</label>
+        <input id="lives_curr" type="text" />
     </div>
     <div id="game">
         <canvas id="canvas" height="450" width="600"></canvas>
     </div>
-</div>   
+</div>  
+<div class="gameSetting">
+    <li id=""></li>
+</div> 
 
     <footer class="footerClass">
         <!-- <footer id="footer" class=footerClass style="text-decoration: white;"> -->

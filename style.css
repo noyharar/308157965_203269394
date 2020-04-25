@@ -79,7 +79,6 @@
   font-size: 16px;
   padding: 12px 24px;
   border-color: #3c3cef;
-  /* border: none; */
   cursor: pointer;
   border-radius: 12px;
   text-align: center;
@@ -128,11 +127,11 @@
     position: inherit;
     margin-left: 100px;
     margin-right: 150px;
-    background-color: #42f5ef;
+    border-color: #3c3cef;
+    background-color: black;
     color: whitesmoke;
     font-size: 16px;
     padding: 12px 24px;
-    border: none;
     cursor: pointer;
     border-radius: 12px;
     text-align: center;
@@ -150,23 +149,23 @@
     width: 1000px;
     position: absolute;
 } */
-section#Login_Register_buttons{
+/* section#Login_Register_buttons{
     margin-left: auto;
     margin-right: auto;
     background-image: url(image/welcom.jpg);
-} 
+}  */
 .center {
   display: block;
   margin-left: 90px;
   width: 30%;
 }
 
-  .settingClass{
-    display: block;
-    font-family: 'Alef', serif;
-    font-size: 16px;
-    color: white;
-  }
+.settingClass{
+  display: block;
+  font-family: 'Alef', serif;
+  font-size: 16px;
+  color: white;
+}
   /* The Modal (background) */
 .modal{
   display: none; /* Hidden by default */
@@ -187,7 +186,11 @@ section#Login_Register_buttons{
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 50%;
+  height: 50%;
+  background-image: url("image/packman1 (5).jpg");
+  background-repeat: no-repeat;
+  color: blue;
 }
 
 /* The Close Button */
@@ -228,16 +231,17 @@ section#Login_Register_buttons{
 
 
 .loginSubmit{
-  position: inherit;
-  margin-left: 30px;
-  background-color: #42f5ef;
+  position: relative;
+  /* margin-left: 30px; */
+  background-color: black;
   color: whitesmoke;
   font-size: 16px;
   padding: 12px 24px;
-  border: none;
+  border-color: #3c3cef;
   cursor: pointer;
   border-radius: 12px;
   text-align: center;
+  font-family: 'Pixeled';
 }
 
 .footerClass{
