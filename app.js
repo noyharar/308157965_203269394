@@ -361,7 +361,7 @@ function changeValueToKey(event) {
 	monsters.value = num_of_monsters;
 	lbltime.value = timeToPlay;
 	$("#setting").css("display", "none");
-	$('#score_time_life').css("display", "block");
+	$('#score_time_life').css('display', 'block');
   }
 
 function Draw() {

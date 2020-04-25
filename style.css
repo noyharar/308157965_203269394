@@ -1,6 +1,6 @@
 
 .navbar {
-  position:fixed;
+  position: relative;
     min-height: 30px;
     margin-bottom: 20px;
     border: 1px solid transparent;
@@ -14,21 +14,21 @@
     border-width: 0 0 1px;
   }
   .container-fluid {
-    position: fixed;
+    position: relative;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
   }  
   .navbar-fixed-bottom, .navbar-fixed-top {
-    position: fixed;
+    position: relative;
     min-height: 45px;
     right: 0;
     left: 0;
     z-index: 1030;
   }
   .topnav ul {
-    position: fixed;
+    position: relative;
     list-style-type: none;
     min-height: 35px;
     margin: 0;
@@ -238,7 +238,7 @@ section#Login_Register_buttons{
   bottom: 0;
   width: 100%;
   background-color:  #42f5ef;
-  color: white;
+  color: black;
   min-height: auto;
   font-size: 11px;
   font-weight: bolder;
@@ -269,4 +269,11 @@ section#Login_Register_buttons{
   margin-right: -550px;
   padding-top: 10;
   text-align: center
+}
+.theGame{
+  position: absolute;
+  background-color: cornsilk;
+  box-sizing: border-box;
+/*   background-image: url("image/packman1(2).jpg");
+ */
 }
