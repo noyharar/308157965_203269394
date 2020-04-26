@@ -35,12 +35,14 @@ function myFunctionLogin() {
 	$(document.getElementById("about")).hide();
 	$(document.getElementById("register")).hide();
 	$(document.getElementById("login")).show();
+	$(document.getElementById("setting")).hide();
 }
 $(document).ready(function () {
 	$("#aboutBtn").click(function () {
 		$('#welcome').css("display", "none");
 		$(document.getElementById("register")).hide();
 		$(document.getElementById("login")).hide();
+		$(document.getElementById("setting")).hide();
 		$("#about").show(300);
 
 	});
@@ -51,6 +53,7 @@ $(document).ready(function () {
         $(document.getElementById("about")).hide();
         $(document.getElementById("register")).hide();
         $(document.getElementById("login")).hide();
+        $(document.getElementById("setting")).hide();
         $('#welcome').css("display", "block");
 
     });
@@ -62,6 +65,7 @@ $(document).ready(function () {
         $(document.getElementById("about")).hide();
         $(document.getElementById("register")).hide();
         $(document.getElementById("login")).show(300);
+        $(document.getElementById("setting")).hide();
 
     });
 });
@@ -72,6 +76,7 @@ $(document).ready(function () {
         $(document.getElementById("about")).hide();
         $(document.getElementById("login")).hide();
         $("#register").show(300);
+        $(document.getElementById("setting")).hide();
 
 	});
 });
@@ -108,7 +113,10 @@ function save_user() {
         $("#loading_img").css("display","block");
         setTimeout(hide,2000);
     }
-    alert("this user already exist");
+    else {
+        alert("this user already exist");
+    }
+
 
 }
 
@@ -127,7 +135,6 @@ function load_user() {
 			$('#login').css('display', 'none');
             $("#loading_img").css("display","block");
             setTimeout(hide,2000);
-
 		}
 
     }
