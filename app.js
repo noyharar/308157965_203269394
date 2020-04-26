@@ -248,23 +248,27 @@ function Start() {
                 board[i][j] = 4;
             } else {
                 var randomNum = Math.random();
+                var setCell = false;
                 if (randomNum <= (1.0 * num_of_5_pt) / cnt) {
                     if (num_of_5_pt > 0) {
                         board[i][j] = 1;
                         num_of_5_pt--;
                         food_remain--;
+                        setCell = true;
                     }
                 } else if (randomNum <= (1.0 * num_of_15_pt) / cnt) {
                     if (num_of_15_pt > 0) {
                         board[i][j] = 6;
                         num_of_15_pt--;
                         food_remain--;
+                        setCell = true;
                     }
                 } else if (randomNum <= (1.0 * num_of_25_pt) / cnt) {
                     if (num_of_25_pt > 0) {
                         board[i][j] = 7;
                         num_of_25_pt--;
                         food_remain--;
+                        setCell = true;
                     }
                 } else if ( randomNum < (1.0 * (pacman_remain + food_remain)) / cnt) {
                     shape.i = i;
@@ -272,8 +276,10 @@ function Start() {
                     pacman_remain--;
                     if (pacman_remain > 0) {
                     board[i][j] = 2;
+                    setCell = true;
                     }
-				} else {
+				}
+                if(!setCell){
                     board[i][j] = 0;
                 }
                 cnt--;
@@ -523,10 +529,13 @@ function UpdatePosition() {
         audio.play();
         pacman_dead = true;
         Draw();
-        if(confirmNote("So sad... your Pacman dead")) {
-            pacman_dead = false;
-            initNewGame();
-        }
+        window.clearInterval(interval);
+        setTimeout(noteWithSleep, 1000, );
+        // window.clearInterval(interval);
+        // alertNote("Your pacman dead :(",3000)
+        //     pacman_dead = false;
+        //     initNewGame();
+        // }
 
     }
     /*same cell with ball - score up */
@@ -570,9 +579,12 @@ function UpdatePosition() {
         alertNote("Winner!",1000)
     }
     if (score == scoreOfTotalBoard) {
+        Draw();
         window.clearInterval(interval);
         alertNote("Game completed - You got the total score - Winner!",1000);
-    // } else if (time_elapsed >= timeToPlay) {
+        initNewGame();
+
+        // } else if (time_elapsed >= timeToPlay) {
     //     time_elapsed = timeToPlay;
     //     lblTime.value = time_elapsed;
     //     window.clearInterval(interval);
@@ -588,14 +600,10 @@ function alertNote(note,timeToAlert) {
     }, timeToAlert);
 }
 
-function confirmNote(note) {
-    window.clearInterval(interval);
-    if(confirm(note)){
-        return true;
-    }
-    else{
-        return false;
-    }
+function noteWithSleep() {
+    alertNote("Your pacman dead :(",100)
+    pacman_dead = false;
+    initNewGame();
 }
 
 
