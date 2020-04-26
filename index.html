@@ -156,12 +156,13 @@
         <br/>
         <button id="settingSubmit" onclick="submit_setting()" class="registerSubmit" type="submit"> Submit </button>
         <button onclick="randomSetting()" class="registerSubmit" type="submit">Random</button>
+        <button onclick="randomSetting()" class="registerSubmit" type="submit">Random</button>
+        <button onclick="initNewGame()" class="registerSubmit"  type="reset">New Game</button>
         <br/>
         <br/>
     </div>
 </form>
-<button onclick="randomSetting()" class="registerSubmit" type="submit">Random</button>
-<button onclick="initNewGame()" class="registerSubmit"  type="reset">New Game</button>
+
 
 <div id="score_time_life" class="theGame" hidden>
     <div id="score">
@@ -173,7 +174,7 @@
         <input id="lblTime" type="text" />
     </div>
     <div id="lives">
-        <label for="lblLives">Live:&nbsp;&nbsp;&nbsp;</label>
+        <label for="lbl_Lives">Live:&nbsp;&nbsp;&nbsp;</label>
         <input id="lives_curr" type="text" />
     </div>
     <div id="game">
