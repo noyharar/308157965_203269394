@@ -22,6 +22,7 @@ var num_of_5_pt;
 var num_of_15_pt;
 var num_of_25_pt;
 var scoreOfTotalBoard = 0;
+var pacman_dead = false;
 
     /* $(document).ready(function () {
         let userScreenWidth = window.innerWidth;
@@ -198,9 +199,17 @@ function startForNow(e) {
 }
 
 function initNewGame() {
+    pacman_dead = false;
     context.clearRect(0, 0, canvas.width, canvas.height);
     context = canvas.getContext("2d");
     food_remain =  food_remain = parseInt($(document.getElementById("food")).val());
+    num_of_monsters = parseInt($(document.getElementById("monsters")).val());
+    timeToPlay = parseInt($(document.getElementById("lbltime")).val());
+    pacman_right = true;
+    pacman_left = false;
+    pacman_up = false;
+    pacman_down = false;
+    extra_food = 2;
     Start();
     Draw();
     return false;
@@ -349,16 +358,16 @@ function GetKeyPressed() {
 
 function changeValueToKey(event) {
     //set key from event's id
-    if (event.target.id == "#upId") {
+    if (event.target.id == "upId") {
         up = event.keyCode;
     }
-    if (event.target.id == "#downId") {
+    if (event.target.id == "downId") {
         down = event.keyCode;
     }
-    if (event.target.id == "#leftId") {
+    if (event.target.id == "leftId") {
         left = event.keyCode;
     }
-    if (event.target.id == "#rightId") {
+    if (event.target.id == "rightId") {
         right = event.keyCode;
     }
 }
@@ -375,7 +384,7 @@ function randomSetting() {
     }
     food.value = food_remain;
     monsters.value = num_of_monsters;
-    lbltime.value = timeToPlay;
+    lblTimeSetting.value = timeToPlay;
 }
 
 function Draw() {
@@ -395,7 +404,7 @@ function Draw() {
                 context.drawImage(burger, center.x - 25, center.y - 25);
             } else if (board[i][j] == 9) {
                 context.drawImage(sprite, center.x - 20, center.y - 20);
-            } else if (board[i][j] == 2 && pacman_left) {
+            } else if (board[i][j] == 2 && pacman_left && pacman_dead == false) {
                 context.beginPath();
                 context.arc(center.x, center.y, 30, -0.85 * Math.PI, 0.85 * Math.PI); // half circle
                 context.lineTo(center.x, center.y);
@@ -405,7 +414,7 @@ function Draw() {
                 context.arc(center.x + 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
                 context.fillStyle = "black"; //color
                 context.fill();
-            } else if (board[i][j] == 2 && pacman_up) {
+            } else if (board[i][j] == 2 && pacman_up && pacman_dead == false) {
                 context.beginPath();
                 context.arc(center.x, center.y, 30, 1.7 * Math.PI, 1.35 * Math.PI); // half circle
                 context.lineTo(center.x, center.y);
@@ -415,7 +424,7 @@ function Draw() {
                 context.arc(center.x + 15, center.y + 5, 5, 0, 2 * Math.PI); // circle
                 context.fillStyle = "black"; //color
                 context.fill();
-            } else if (board[i][j] == 2 && pacman_right) {
+            } else if (board[i][j] == 2 && pacman_right && pacman_dead == false) {
                 context.beginPath();
                 context.arc(center.x, center.y, 30, 0.15 * Math.PI, 1.85 * Math.PI); // half circle
                 context.lineTo(center.x, center.y);
@@ -425,7 +434,7 @@ function Draw() {
                 context.arc(center.x + 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
                 context.fillStyle = "black"; //color
                 context.fill();
-            } else if (board[i][j] == 2 && pacman_down) {
+            } else if (board[i][j] == 2 && pacman_down && pacman_dead == false) {
                 context.beginPath();
                 context.arc(center.x, center.y, 30, 0.75 * Math.PI, 0.35 * Math.PI); // half circle
                 context.lineTo(center.x, center.y);
@@ -508,6 +517,19 @@ function UpdatePosition() {
             shape.i++;
         }
     }
+    /*same cell with monster - dead*/
+    if (board[shape.i][shape.j] == 9) {
+        var audio = new Audio('audio/death.mp3');
+        audio.play();
+        pacman_dead = true;
+        Draw();
+        if(confirmNote("So sad... your Pacman dead")) {
+            pacman_dead = false;
+            initNewGame();
+        }
+
+    }
+    /*same cell with ball - score up */
     if (board[shape.i][shape.j] == 1 || board[shape.i][shape.j] == 6 || board[shape.i][shape.j] == 7 ) {
         var audio = new Audio('audio/pacman_eatfruit.wav');
         audio.play();
@@ -521,11 +543,13 @@ function UpdatePosition() {
             score = score + 25;
         }
     }
+    /*same cell with burger - score up*/
     if (board[shape.i][shape.j] == 8) {
         var audio = new Audio('audio/pacman_eatghost.wav');
         audio.play();
         score = score + 50;
     }
+
     board[shape.i][shape.j] = 2;
     var currentTime = new Date();
     time_elapsed = (currentTime - start_time) / 1000;
@@ -563,6 +587,17 @@ function alertNote(note,timeToAlert) {
         alert(note);
     }, timeToAlert);
 }
+
+function confirmNote(note) {
+    window.clearInterval(interval);
+    if(confirm(note)){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
 
 function open_login_window() {
     document.getElementById("Welcom_buttons").hidden = true;
