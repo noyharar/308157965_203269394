@@ -29,6 +29,7 @@ function submit_setting(){
 
 }
 
+
 function myFunctionLogin() {
 	$(document.getElementById("welcome")).hide();
 	$(document.getElementById("about")).hide();
@@ -104,7 +105,8 @@ function save_user() {
         let str = JSON.stringify(data);
         localStorage.setItem(nameForKey, str);
         $('#register').css('display', 'none');
-        $('#setting').css('display', 'block');
+        $("#loading_img").css("display","block");
+        setTimeout(hide,2000);
     }
     alert("this user already exist");
 
@@ -123,12 +125,16 @@ function load_user() {
 		let name = dataObj.userName;
 		if (userName == name && userPassword == psd) {
 			$('#login').css('display', 'none');
-			$('#setting').css('display', 'block');
-
+            $("#loading_img").css("display","block");
+            setTimeout(hide,2000);
 
 		}
 
     }
+}
+function hide() {
+    $("#loading_img").css("display","none");
+    $('#setting').css('display', 'block');
 }
 
 function open_about() {
