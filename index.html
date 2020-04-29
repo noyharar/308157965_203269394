@@ -90,18 +90,26 @@
             <label for="psw"><b>Password:</b></label>
             <input type="password" id="user_password" placeholder="Enter your Password" name="userPassword"
                 pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" required>
+            <label for="user_password"><b>Password:</b></label>
+            <input type="password" id = "user_password" placeholder="Enter your Password" name="userPassword" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" required>
             <br>
             <br>
             <label for="firstName"><b>Fisrt Name:</b></label>
             <input type="firstName" id="userFirstName" placeholder="Enter your first name" name="firstName"
                 pattern="^[A-Za-z]+" required>
+            <label for="userFirstName"><b>Fisrt Name:</b></label>
+            <input type="firstName" id = "userFirstName" placeholder="Enter your first name" name="firstName" pattern="^[A-Za-z]+" required>
             <br>
             <br>
+            <label for="userLastName"><b>Last Name:</b></label>
+            <input type="lastName" id = "userLastName" placeholder="Enter your last name" name="lastName" pattern="[A-Za-z]+" required>
             <label for="lastName"><b>Last Name:</b></label>
             <input type="lastName" id="userLastName" placeholder="Enter your last name" name="lastName"
                 pattern="[A-Za-z]+" required>
             <br>
             <br>
+            <label for="userMail"><b>Email:</b></label>
+            <input type="text" id = "userMail" placeholder="Enter your Email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
             <label for="email"><b>Email:</b></label>
             <input type="text" id="userMail" placeholder="Enter your Email" name="email"
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
@@ -147,8 +155,8 @@
         <input type="color" id="favcolor25" name="favcolor" value="#ffff00">
         <br>
         <br>
-        <label for="lbltime">Enter num of seconds to the game:</label>
-        <input id="lbltime" type="number" min="60">
+        <label for="lblTimeSetting">Enter num of seconds to the game:</label>
+        <input id="lblTimeSetting" type="number" min="60">
         <br>
         <label for="monsters">Enter num of monsters</label>
         <input id="monsters" type="number" min="1" max="4">
@@ -162,6 +170,8 @@
         <br/>
     </div>
 </form>
+<button onclick="randomSetting()" class="registerSubmit" type="submit">Random</button>
+<button onclick="initNewGame()" class="registerSubmit"  type="reset">New Game</button>
 
 
 <div id="score_time_life" class="theGame" hidden>
@@ -175,7 +185,7 @@
     </div>
     <div id="lives">
         <label for="lbl_Lives">Live:&nbsp;&nbsp;&nbsp;</label>
-        
+
         <input id="lives_curr" type="text" />
     </div>
     <div id="game">
@@ -195,8 +205,43 @@
         <!-- </footer> -->
     </footer>
 
+<!-- <script>
+    $(document).ready(function() {
+        $("#aboutBtn").click(function() {
+            $('#welcome').css("display", "none");
+            $(document.getElementById("register")).hide();
+            $(document.getElementById("login")).hide();
+            $("#about").show(300);
 
-    <!-- </html>
+        });
+    });
+</script> -->
+
+<!-- <script>
+    $(document).ready(function() {
+        $("#welcomeBtn").click(function() {
+            $(document.getElementById("about")).hide();
+            $(document.getElementById("register")).hide();
+            $(document.getElementById("login")).hide();
+            $('#welcome').css("display", "block");
+
+        });
+    });
+</script> -->
+<!-- 
+<script>
+    $(document).ready(function() {
+        $("#loginBtn").click(function() {
+            $(document.getElementById("welcome")).hide();
+            $(document.getElementById("about")).hide();
+            $(document.getElementById("register")).hide();
+            $(document.getElementById("login")).show(300);
+
+        });
+    });
+</script> -->
+
+<!-- </html>
 
 	<body>
 		<div style="display:block">
@@ -219,4 +264,3 @@
 	</div>
 	</body>
 
-	</html> -->
