@@ -27,7 +27,7 @@ var numOfLives = 5;
 function submit_setting(){
     $("#setting").css("display", "none");
     $('#score_time_life').css('display', 'block');
-    settings_display();
+    //settings_display();
 
 }
 
