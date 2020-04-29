@@ -14,115 +14,107 @@
 </head>
 <br>
 <body>
-    <section class="sectionHeader">
-        <div class="logoClass">
-            <header id="header" style="color: azure;">
-                <img src="image/logo.jpg" alt="logo_pic" style="width:15%">
-                <br>
-                <label> Noy Harari- 308157965 | Noa Gorengot - 203269394</label>
-            </header>
-        </div>
-    </section>
-    <!-- Trigger/Open The Modal -->
-    <!-- <button id="myBtn" onclick="open_about()">About</button>-->
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Noy Harari & Noa Gorengot - Do you know jesus?? inal yesu</p>
-        </div>
+<section class="sectionHeader">
+    <div class="logoClass">
+        <header id="header" style="color: azure;">
+            <img src="image/logo.jpg" alt="logo_pic" style="width:15%">
+            <br>
+            <label> Noy Harari- 308157965 | Noa Gorengot - 203269394</label>
+        </header>
     </div>
-    <section>
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container-fluid">
-                <div class="navbar-header topnav">
-                    <ul>
-                        <li><a id="welcomeBtn" href="#welcome">WELCOME</a></li>
-                        <li><a id="registerBtn" href="#register">REGISTER</a></li>
-                        <li><a id="loginBtn" href="#login">LOGIN</a></li>
-                        <li><a id="myBtn" onclick="open_about()" type="button" href="#about">ABOUT</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-    </section>
-    <div id="welcome" class="sectionWelcome" style="display:block">
-        <br>
-        <br>
-        <br>
-        <br>
-        <img src="welcome.png" style="position: fixed; margin-left: auto; margin-right: auto; width: 30%;">
-        <!-- <img src="packman.png" class="center" style="position: fixed; width: 5%;" > -->
-        <input onclick="myFunctionLogin()" class=btnL type="button" value="Login" alt="Login" width="50%">
-        <input onclick="myFunction()" class=btnR type="button" value="Register">
+</section>
+<!-- Trigger/Open The Modal -->
+<!-- <button id="myBtn" onclick="open_about()">About</button>-->
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Noy Harari & Noa Gorengot - Do you know jesus?? inal yesu</p>
     </div>
-    <div id="login" style="display:none">
-        <div id="loginForm" class="loginClass">
-            <div id="userName">
-                <input type="text" name="name" id="name" size="25" placeholder="User name" required>
+</div>
+<section>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header topnav">
+                <ul>
+                    <li><a id="welcomeBtn" href="#welcome">WELCOME</a></li>
+                    <li><a id="registerBtn" href="#register">REGISTER</a></li>
+                    <li><a id="loginBtn" href="#login">LOGIN</a></li>
+                    <li><a id="myBtn" onclick="open_about()" type="button" href="#about">ABOUT</a></li>
+                </ul>
             </div>
-            <br />
-            <div id="serPassword">
-                <input type="password" id="userPassword" size="25" placeholder="Password" required>
-            </div>
-            <div class="enterBtn">
-                <br>
-                <input type="button" class="loginSubmit" value="ENTER GAME" onclick="load_user()" />
-            </div>
-
         </div>
-    </div>
+    </nav>
 
-    <div id="result">
-
-    </div>
-    <form class=registerForm>
-        <div id="register" style="display:none" style="width: 50%;">
-            <br>
-            <h1>Register</h1>
-            <p>Please fill the register form:</p>
-            <label for="userName"><b>user Name:</b></label>
-            <input type="userName" id="user_name" placeholder="Enter your user name" name="userName" required>
-            <br>
-            <br>
-            <label for="psw"><b>Password:</b></label>
-            <input type="password" id="user_password" placeholder="Enter your Password" name="userPassword"
-                pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" required>
-            <label for="user_password"><b>Password:</b></label>
-            <input type="password" id = "user_password" placeholder="Enter your Password" name="userPassword" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" required>
-            <br>
-            <br>
-            <label for="firstName"><b>Fisrt Name:</b></label>
-            <input type="firstName" id="userFirstName" placeholder="Enter your first name" name="firstName"
-                pattern="^[A-Za-z]+" required>
-            <label for="userFirstName"><b>Fisrt Name:</b></label>
-            <input type="firstName" id = "userFirstName" placeholder="Enter your first name" name="firstName" pattern="^[A-Za-z]+" required>
-            <br>
-            <br>
-            <label for="userLastName"><b>Last Name:</b></label>
-            <input type="lastName" id = "userLastName" placeholder="Enter your last name" name="lastName" pattern="[A-Za-z]+" required>
-            <label for="lastName"><b>Last Name:</b></label>
-            <input type="lastName" id="userLastName" placeholder="Enter your last name" name="lastName"
-                pattern="[A-Za-z]+" required>
-            <br>
-            <br>
-            <label for="userMail"><b>Email:</b></label>
-            <input type="text" id = "userMail" placeholder="Enter your Email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
-            <label for="email"><b>Email:</b></label>
-            <input type="text" id="userMail" placeholder="Enter your Email" name="email"
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
-            <br>
-            <br>
-            <label for="birthday">Please insert your birthday:</label>
-            <input type="date" id="birthday" name="birthday" required>
-            <br>
-            <br>
-            <input type="submit" class="registerSubmit" value="Register" onclick="save_user()" />
-        </div>
-    </form>
+</section>
+<div id="welcome" class="sectionWelcome" style="display:block">
     <br>
+    <br>
+    <br>
+    <br>
+    <img src="welcome.png" style="position: fixed; margin-left: auto; margin-right: auto; width: 30%;">
+    <!-- <img src="packman.png" class="center" style="position: fixed; width: 5%;" > -->
+    <input onclick="myFunctionLogin()" class=btnL type="button" value="Login" alt="Login" width="50%">
+    <input onclick="myFunction()" class=btnR type="button" value="Register">
+</div>
+<div id="login" style="display:none">
+    <div id="loginForm" class="loginClass">
+        <div id="userName">
+            <input type="text" name="name" id="name" size="25" placeholder="User name" required>
+        </div>
+        <br />
+        <div id="serPassword">
+            <input type="password" id="userPassword" size="25" placeholder="Password" required>
+        </div>
+        <div class="enterBtn">
+            <br>
+            <input type="button" class="loginSubmit" value="ENTER GAME" onclick="load_user()" />
+        </div>
+
+    </div>
+</div>
+
+<div id="result">
+
+</div>
+<form class=registerForm>
+    <div id="register" style="display:none" style="width: 50%;">
+        <br>
+        <h1>Register</h1>
+        <p>Please fill the register form:</p>
+        <label for="userName"><b>user Name:</b></label>
+        <input type="userName" id="user_name" placeholder="Enter your user name" name="userName" required>
+        <br>
+        <br>
+        <label for="psw"><b>Password:</b></label>
+        <input type="password" id="user_password" placeholder="Enter your Password" name="userPassword"
+               pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" required>
+        <br>
+        <br>
+        <label for="firstName"><b>Fisrt Name:</b></label>
+        <input type="firstName" id="userFirstName" placeholder="Enter your first name" name="firstName"
+               pattern="^[A-Za-z]+" required>
+        <br>
+        <br>
+        <label for="lastName"><b>Last Name:</b></label>
+        <input type="lastName" id="userLastName" placeholder="Enter your last name" name="lastName"
+               pattern="[A-Za-z]+" required>
+        <br>
+        <br>
+        <label for="email"><b>Email:</b></label>
+        <input type="text" id="userMail" placeholder="Enter your Email" name="email"
+               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+        <br>
+        <br>
+        <label for="birthday">Please insert your birthday:</label>
+        <input type="date" id="birthday" name="birthday" required>
+        <br>
+        <br>
+        <input type="submit" class="registerSubmit" value="Register" onclick="save_user()" />
+    </div>
+</form>
+<br>
 </body>
 
 <form id="setting" onsubmit="startForNow(event)" class="settingClass" style="display:none">
@@ -155,8 +147,8 @@
         <input type="color" id="favcolor25" name="favcolor" value="#ffff00">
         <br>
         <br>
-        <label for="lblTimeSetting">Enter num of seconds to the game:</label>
-        <input id="lblTimeSetting" type="number" min="60">
+        <label for="lbltime">Enter num of seconds to the game:</label>
+        <input id="lbltime" type="number" min="60">
         <br>
         <label for="monsters">Enter num of monsters</label>
         <input id="monsters" type="number" min="1" max="4">
@@ -164,14 +156,11 @@
         <br/>
         <button id="settingSubmit" onclick="submit_setting()" class="registerSubmit" type="submit"> Submit </button>
         <button onclick="randomSetting()" class="registerSubmit" type="submit">Random</button>
-        <button onclick="randomSetting()" class="registerSubmit" type="submit">Random</button>
         <button onclick="initNewGame()" class="registerSubmit"  type="reset">New Game</button>
         <br/>
         <br/>
     </div>
 </form>
-<button onclick="randomSetting()" class="registerSubmit" type="submit">Random</button>
-<button onclick="initNewGame()" class="registerSubmit"  type="reset">New Game</button>
 
 
 <div id="score_time_life" class="theGame" hidden>
@@ -180,87 +169,61 @@
         <input id="lblScore" type="text" />
     </div>
     <div id="time">
-        <label for="lblTime">TIME:&nbsp;&nbsp;&nbsp;</label>
+        <label for="lbl_Time">TIME:&nbsp;&nbsp;&nbsp;</label>
         <input id="lblTime" type="text" />
     </div>
     <div id="lives">
         <label for="lbl_Lives">Live:&nbsp;&nbsp;&nbsp;</label>
-
         <input id="lives_curr" type="text" />
     </div>
     <div id="game">
         <canvas id="canvas" height="450" width="600"></canvas>
     </div>
 </div>
-<div class="gameSetting">
-    <li id=""></li>
+<div class="gameSetting" hidden>
+    <label id="btn_up">UP:</label>
+    <input id="up" type="text">
+    <label id="btn_down">DOWN:</label>
+    <input id="down" type="text">
+    <label id="btn_right">RIGHT:</label>
+    <input id="right" type="text">
+    <label id="btn_left">LEFT</label>
+    <input id="left" type="text">
+    <label id="ball_num">NUMBER OF BALLS</label>
+    <input id="balls" type="text">
+    <label id="game_time">TIME:</label>
+    <input id="timePlay" type="text">
+    <label id="num_monsters">NUMBER OF MONSTERS:</label>
+    <input id="mons" type="text">
 </div>
 
 <div id="loading_img" hidden>
     <img src="image/loading.gif" alt="loading_gif">
 </div>
-    <footer class="footerClass">
-        <!-- <footer id="footer" class=footerClass style="text-decoration: white;"> -->
-        <p><Strong>Pacman</Strong> | Noa Gorengot - noagoren@post.bgu.ac.il | Noy Harari - noyHarar@post.bgu.ac.il</p>
-        <!-- </footer> -->
-    </footer>
+<footer class="footerClass">
+    <!-- <footer id="footer" class=footerClass style="text-decoration: white;"> -->
+    <p><Strong>Pacman</Strong> | Noa Gorengot - noagoren@post.bgu.ac.il | Noy Harari - noyHarar@post.bgu.ac.il</p>
+    <!-- </footer> -->
+</footer>
 
-<!-- <script>
-    $(document).ready(function() {
-        $("#aboutBtn").click(function() {
-            $('#welcome').css("display", "none");
-            $(document.getElementById("register")).hide();
-            $(document.getElementById("login")).hide();
-            $("#about").show(300);
-
-        });
-    });
-</script> -->
-
-<!-- <script>
-    $(document).ready(function() {
-        $("#welcomeBtn").click(function() {
-            $(document.getElementById("about")).hide();
-            $(document.getElementById("register")).hide();
-            $(document.getElementById("login")).hide();
-            $('#welcome').css("display", "block");
-
-        });
-    });
-</script> -->
-<!-- 
-<script>
-    $(document).ready(function() {
-        $("#loginBtn").click(function() {
-            $(document.getElementById("welcome")).hide();
-            $(document.getElementById("about")).hide();
-            $(document.getElementById("register")).hide();
-            $(document.getElementById("login")).show(300);
-
-        });
-    });
-</script> -->
 
 <!-- </html>
-
-	<body>
-		<div style="display:block">
-			<div id="score">
-				<label for="lblScore">SCORE:</label>
-				<input id="lblScore" type="text" />
-			</div>
-			<div id="time">
-				<label for="lblTime">TIME:</label>
-				<input id="lblTime" type="text" />
-			</div>
-			<div id="game">
-				<canvas id="canvas" height="600" width="600"></canvas>
-				</div>
-
-	</body>
-
-	</html>
-	</div>
-	</div>
-	</body>
-
+<body>
+    <div style="display:block">
+        <div id="score">
+            <label for="lblScore">SCORE:</label>
+            <input id="lblScore" type="text" />
+        </div>
+        <div id="time">
+            <label for="lblTime">TIME:</label>
+            <input id="lblTime" type="text" />
+        </div>
+        <div id="game">
+            <canvas id="canvas" height="600" width="600"></canvas>
+            </div>
+</body>
+</html>
+</div>
+</div>
+</body>
+</html> -->
