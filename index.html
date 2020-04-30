@@ -6,6 +6,7 @@
     <title>PAC-MAN</title>
     <script src="./jquery-3.4.1.slim.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="icon" href="image/tit.jpg" />
@@ -118,7 +119,7 @@
 <br>
 </body>
 
-<form id="setting" onsubmit="startForNow(event)" class="settingClass" style="display:none">
+<form id="setting" name="setting" onsubmit="startForNow(event)" class="settingClass" style="display:none">
     <div class="settingClass">
         <br />
         <h1>Setting</h1>
@@ -175,36 +176,36 @@
     </div>
     <div id="lives">
         <label for="lbl_Lives">Live:&nbsp;&nbsp;&nbsp;</label>
-        <img src="image/live1.jpg">
-        <img src="image/live1.jpg">
-        <img src="image/live1.jpg">
-        <img src="image/live1.jpg">
-        <img src="image/live1.jpg">
+<!--        <img src="image/live1.jpg">-->
+<!--        <img src="image/live1.jpg">-->
+<!--        <img src="image/live1.jpg">-->
+<!--        <img src="image/live1.jpg">-->
+<!--        <img src="image/live1.jpg">-->
 
+    </div>
+    <div class="gameSetting" style="inset-inline-end: auto">
+        <label id="btn_up">UP:</label>
+        <p id="up"></p>
+        <label id="btn_down">DOWN:</label>
+        <p id="down"></p>
+        <label id="btn_right">RIGHT:</label>
+        <p id="right"></p>
+        <label id="btn_left">LEFT</label>
+        <p id="left"></p>
+        <label id="ball_num">NUMBER OF BALLS</label>
+        <p id="balls"></p>
+        <label id="game_time">TIME:</label>
+        <p id="timePlay"></p>
+        <label id="num_monsters">NUMBER OF MONSTERS:</label>
+        <p id="mons"></p>
     </div>
     <div id="game">
         <canvas id="canvas" height="450" width="600"></canvas>
+
     </div>
-</div>
-<div class="gameSetting" hidden>
 
-    <p>UP: <i class="up_btn"></i></p>
-
-<!--    <label id="btn_up">UP:</label>-->
-<!--    <input id="up" type="text">-->
-<!--    <label id="btn_down">DOWN:</label>-->
-<!--    <input id="down" type="text">-->
-<!--    <label id="btn_right">RIGHT:</label>-->
-<!--    <input id="right" type="text">-->
-<!--    <label id="btn_left">LEFT</label>-->
-<!--    <input id="left" type="text">-->
-<!--    <label id="ball_num">NUMBER OF BALLS</label>-->
-<!--    <input id="balls" type="text">-->
-<!--    <label id="game_time">TIME:</label>-->
-<!--    <input id="timePlay" type="text">-->
-<!--    <label id="num_monsters">NUMBER OF MONSTERS:</label>-->
-<!--    <input id="mons" type="text">-->
 </div>
+
 
 <div id="loading_img" hidden>
     <img src="image/loading.gif" alt="loading_gif">

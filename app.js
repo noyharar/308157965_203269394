@@ -22,12 +22,13 @@ var num_of_5_pt;
 var num_of_15_pt;
 var num_of_25_pt;
 var scoreOfTotalBoard = 0;
-var numOfLives = 5;
+var numOfLifes = 5;
 
 function submit_setting(){
     $("#setting").css("display", "none");
     $('#score_time_life').css('display', 'block');
-    //settings_display();
+    life();
+    settings_display();
 
 }
 
@@ -377,6 +378,9 @@ function randomSetting(){
     lbltime.value = timeToPlay;
     $("#setting").css("display", "none");
     $('#score_time_life').css('display', 'block');
+    life();
+    settings_display();
+
 }
 
 function Draw() {
@@ -574,15 +578,19 @@ function open_login_window() {
         x.style.display = "none";
     }
 }
-// function lives() {
-//
-//     for (var i = 0; i <= numOfLives; i++) {
-//         document.getElementById("lives_curr")
-//         var x = document.getElementById("Login_button");
-//     }
-// }
-function settings_display() {
+function life() {
 
-    mons.value =  num_of_monsters.valueOf();
-    $("#gameSetting").hidden = false;
+    for (var i = 0; i <= numOfLifes; i++) {
+        var img = "<img src ='image/live1.jpg' id='lives"+i+"'/>";
+        $("body #lives").append(img);
+    }
+}
+function settings_display() {
+    document.getElementById('up').innerHTML = document.setting.upId.value;
+    document.getElementById('down').innerHTML = document.setting.downId.value;
+    document.getElementById('right').innerHTML = document.setting.rightId.value;
+    document.getElementById('left').innerHTML = document.setting.leftId.value;
+    document.getElementById('balls').innerHTML = document.setting.food.value;
+    document.getElementById('timePlay').innerHTML = document.setting.lbltime.value;
+    document.getElementById('mons').innerHTML = document.setting.monsters.value;
 }
