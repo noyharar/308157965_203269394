@@ -141,6 +141,7 @@
   body{
     background-image: url("image/welcom.jpg");  
     background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: cover;
 }  
  
@@ -337,4 +338,8 @@
 .down {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
+}
+h1{
+  text-align: left;
+  font-size: 90%;
 }

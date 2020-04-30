@@ -23,6 +23,7 @@ var num_of_15_pt;
 var num_of_25_pt;
 var scoreOfTotalBoard = 0;
 var numOfLifes = 5;
+var playerName;
 
 function submit_setting(){
     $("#setting").css("display", "none");
@@ -115,6 +116,7 @@ function save_user() {
         $('#register').css('display', 'none');
         $("#loading_img").css("display","block");
         setTimeout(hide,2000);
+        playerName = nameForKey;
     }
     else {
         alert("this user already exist");
@@ -138,6 +140,7 @@ function load_user() {
             $('#login').css('display', 'none');
             $("#loading_img").css("display","block");
             setTimeout(hide,2000);
+            playerName = userName;
         }
 
     }
@@ -586,6 +589,8 @@ function life() {
     }
 }
 function settings_display() {
+
+    document.getElementById('pl_name').innerHTML = playerName;
     if($('#upId').val()){
         document.getElementById('up').innerHTML = document.getElementById("upId").value;
     }
