@@ -586,26 +586,26 @@ function life() {
     }
 }
 function settings_display() {
-    if($('.upId').val()){
-        document.getElementById('up').innerHTML = document.getElementById("upId");
+    if($('#upId').val()){
+        document.getElementById('up').innerHTML = document.getElementById("upId").value;
     }
     else {
         document.getElementById('up').innerHTML;
     }
-    if($('.downId').val()){
-        document.getElementById('down').innerHTML = document.getElementById("downId");
+    if($('#downId').val()){
+        document.getElementById('down').innerHTML = document.getElementById("downId").value;
     }
     else {
         document.getElementById('down').innerHTML;
     }
-    if($('.rightId').val()){
-        document.getElementById('right').innerHTML = document.getElementById("rightId");
+    if($('#rightId').val()){
+        document.getElementById('right').innerHTML = document.getElementById("rightId").value;
     }
     else {
         document.getElementById('right').innerHTML;
     }
-    if($('.leftId').val()){
-        document.getElementById('left').innerHTML = document.getElementById("leftId");
+    if($('#leftId').val()){
+        document.getElementById('left').innerHTML = document.getElementById("leftId").value;
     }
     else{
         document.getElementById('left').innerHTML;

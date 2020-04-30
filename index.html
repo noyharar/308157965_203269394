@@ -178,19 +178,23 @@
         <label for="lbl_Lives">Live:&nbsp;&nbsp;&nbsp;</label>
     </div>
     <div class="gameSetting">
-        <label id="btn_up">UP:</label>&nbsp;
-        <p id="up"><i class="arrow up"></i></p>&nbsp;
-        <label id="btn_down">DOWN:</label>&nbsp;
-        <p id="down"><i class="arrow down"></i></p>&nbsp;
-        <label id="btn_right">RIGHT:</label>&nbsp;
-        <p id="right"><i class="arrow right"></i></p>&nbsp;
-        <label id="btn_left">LEFT:</label>&nbsp;
-        <p id="left"><i class="arrow left"></i></p>&nbsp;
-        <br>
-        <br>
-        <label id="ball_num">NUMBER OF BALLS:</label>&nbsp;<p id="balls"></p>
-        &nbsp;<label id="game_time">TIME:</label>&nbsp;<p id="timePlay"></p>&nbsp;
-        <label id="num_monsters">NUMBER OF MONSTERS:</label>&nbsp;<p id="mons"></p>
+        <div class="arrows_setting">
+            <label id="btn_up">UP:</label>&nbsp;
+            <p id="up"><i class="arrow up"></i></p>&nbsp;
+            &nbsp;<label id="btn_down">DOWN:</label>&nbsp;
+            <p id="down"><i class="arrow down"></i></p>&nbsp;
+            &nbsp;<label id="btn_right">RIGHT:</label>&nbsp;
+            <p id="right"><i class="arrow right"></i></p>&nbsp;
+            &nbsp;<label id="btn_left">LEFT:</label>&nbsp;
+            <p id="left"><i class="arrow left"></i></p>&nbsp;
+        </div>
+        <br/>
+        <div class="other_settings">
+            <label id="ball_num">NUMBER OF BALLS:</label>&nbsp;<p id="balls"></p>&nbsp;
+            &nbsp;<label id="game_time">TIME:</label>&nbsp;<p id="timePlay"></p>&nbsp;
+            &nbsp;<label id="num_monsters">NUMBER OF MONSTERS:</label>&nbsp;<p id="mons"></p>
+        </div>
+
     </div>
     <div id="game">
         <canvas id="canvas" height="450" width="600"></canvas>

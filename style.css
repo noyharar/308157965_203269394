@@ -294,7 +294,19 @@
 /*   background-image: url("image/packman1(2).jpg");
  */
 }
-.gameSetting{
+/*.gameSetting{*/
+/*  display: inline-flex;*/
+/*  flex-direction: row;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*}*/
+.arrows_setting{
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.other_settings{
   display: inline-flex;
   flex-direction: row;
   justify-content: center;
