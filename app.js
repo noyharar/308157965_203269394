@@ -25,6 +25,17 @@ var scoreOfTotalBoard = 0;
 var pacman_dead = false;
 var boardMonsters;
 var intervalMonster;
+var numOfLifes = 5;
+
+function submit_setting(){
+    $("#setting").css("display", "none");
+    $("#random_btn").css("display", "none");
+    $('#score_time_life').css('display', 'block');
+    life();
+    settings_display();
+
+}
+
 
     /* $(document).ready(function () {
         let userScreenWidth = window.innerWidth;
@@ -43,6 +54,7 @@ function myFunctionLogin() {
     $(document.getElementById("about")).hide();
     $(document.getElementById("register")).hide();
     $(document.getElementById("login")).show();
+    $(document.getElementById("setting")).hide();
 }
 
 $(document).ready(function () {
@@ -51,6 +63,7 @@ $(document).ready(function () {
         $(document.getElementById("register")).hide();
         $(document.getElementById("login")).hide();
         $("#about").show(300);
+        $(document.getElementById("setting")).hide();
 
     });
 });
@@ -61,6 +74,7 @@ $(document).ready(function () {
         $(document.getElementById("register")).hide();
         $(document.getElementById("login")).hide();
         $('#welcome').css("display", "block");
+        $(document.getElementById("setting")).hide();
 
     });
 });
@@ -71,6 +85,7 @@ $(document).ready(function () {
         $(document.getElementById("about")).hide();
         $(document.getElementById("register")).hide();
         $(document.getElementById("login")).show(300);
+        $(document.getElementById("setting")).hide();
 
     });
 });
@@ -81,7 +96,7 @@ $(document).ready(function () {
         $(document.getElementById("about")).hide();
         $(document.getElementById("login")).hide();
         $("#register").show(300);
-
+        $(document.getElementById("setting")).hide();
     });
 });
 /* defult user */
@@ -115,40 +130,37 @@ function save_user() {
         let str = JSON.stringify(data);
         localStorage.setItem(nameForKey, str);
         $('#register').css('display', 'none');
-        $('#setting').css('display', 'block');
+        $("#loading_img").css("display","block");
+        setTimeout(hide,2000);
     }
-    alert("this user already exist");
-
+    else {
+        alert("this user already exist");
+    }
 }
 
 function load_user() {
     let userName = document.getElementById("name").value;
-    //console.log(userName);
     let userPassword = document.getElementById("userPassword").value;
-    //console.log(userPassword);
     let originalData = localStorage.getItem(userName);
     if (originalData == null) {
-        console.log(false);
-        alert("You have to register in order to play");
-    } else {
-
-        //console.log(originalData); // just to check if good
+        alert("You have to login or register first");
+    }
+    else {
         let dataObj = JSON.parse(originalData);
-        // test to see the object
-        //console.log(dataObj);
         let psd = dataObj.userPassword;
-        //console.log(psd);
         let name = dataObj.userName;
-        //console.log(name);
         if (userName == name && userPassword == psd) {
-
-            console.log(true);
-            console.log("welcome");
             $('#login').css('display', 'none');
-            $('#setting').css('display', 'block');
+            $("#loading_img").css("display","block");
+            setTimeout(hide,2000);
         }
 
     }
+}
+function hide() {
+    $("#loading_img").css("display","none");
+    $('#setting').css('display', 'block');
+    $("#random_btn").css("display","block");
 }
 
 function open_about() {
@@ -197,6 +209,7 @@ function startForNow(e) {
     e.preventDefault();
     context = canvas.getContext("2d");
     Start();
+    $("#newGame_btn").css("display","block");
     return false;
 }
 
@@ -419,6 +432,9 @@ function randomSetting() {
     food.value = food_remain;
     monsters.value = num_of_monsters;
     lblTimeSetting.value = timeToPlay;
+    // $('#score_time_life').css('display', 'block');
+    // life();
+    // settings_display();
 }
 
 function Draw() {
@@ -680,3 +696,39 @@ function open_login_window() {
     }
 }
 
+function life() {
+
+    for (var i = 0; i <= numOfLifes; i++) {
+        var img = "<img src ='image/live1.jpg' id='lives"+i+"'/>";
+        $("body #lives").append(img);
+    }
+}
+function settings_display() {
+    if($('.upId').val()){
+        document.getElementById('up').innerHTML = document.getElementById("upId");
+    }
+    else {
+        document.getElementById('up').innerHTML;
+    }
+    if($('.downId').val()){
+        document.getElementById('down').innerHTML = document.getElementById("downId");
+    }
+    else {
+        document.getElementById('down').innerHTML;
+    }
+    if($('.rightId').val()){
+        document.getElementById('right').innerHTML = document.getElementById("rightId");
+    }
+    else {
+        document.getElementById('right').innerHTML;
+    }
+    if($('.leftId').val()){
+        document.getElementById('left').innerHTML = document.getElementById("leftId");
+    }
+    else{
+        document.getElementById('left').innerHTML;
+    }
+    document.getElementById('balls').innerHTML = document.setting.food.value;
+    document.getElementById('timePlay').innerHTML = document.setting.lbltime.value;
+    document.getElementById('mons').innerHTML = document.setting.monsters.value;
+}

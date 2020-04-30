@@ -6,11 +6,10 @@
     <title>PAC-MAN</title>
     <script src="./jquery-3.4.1.slim.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>//noa
     <script type="text/javascript" src="app.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <br/>
-    <br/>
-    <br/>
+    <link rel="icon" href="image/tit.jpg" />//noa
 </head>
 <br>
 <body>
@@ -18,7 +17,6 @@
 	<div class="logoClass">
         <header id="header" style="color: azure;">
 				<img src="image/logo.jpg" alt="logo_pic" style="width:15%">
-				<br>
                 <label> Noy Harari- 308157965 | Noa Gorengot - 203269394</label>
 		</header>
 	</div>
@@ -38,15 +36,14 @@
             <div class="container-fluid">
                 <div class="navbar-header topnav">
                     <ul>
-                        <li><a id="welcomeBtn" href="#welcome">Welcome</a></li>
-                        <li><a id="registerBtn" href="#register">Register</a></li>
-                        <li><a id="loginBtn" href="#login">Login</a></li>
-                        <li><a id="myBtn" onclick="open_about()" type="button" href="#about">About</a></li>
+                        <li><a id="welcomeBtn" href="#welcome">WELCOME</a></li>
+                        <li><a id="registerBtn" href="#register">REGISTER</a></li>
+                        <li><a id="loginBtn" href="#login">LOGIN</a></li>
+                        <li><a id="myBtn" onclick="open_about()" type="button" href="#about">ABOUT</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
-
     </section>
     <div id="welcome" class="sectionWelcome" style="display:block">
         <br>
@@ -75,7 +72,6 @@
 
         </div>
     </div>
-
     <div id="result">
 
     </div>
@@ -114,11 +110,9 @@
     <br>
 </body>
 
-<form id="setting"  onsubmit="startForNow(event)" class="settingClass" style="display:block">
+<form id="setting"  onsubmit="startForNow(event)"  name="setting" class="settingClass" style="display:none">
     <div class="settingClass">
-        <br />
-        <h1>Setting</h1>
-        <br />
+        <h2>Setting</h2>
         <label for="upId">Enter your UP button:</label>
         <input id="upId" type="text" placeholder="UP button" onkeypress="changeValueToKey(event)" pattern="{1}">
         <br>
@@ -150,23 +144,65 @@
         <label for="monsters">Enter num of monsters</label>
         <input id="monsters" type="number" min="1" max="4">
         <br>
-        <button id="settingSubmit" class="registerSubmit" type="submit"> Submit  </button>
+        <br>
+        <button id="settingSubmit"  onclick="submit_setting()" class="registerSubmit" type="submit" style="float: left"> Submit  </button>
     </div>
 </form>
-<button onclick="randomSetting()" class="registerSubmit" type="submit">Random</button>
-<button onclick="initNewGame()" class="registerSubmit"  type="reset">New Game</button>
+<button id="random_btn" onclick="randomSetting()" class="registerSubmit" type="submit" style="display: none">Random</button>
 
-<div style="display:block">
-    <div id="score">
+<div id="score_time_life" class="theGame" hidden>
+    <div id="score" style="float: right;color: white">
         <label for="lblScore">SCORE:</label>
         <input id="lblScore" type="text" />
     </div>
-    <div id="time">
-        <label for="lblTime">TIME:</label>
+    <div id="time" style="float: right;color: white">
+        <label for="lblTime">TIME:&nbsp;&nbsp;&nbsp;</label>
         <input id="lblTime" type="text" />
     </div>
-    <div id="game">
-        <canvas id="canvas" height="600" width="600"></canvas>
+    <div id="lives" style="float: right;color: white">
+        <label for="lbl_Lives">Live:&nbsp;&nbsp;&nbsp;</label>
+        <br>
+        <button id="newGame_btn" onclick="initNewGame()" class="registerSubmit" type="reset" style="display: none;">New Game</button>
+    </div>
+
+    <div class="gameSetting" style="float: right">
+        <label id="btn_up">UP:</label>&nbsp;
+        <p id="up"><i class="arrow up"></i></p>&nbsp;
+        <label id="btn_down">DOWN:</label>&nbsp;
+        <p id="down"><i class="arrow down"></i></p>&nbsp;
+        <label id="btn_right">RIGHT:</label>&nbsp;
+        <p id="right"><i class="arrow right"></i></p>&nbsp;
+        <label id="btn_left">LEFT:</label>&nbsp;
+        <p id="left"><i class="arrow left"></i></p>&nbsp;
+        <br>
+        <br>
+        <label id="ball_num">NUMBER OF BALLS:</label>&nbsp;<p id="balls"></p>
+        &nbsp;<label id="game_time">TIME:</label>&nbsp;<p id="timePlay"></p>&nbsp;
+        <label id="num_monsters">NUMBER OF MONSTERS:</label>&nbsp;<p id="mons"></p>
+    </div>
+    <div id="game" style="float : left">
+        <canvas id="canvas" class="gameClass" height="600" width="600"></canvas>
+    </div>
+
+</div>
+
+
+<!--<div style="display:block">-->
+<!--    <div id="score">-->
+<!--        <label for="lblScore">SCORE:</label>-->
+<!--        <input id="lblScore" type="text" />-->
+<!--    </div>-->
+<!--    <div id="time">-->
+<!--        <label for="lblTime">TIME:</label>-->
+<!--        <input id="lblTime" type="text" />-->
+<!--    </div>-->
+<!--    <div id="game">-->
+<!--        <canvas id="canvas" height="600" width="600"></canvas>-->
+<!--    </div>-->
+
+
+    <div id="loading_img" hidden>
+        <img src="image/loading.gif" alt="loading_gif">
     </div>
 <footer class="footerClass">
     <!-- <footer id="footer" class=footerClass style="text-decoration: white;"> -->
