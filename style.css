@@ -6,11 +6,10 @@
     border: 1px solid transparent;
   }
   .navbar-inverse {
-    /* background-color:#42f5ef; */
+    /*background-color:#42f5ef;*/
     border-color: #080808;
   }
   .navbar-fixed-top {
-    /*was problem with just 30 so i added % but maybe it should be 30px*/
     top: 30%;
     border-width: 0 0 1px;
   }
@@ -29,7 +28,7 @@
     z-index: 1030;
   }
   .topnav ul {
-    position: relative;
+    position:  relative;
     list-style-type: none;
     min-height: 35px;
     margin: 0;
@@ -38,7 +37,7 @@
   }
   .topnav li {
     float: left;
-    min-height: 35px;
+    min-height: 20px;
   }
   .topnav li a {
     display: block;
@@ -46,15 +45,14 @@
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    background-color:black ;
+    background-color:white;
     background-blend-mode: lighten;
     float: left;
     font-family: 'Pixeled';
-    /* font-family: 'Alef', serif; */
-    font-size: 12px;
+    /*font-family: 'Alef', serif;*/
+    font-size: 9px;
     font-weight: bold;
-    min-height: 5px;
-
+    min-height: 3px;
   }
 
   .registerForm{
@@ -117,57 +115,57 @@
     font-style: normal;
     src: url('https://s3-eu-west-1.amazonaws.com/fonts-project/fonts/Alef/400.woff') format('woff');
   }
-  @font-face {
-    font-family: 'Pixeled';
-    font-weight: 400;
-    font-style: normal;
-    src: url('Pixeled.ttf');
-  }
 
-  .registerSubmit{
-    position: inherit;
-    margin-left: 100px;
-    margin-right: 150px;
-    border-color: #3c3cef;
-    background-color: black;
-    color: whitesmoke;
-    font-size: 16px;
-    padding: 12px 24px;
-    cursor: pointer;
-    border-radius: 12px;
-    text-align: center;
-  }
+@font-face {
+  font-family: 'Pixeled';
+  font-weight: 400;
+  font-style: normal;
+  src: url('Pixeled.ttf');
+}
+
+.registerSubmit{
+  position: inherit;
+  margin-left: 100px;
+  margin-right: 150px;
+  border-color: #3c3cef;
+  background-color: black;
+  color: whitesmoke;
+  font-size: 16px;
+  padding: 12px 24px;
+  cursor: pointer;
+  border-radius: 11px;
+  text-align: center;
+}
 
   body{
     background-image: url("image/welcom.jpg");  
     background-repeat: no-repeat;
-    background-attachment: fixed;
     background-size: cover;
-}  
- 
- /* section{
-    margin: auto;
-    padding: 4em; 
-    width: 1000px;
-    position: absolute;
-} */
-/* section#Login_Register_buttons{
-    margin-left: auto;
-    margin-right: auto;
-    background-image: url(image/welcom.jpg);
-}  */
+}
+
+.gameClass{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+/*section#Login_Register_buttons{*/
+/*    margin-left: auto;*/
+/*    margin-right: auto;*/
+/*    background-image: url(image/welcom.jpg);*/
+/*} */
 .center {
   display: block;
   margin-left: 90px;
   width: 30%;
 }
 
-.settingClass{
-  display: block;
-  font-family: 'Alef', serif;
-  font-size: 16px;
-  color: white;
-}
+  .settingClass{
+    display: block;
+    font-family: 'Alef', serif;
+    font-size: 14px;
+    color: white;
+  }
   /* The Modal (background) */
 .modal{
   display: none; /* Hidden by default */
@@ -253,7 +251,7 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color:  black;
+  background-color:   black;
   color: #3c3cef;
   min-height: auto;
   font-size: 11px;
@@ -288,30 +286,20 @@
   padding-top: 10px;
   text-align: center
 }
-.theGame{
+
+theGame{
   position: absolute;
   background-color: cornsilk;
   box-sizing: border-box;
-/*   background-image: url("image/packman1(2).jpg");
- */
+  /*   background-image: url("image/packman1(2).jpg");
+   */
 }
-/*.gameSetting{*/
-/*  display: inline-flex;*/
-/*  flex-direction: row;*/
-/*  justify-content: center;*/
-/*  align-items: center;*/
-/*}*/
-.arrows_setting{
+.gameSetting{
   display: inline-flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-}
-.other_settings{
-  display: inline-flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  color: white;
 }
 .arrow {
   border: solid black;
@@ -338,8 +326,4 @@
 .down {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
-}
-h1{
-  text-align: left;
-  font-size: 90%;
 }
