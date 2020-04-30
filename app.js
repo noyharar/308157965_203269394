@@ -26,6 +26,7 @@ var pacman_dead = false;
 var boardMonsters;
 var intervalMonster;
 var numOfLifes = 5;
+var playerName;
 
 function submit_setting(){
     $("#setting").css("display", "none");
@@ -132,6 +133,7 @@ function save_user() {
         $('#register').css('display', 'none');
         $("#loading_img").css("display","block");
         setTimeout(hide,2000);
+        playerName = nameForKey;
     }
     else {
         alert("this user already exist");
@@ -153,6 +155,7 @@ function load_user() {
             $('#login').css('display', 'none');
             $("#loading_img").css("display","block");
             setTimeout(hide,2000);
+            playerName = userName;
         }
 
     }
@@ -699,31 +702,32 @@ function open_login_window() {
 function life() {
 
     for (var i = 0; i <= numOfLifes; i++) {
-        var img = "<img src ='image/live1.jpg' id='lives"+i+"'/>";
+        var img = "<img src ='image/pixel-pacman.png' id='lives"+i+"'/>";
         $("body #lives").append(img);
     }
 }
 function settings_display() {
-    if($('.upId').val()){
-        document.getElementById('up').innerHTML = document.getElementById("upId");
+    document.getElementById('pl_name').innerHTML = playerName;
+    if($('#upId').val()){
+        document.getElementById('up').innerHTML = document.getElementById("upId").value;
     }
     else {
         document.getElementById('up').innerHTML;
     }
-    if($('.downId').val()){
-        document.getElementById('down').innerHTML = document.getElementById("downId");
+    if($('#downId').val()){
+        document.getElementById('down').innerHTML = document.getElementById("downId").value;
     }
     else {
         document.getElementById('down').innerHTML;
     }
-    if($('.rightId').val()){
-        document.getElementById('right').innerHTML = document.getElementById("rightId");
+    if($('#rightId').val()){
+        document.getElementById('right').innerHTML = document.getElementById("rightId").value;
     }
     else {
         document.getElementById('right').innerHTML;
     }
-    if($('.leftId').val()){
-        document.getElementById('left').innerHTML = document.getElementById("leftId");
+    if($('#leftId').val()){
+        document.getElementById('left').innerHTML = document.getElementById("leftId").value;
     }
     else{
         document.getElementById('left').innerHTML;

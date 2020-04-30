@@ -151,35 +151,42 @@
 <button id="random_btn" onclick="randomSetting()" class="registerSubmit" type="submit" style="display: none">Random</button>
 
 <div id="score_time_life" class="theGame" hidden>
-    <div id="score" style="float: right;color: white">
+    <div id="player_name">
+        <h1>Player Name: <p id="pl_name" style="display: inline-flex"></p></h1>
+
+    </div>
+    <div id="score">
         <label for="lblScore">SCORE:</label>
         <input id="lblScore" type="text" />
     </div>
-    <div id="time" style="float: right;color: white">
-        <label for="lblTime">TIME:&nbsp;&nbsp;&nbsp;</label>
+    <div id="time">
+        <label for="lbl_Time">TIME:&nbsp;&nbsp;&nbsp;</label>
         <input id="lblTime" type="text" />
     </div>
-    <div id="lives" style="float: right;color: white">
+    <div id="lives">
         <label for="lbl_Lives">Live:&nbsp;&nbsp;&nbsp;</label>
-        <br>
-        <button id="newGame_btn" onclick="initNewGame()" class="registerSubmit" type="reset" style="display: none;">New Game</button>
+    </div>
+    <div class="gameSetting">
+        <div class="arrows_setting">
+            <label id="btn_up">UP:</label>&nbsp;
+            <p id="up"><i class="arrow up"></i></p>&nbsp;
+            &nbsp;<label id="btn_down">DOWN:</label>&nbsp;
+            <p id="down"><i class="arrow down"></i></p>&nbsp;
+            &nbsp;<label id="btn_right">RIGHT:</label>&nbsp;
+            <p id="right"><i class="arrow right"></i></p>&nbsp;
+            &nbsp;<label id="btn_left">LEFT:</label>&nbsp;
+            <p id="left"><i class="arrow left"></i></p>&nbsp;
+        </div>
+        <br/>
+        <div class="other_settings">
+            <label id="ball_num">NUMBER OF BALLS:</label>&nbsp;<p id="balls"></p>&nbsp;
+            &nbsp;<label id="game_time">TIME:</label>&nbsp;<p id="timePlay"></p>&nbsp;
+            &nbsp;<label id="num_monsters">NUMBER OF MONSTERS:</label>&nbsp;<p id="mons"></p>
+        </div>
+
     </div>
 
-    <div class="gameSetting" style="float: right">
-        <label id="btn_up">UP:</label>&nbsp;
-        <p id="up"><i class="arrow up"></i></p>&nbsp;
-        <label id="btn_down">DOWN:</label>&nbsp;
-        <p id="down"><i class="arrow down"></i></p>&nbsp;
-        <label id="btn_right">RIGHT:</label>&nbsp;
-        <p id="right"><i class="arrow right"></i></p>&nbsp;
-        <label id="btn_left">LEFT:</label>&nbsp;
-        <p id="left"><i class="arrow left"></i></p>&nbsp;
-        <br>
-        <br>
-        <label id="ball_num">NUMBER OF BALLS:</label>&nbsp;<p id="balls"></p>
-        &nbsp;<label id="game_time">TIME:</label>&nbsp;<p id="timePlay"></p>&nbsp;
-        <label id="num_monsters">NUMBER OF MONSTERS:</label>&nbsp;<p id="mons"></p>
-    </div>
+    <button id="newGame_btn" onclick="initNewGame()" class="registerSubmit" type="reset" style="display: none;">New Game</button>
     <div id="game" style="float : left">
         <canvas id="canvas" class="gameClass" height="600" width="600"></canvas>
     </div>

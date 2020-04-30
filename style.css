@@ -294,7 +294,25 @@ theGame{
   /*   background-image: url("image/packman1(2).jpg");
    */
 }
-.gameSetting{
+/*.gameSetting{*/
+/*  display: inline-flex;*/
+/*  flex-direction: row;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*  color: white;*/
+/*}*/
+.arrows_setting{
+  order: 5;
+  float: right;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.other_settings{
+  order: 6;
+  float: right;
   display: inline-flex;
   flex-direction: row;
   justify-content: center;
@@ -306,24 +324,63 @@ theGame{
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
+  border-color: #3c3cef;
 }
 
 .right {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
+  border-color: #3c3cef;
 }
 
 .left {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
+  border-color: #3c3cef;
 }
 
 .up {
   transform: rotate(-135deg);
   -webkit-transform: rotate(-135deg);
+  border-color: #3c3cef;
 }
 
 .down {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
+  color: #3c3cef;
 }
+h1{
+  text-align: left;
+  font-size: 90%;
+  font-family: Pixeled;
+  color: #3c3cef;
+}
+.game_info{
+  display: flex;
+  flex-direction: column;
+  /*flex: border-box;*/
+  border-color: #3c3cef;
+}
+.player_name{
+  order: 1;
+}
+.score{
+  color: white;
+  order: 2;
+}
+.time{
+  color: white;
+  order: 3;
+}
+.lives{
+  color: white;
+  order: 4;
+}
+.newGame_btn{
+  order: 7;
+}
+.game{
+  order: 8;
+}
+
