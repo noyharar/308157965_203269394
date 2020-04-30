@@ -581,7 +581,7 @@ function open_login_window() {
 function life() {
 
     for (var i = 0; i <= numOfLifes; i++) {
-        var img = "<img src ='image/live1.jpg' id='lives"+i+"'/>";
+        var img = "<img src ='image/pixel-pacman.png' id='lives"+i+"'/>";
         $("body #lives").append(img);
     }
 }
