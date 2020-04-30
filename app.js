@@ -586,10 +586,30 @@ function life() {
     }
 }
 function settings_display() {
-    document.getElementById('up').innerHTML = document.setting.upId.value;
-    document.getElementById('down').innerHTML = document.setting.downId.value;
-    document.getElementById('right').innerHTML = document.setting.rightId.value;
-    document.getElementById('left').innerHTML = document.setting.leftId.value;
+    if($('.upId').val()){
+        document.getElementById('up').innerHTML = document.getElementById("upId");
+    }
+    else {
+        document.getElementById('up').innerHTML;
+    }
+    if($('.downId').val()){
+        document.getElementById('down').innerHTML = document.getElementById("downId");
+    }
+    else {
+        document.getElementById('down').innerHTML;
+    }
+    if($('.rightId').val()){
+        document.getElementById('right').innerHTML = document.getElementById("rightId");
+    }
+    else {
+        document.getElementById('right').innerHTML;
+    }
+    if($('.leftId').val()){
+        document.getElementById('left').innerHTML = document.getElementById("leftId");
+    }
+    else{
+        document.getElementById('left').innerHTML;
+    }
     document.getElementById('balls').innerHTML = document.setting.food.value;
     document.getElementById('timePlay').innerHTML = document.setting.lbltime.value;
     document.getElementById('mons').innerHTML = document.setting.monsters.value;
