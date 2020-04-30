@@ -26,6 +26,7 @@ var pacman_dead = false;
 var boardMonsters;
 var intervalMonster;
 var numOfLifes = 5;
+var playerName;
 
 function submit_setting(){
     $("#setting").css("display", "none");
@@ -37,17 +38,17 @@ function submit_setting(){
 }
 
 
-    /* $(document).ready(function () {
-        let userScreenWidth = window.innerWidth;
-        console.log(userScreenWidth);
-        let userScreenHeigth = window.innerHeight;
-        console.log(userScreenHeigth);
-        if (userScreenHeigth < 768 || userScreenWidth < 1366) {
-            window.resizeTo(1366 , 768);
-            window.focus();
-            console.log("working");
-        }
-    }); */
+/* $(document).ready(function () {
+    let userScreenWidth = window.innerWidth;
+    console.log(userScreenWidth);
+    let userScreenHeigth = window.innerHeight;
+    console.log(userScreenHeigth);
+    if (userScreenHeigth < 768 || userScreenWidth < 1366) {
+        window.resizeTo(1366 , 768);
+        window.focus();
+        console.log("working");
+    }
+}); */
 
 function myFunctionLogin() {
     $(document.getElementById("welcome")).hide();
@@ -132,6 +133,7 @@ function save_user() {
         $('#register').css('display', 'none');
         $("#loading_img").css("display","block");
         setTimeout(hide,2000);
+        playerName = nameForKey;
     }
     else {
         alert("this user already exist");
@@ -153,6 +155,7 @@ function load_user() {
             $('#login').css('display', 'none');
             $("#loading_img").css("display","block");
             setTimeout(hide,2000);
+            playerName = userName;
         }
 
     }
@@ -299,10 +302,10 @@ function Start() {
                     shape.j = j;
                     pacman_remain--;
                     if (pacman_remain > 0) {
-                    board[i][j] = 2;
-                    setCell = true;
+                        board[i][j] = 2;
+                        setCell = true;
                     }
-				}
+                }
                 if(!setCell){
                     board[i][j] = 0;
                 }
@@ -455,9 +458,9 @@ function Draw() {
             if (board[i][j] == 8) {
                 context.drawImage(burger, center.x - 25, center.y - 25);
             }else if (boardMonsters[i][j] == 9){
-                    context.drawImage(monster, center.x - 20, center.y - 20);
+                context.drawImage(monster, center.x - 20, center.y - 20);
                 // } else if (board[i][j] == 9) {
-            //     context.drawImage(monster, center.x - 20, center.y - 20);
+                //     context.drawImage(monster, center.x - 20, center.y - 20);
             } else if (board[i][j] == 2 && pacman_left && pacman_dead == false) {
                 context.beginPath();
                 context.arc(center.x, center.y, 30, -0.85 * Math.PI, 0.85 * Math.PI); // half circle
@@ -664,10 +667,10 @@ function UpdatePosition() {
         initNewGame();
 
         // } else if (time_elapsed >= timeToPlay) {
-    //     time_elapsed = timeToPlay;
-    //     lblTime.value = time_elapsed;
-    //     window.clearInterval(interval);
-    //     alertNote("Time Passed",timeToPlay);
+        //     time_elapsed = timeToPlay;
+        //     lblTime.value = time_elapsed;
+        //     window.clearInterval(interval);
+        //     alertNote("Time Passed",timeToPlay);
     } else {
         Draw();
     }
@@ -699,31 +702,32 @@ function open_login_window() {
 function life() {
 
     for (var i = 0; i <= numOfLifes; i++) {
-        var img = "<img src ='image/live1.jpg' id='lives"+i+"'/>";
+        var img = "<img src ='image/pixel-pacman.png' id='lives"+i+"'/>";
         $("body #lives").append(img);
     }
 }
 function settings_display() {
-    if($('.upId').val()){
-        document.getElementById('up').innerHTML = document.getElementById("upId");
+    document.getElementById('pl_name').innerHTML = playerName;
+    if($('#upId').val()){
+        document.getElementById('up').innerHTML = document.getElementById("upId").value;
     }
     else {
         document.getElementById('up').innerHTML;
     }
-    if($('.downId').val()){
-        document.getElementById('down').innerHTML = document.getElementById("downId");
+    if($('#downId').val()){
+        document.getElementById('down').innerHTML = document.getElementById("downId").value;
     }
     else {
         document.getElementById('down').innerHTML;
     }
-    if($('.rightId').val()){
-        document.getElementById('right').innerHTML = document.getElementById("rightId");
+    if($('#rightId').val()){
+        document.getElementById('right').innerHTML = document.getElementById("rightId").value;
     }
     else {
         document.getElementById('right').innerHTML;
     }
-    if($('.leftId').val()){
-        document.getElementById('left').innerHTML = document.getElementById("leftId");
+    if($('#leftId').val()){
+        document.getElementById('left').innerHTML = document.getElementById("leftId").value;
     }
     else{
         document.getElementById('left').innerHTML;
