@@ -45,12 +45,12 @@
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    background-color:white;
+    /*background-color:white;*/
     background-blend-mode: lighten;
     float: left;
     font-family: 'Pixeled';
     /*font-family: 'Alef', serif;*/
-    font-size: 9px;
+    font-size: 60%;
     font-weight: bold;
     min-height: 3px;
   }
