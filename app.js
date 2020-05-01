@@ -25,6 +25,7 @@ var boardMonsters;
 var intervalMonster;
 var numOfLifes = 5;
 var playerName;
+var img;
 
 function submit_setting(){
     $("#setting").css("display", "none");
@@ -225,6 +226,10 @@ function initNewGame() {
         pacman_up = false;
         pacman_down = false;
         extra_food = 2;
+        numOfLifes = 5;
+        life();
+        window.clearInterval(interval);
+        window.clearInterval(intervalMonster);
         Start();
         Draw();
     return false;
@@ -645,14 +650,38 @@ function UpdatePosition() {
         Draw();
         window.clearInterval(interval);
         window.clearInterval(intervalMonster);
-        setTimeout(noteWithSleep, 500);
+        setTimeout(noteWithSleep, 1000);
+        pacman_dead = false;
         removeLife(numOfLifes);
         numOfLifes--;
-        Draw();
-            // initNewGame();
+        num_of_monsters = parseInt($(document.getElementById("monsters")).val());
+        pacman_remain = 1;
+        cnt = 1000;
+        for (var i = 0; i < 10; i++) {
+            for (var j = 0; j < 10; j++) {
+                boardMonsters[i][j] = 0;
+                if(num_of_monsters > 0 && board[i][j] == 9){
+                    boardMonsters[i][j] = 9;
+                    num_of_monsters--;
+                }
+                else if ( Math.random() < (1.0 * (pacman_remain + food_remain)) / cnt) {
+                    shape.i = i;
+                    shape.j = j;
+                    if (pacman_remain > 0) {
+                        board[i][j] = 2;
+                    }
+                    pacman_remain--;
+                }
+            }
         }
-
-
+        interval = setInterval(UpdatePosition, 150);
+        intervalMonster = setInterval(UpdateMonsterPosition, 1000);
+    }
+    if(numOfLifes == 0){
+        alertNote("Loser!",1500);
+        window.clearInterval(interval);
+        window.clearInterval(intervalMonster);
+    }
     /*same cell with ball - score up */
     if (board[shape.i][shape.j] == 1 || board[shape.i][shape.j] == 6 || board[shape.i][shape.j] == 7 ) {
         var audio = new Audio('audio/pacman_eatfruit.wav');
@@ -716,7 +745,7 @@ function alertNote(note,timeToAlert) {
 }
 
 function noteWithSleep() {
-    alertNote("Your pacman dead :(",100)
+    // alertNote("Your pacman dead :(",100)
     pacman_dead = false;
     // initNewGame();
 }
@@ -732,19 +761,21 @@ function open_login_window() {
     }
 }
 
-// function life() {
-//     for (var i = 0; i <= numOfLifes; i++) {
-//         var img = "<img src ='image/pixel-pacman.png' id='lives"+i+"'/>";
-//         $("body #lives").append(img);
-//     }
-// }
+function life() {
+    var img_name;
+    for (var i = 1; i <= numOfLifes; i++) {
+        img_name = "#img" + i;
+        $(img_name).css("display", "block");
+    }
+}
+
 function removeLife(i) {
         // var img = "<img src ='image/pixel-pacman.png' id='lives"+i+"'/>"
     if(i > 0) {
         var img_name = "#img" + i;
-        $(img_name).attr('src', ''); // Clear the src
-        $(img_name).removeAttr('src')
-
+        $(img_name).css("display", "none");
+        // $(img_name).attr('src', ''); // Clear the src
+        // $(img_name).removeAttr('src')
     }
     // else{
     //     window.alert("Game Over")
