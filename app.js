@@ -100,13 +100,12 @@ $(document).ready(function () {
 });
 /* defult user */
 $(document).ready(function () {
-
     let defUserName = {
         userName: "p",
         userPassword: "p",
         firstName: "p",
         lastName: "p",
-        mail: "p",
+        mail: "p@gmail.com",
         birthDay: Date.now()
     };
     let str = JSON.stringify(defUserName);
@@ -115,23 +114,46 @@ $(document).ready(function () {
 
 
 function save_user() {
-    let nameForKey = document.getElementById("user_name").value;
-    if (localStorage.getItem(nameForKey) == null) {
+    var hasNumber = /\d/;
+    var hasLetter =/[a-zA-Z]/;
+    var hasMail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    var user_name = document.getElementById("user_name").value;
+    var password =  document.getElementById("user_password").value;
+    var firstName = document.getElementById("userFirstName").value;
+    var lastName = document.getElementById("userLastName").value;
+    var userMail = document.getElementById("userMail").value;
+    var date = document.getElementById("birthday").value;
+    /*validation labels*/
+    if(user_name == null || password == null || firstName == null || lastName == null || userMail == null || date == null ||
+        user_name == "" || password == "" || firstName == "" || lastName == "" || userMail == "" || date == ""){
+        window.alert("Please fill all labels");
+    }
+    else if(hasNumber.test(firstName) ||hasNumber.test(lastName)){
+        window.alert("Name must be written only with letters!");
+    }
+    else if(!hasNumber.test(password) || password.length != 6 || !hasLetter.test(password)){
+        window.alert("Please choose 6 characters for password includes letters ans numbers!");
+    }
+    else if(!hasMail.test(userMail)){
+        window.alert("Please insert legal email address!");
+    }
+    // let nameForKey = document.getElementById("user_name").value;
+    if (localStorage.getItem(user_name) == null) {
         let data = {
-            userName: document.getElementById("user_name").value,
-            userPassword: document.getElementById("user_password").value,
-            firstName: document.getElementById("userFirstName").value,
-            lastName: document.getElementById("userLastName").value,
-            mail: document.getElementById("userMail").value,
-            birthDay: document.getElementById("birthday").value
+            userName: user_name,
+            userPassword: password,
+            firstName: firstName,
+            lastName: lastName,
+            mail: userMail,
+            birthDay: date
         };
         document.forms[0].reset();
         let str = JSON.stringify(data);
-        localStorage.setItem(nameForKey, str);
+        localStorage.setItem(user_name, str);
         $('#register').css('display', 'none');
         $("#loading_img").css("display","block");
         setTimeout(hide,2000);
-        playerName = nameForKey;
+        playerName = userMail;
     }
     else {
         alert("this user already exist");
@@ -650,32 +672,7 @@ function UpdatePosition() {
         Draw();
         window.clearInterval(interval);
         window.clearInterval(intervalMonster);
-        setTimeout(noteWithSleep, 1000);
-        pacman_dead = false;
-        removeLife(numOfLifes);
-        numOfLifes--;
-        num_of_monsters = parseInt($(document.getElementById("monsters")).val());
-        pacman_remain = 1;
-        cnt = 1000;
-        for (var i = 0; i < 10; i++) {
-            for (var j = 0; j < 10; j++) {
-                boardMonsters[i][j] = 0;
-                if(num_of_monsters > 0 && board[i][j] == 9){
-                    boardMonsters[i][j] = 9;
-                    num_of_monsters--;
-                }
-                else if ( Math.random() < (1.0 * (pacman_remain + food_remain)) / cnt) {
-                    shape.i = i;
-                    shape.j = j;
-                    if (pacman_remain > 0) {
-                        board[i][j] = 2;
-                    }
-                    pacman_remain--;
-                }
-            }
-        }
-        interval = setInterval(UpdatePosition, 150);
-        intervalMonster = setInterval(UpdateMonsterPosition, 1000);
+        setTimeout(continueGame, 1500);
     }
     if(numOfLifes == 0){
         alertNote("Loser!",1500);
@@ -744,10 +741,32 @@ function alertNote(note,timeToAlert) {
     }, timeToAlert);
 }
 
-function noteWithSleep() {
-    // alertNote("Your pacman dead :(",100)
+function continueGame() {
     pacman_dead = false;
-    // initNewGame();
+    removeLife(numOfLifes);
+    numOfLifes--;
+    num_of_monsters = parseInt($(document.getElementById("monsters")).val());
+    pacman_remain = 1;
+    cnt = 1000;
+    for (var i = 0; i < 10; i++) {
+        for (var j = 0; j < 10; j++) {
+            boardMonsters[i][j] = 0;
+            if(num_of_monsters > 0 && ((i == 0 && j == 0) || (i == 9 && j == 0) || (i == 9 && j == 9) || (i == 0 && j == 9))){
+                boardMonsters[i][j] = 9;
+                num_of_monsters--;
+            }
+            else if ( Math.random() < (1.0 * (pacman_remain + food_remain)) / cnt) {
+                shape.i = i;
+                shape.j = j;
+                if (pacman_remain > 0) {
+                    board[i][j] = 2;
+                }
+                pacman_remain--;
+            }
+        }
+    }
+    interval = setInterval(UpdatePosition, 150);
+    intervalMonster = setInterval(UpdateMonsterPosition, 1000);
 }
 
 
