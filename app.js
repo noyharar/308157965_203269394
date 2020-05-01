@@ -485,7 +485,7 @@ function Draw() {
     var burger = new Image();
     burger.src = "image/burger.png";
     var life = new Image();
-    life.src = "image/pixel-pacman.png";
+    life.src = "image/pacmanlife.png";
     for (var i = 0; i < 10; i++) {
         for (var j = 0; j < 10; j++) {
             var center = new Object();
