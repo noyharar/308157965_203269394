@@ -25,7 +25,7 @@ var boardMonsters;
 var intervalMonster;
 var numOfLifes = 5;
 var playerName;
-var img;
+var extra_life = 1;
 
 function submit_setting(){
     $("#setting").css("display", "none");
@@ -249,6 +249,7 @@ function initNewGame() {
         pacman_down = false;
         extra_food = 2;
         numOfLifes = 5;
+        extra_life = 1;
         life();
         window.clearInterval(interval);
         window.clearInterval(intervalMonster);
@@ -362,6 +363,11 @@ function Start() {
     //     boardMonsters[emptyCell[0]][emptyCell[1]] = 9;
     //     num_of_monsters--;
     // }
+    while(extra_life > 0){
+        var emptyCell = findRandomEmptyCell(board);
+        board[emptyCell[0]][emptyCell[1]] = 5;
+        extra_life--;
+    }
 
     while (extra_food > 0) {
         var emptyCell = findRandomEmptyCell(board);
@@ -477,7 +483,9 @@ function Draw() {
     var monster = new Image();
     monster.src = "image/monster.png";
     var burger = new Image();
-    burger.src = "image/burger.png"
+    burger.src = "image/burger.png";
+    var life = new Image();
+    life.src = "image/pixel-pacman.png";
     for (var i = 0; i < 10; i++) {
         for (var j = 0; j < 10; j++) {
             var center = new Object();
@@ -489,6 +497,8 @@ function Draw() {
                 context.drawImage(monster, center.x - 20, center.y - 20);
                 // } else if (board[i][j] == 9) {
                 //     context.drawImage(monster, center.x - 20, center.y - 20);
+            }else if (board[i][j] == 5){
+                context.drawImage(life, center.x - 20, center.y - 20);
             } else if (board[i][j] == 2 && pacman_left && pacman_dead == false) {
                 context.beginPath();
                 context.arc(center.x, center.y, 30, -0.85 * Math.PI, 0.85 * Math.PI); // half circle
@@ -673,6 +683,11 @@ function UpdatePosition() {
         window.clearInterval(interval);
         window.clearInterval(intervalMonster);
         setTimeout(continueGame, 1500);
+    }
+    if(board[shape.i][shape.j] == 5){
+        numOfLifes++;
+        life();
+        Draw();
     }
     if(numOfLifes == 0){
         alertNote("Loser!",1500);
