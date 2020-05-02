@@ -278,16 +278,16 @@ function Start() {
     scoreOfTotalBoard = (5*num_of_5_pt + 15*num_of_15_pt + 25*num_of_25_pt + 50*extra_food);
     start_time = new Date();
     boardMonsters = new Array();
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 15; i++) {
         boardMonsters[i] = new Array();
-        for(var j = 0; j < 10; j++){
+        for(var j = 0; j < 15; j++){
             boardMonsters[i][j] = 0;
         }
     }
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 15; i++) {
         board[i] = new Array();
         //put obstacles in (i=3,j=3) and (i=3,j=4) and (i=3,j=5), (i=6,j=1) and (i=6,j=2)
-        for (var j = 0; j < 10; j++) {
+        for (var j = 0; j < 15; j++) {
             if (
                 (i == 3 && j == 3) ||
                 (i == 3 && j == 4) ||
@@ -418,11 +418,11 @@ function Start() {
 }
 
 function findRandomEmptyCell(board) {
-    var i = Math.floor(Math.random() * 9 + 1);
-    var j = Math.floor(Math.random() * 9 + 1);
+    var i = Math.floor(Math.random() * 14 + 1);
+    var j = Math.floor(Math.random() * 14 + 1);
     while (board[i][j] != 0) {
-        i = Math.floor(Math.random() * 9 + 1);
-        j = Math.floor(Math.random() * 9 + 1);
+        i = Math.floor(Math.random() * 14 + 1);
+        j = Math.floor(Math.random() * 14 + 1);
     }
     return [i, j];
 }
@@ -476,6 +476,106 @@ function randomSetting() {
     // settings_display();
 }
 
+// function Draw() {
+//
+//     context.clearRect(0, 0, canvas.width, canvas.height);
+//     context = canvas.getContext("2d");
+//     canvas.width = canvas.width; //clean board
+//     lblScore.value = score;
+//     lblTime.value = time_elapsed;
+//     var monster = new Image();
+//     monster.src = "image/monster.png";
+//     var burger = new Image();
+//     burger.src = "image/burger.png";
+//     var life = new Image();
+//     life.src = "image/pacmanlife.png";
+//     for (var i = 0; i < 15; i++) {
+//         for (var j = 0; j < 10; j++) {
+//             var center = new Object();
+//             center.x = i * 40 + 20;
+//             center.y = j * 40 + 20;
+//             if (board[i][j] == 8) {
+//                 context.drawImage(burger, center.x - 15, center.y - 15);
+//             }else if (boardMonsters[i][j] == 9){
+//                 context.drawImage(monster, center.x - 10, center.y - 10);
+//                 // } else if (board[i][j] == 9) {
+//                 //     context.drawImage(monster, center.x - 20, center.y - 20);
+//             }else if (board[i][j] == 5){
+//                 context.drawImage(life, center.x - 10, center.y - 10);
+//             } else if (board[i][j] == 2 && pacman_left && pacman_dead == false) {
+//                 context.beginPath();
+//                 context.arc(center.x, center.y, 20, -0.85 * Math.PI, 0.85 * Math.PI); // half circle
+//                 context.lineTo(center.x, center.y);
+//                 context.fillStyle = pac_color; //color
+//                 context.fill();
+//                 context.beginPath();
+//                 context.arc(center.x + 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
+//                 context.fillStyle = "black"; //color
+//                 context.fill();
+//             } else if (board[i][j] == 2 && pacman_up && pacman_dead == false) {
+//                 context.beginPath();
+//                 context.arc(center.x, center.y, 20, 1.7 * Math.PI, 1.35 * Math.PI); // half circle
+//                 context.lineTo(center.x, center.y);
+//                 context.fillStyle = pac_color; //color
+//                 context.fill();
+//                 context.beginPath();
+//                 context.arc(center.x + 15, center.y + 5, 5, 0, 2 * Math.PI); // circle
+//                 context.fillStyle = "black"; //color
+//                 context.fill();
+//             } else if (board[i][j] == 2 && pacman_right && pacman_dead == false) {
+//                 context.beginPath();
+//                 context.arc(center.x, center.y, 20, 0.15 * Math.PI, 1.85 * Math.PI); // half circle
+//                 context.lineTo(center.x, center.y);
+//                 context.fillStyle = pac_color; //color
+//                 context.fill();
+//                 context.beginPath();
+//                 context.arc(center.x + 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
+//                 context.fillStyle = "black"; //color
+//                 context.fill();
+//             } else if (board[i][j] == 2 && pacman_down && pacman_dead == false) {
+//                 context.beginPath();
+//                 context.arc(center.x, center.y, 20, 0.75 * Math.PI, 0.35 * Math.PI); // half circle
+//                 context.lineTo(center.x, center.y);
+//                 context.fillStyle = pac_color; //color
+//                 context.fill();
+//                 context.beginPath();
+//                 context.arc(center.x + 15   , center.y - 10, 5, 0, 2 * Math.PI); // circle
+//                 context.fillStyle = "black"; //color
+//                 context.fill();
+//             } else if (board[i][j] == 1) {
+//                 context.beginPath();
+//                 context.arc(center.x, center.y, 10, 0, 2 * Math.PI); // circle
+//                 context.fillStyle = favcolor5.value; //color
+//                 context.fill();
+//                 context.fillStyle = "white"; //color
+//                 context.font = "bold 10px Arial";
+//                 context.fillText("5", center.x - 5, center.y);
+//             } else if (board[i][j] == 6) {
+//                 context.beginPath();
+//                 context.arc(center.x, center.y, 10, 0, 2 * Math.PI); // circle
+//                 context.fillStyle = favcolor15.value; //color
+//                 context.fill();
+//                 context.fillStyle = "white"; //color
+//                 context.font = "bold 10px Arial";
+//                 context.fillText("15", center.x - 5, center.y);
+//             } else if (board[i][j] == 7) {
+//                 context.beginPath();
+//                 context.arc(center.x, center.y, 10, 0, 2 * Math.PI); // circle
+//                 context.fillStyle = favcolor25.value; //color
+//                 context.fill();
+//                 context.fillStyle = "black"; //color
+//                 context.font = "bold 10px Arial";
+//                 context.fillText("25", center.x - 5, center.y);
+//             } else if (board[i][j] == 4) {
+//                 context.beginPath();
+//                 context.rect(center.x - 20, center.y - 20, 40, 40);
+//                 context.fillStyle = "grey"; //color
+//                 context.fill();
+//             }
+//         }
+//     }
+// }
+
 function Draw() {
 
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -484,24 +584,24 @@ function Draw() {
     lblScore.value = score;
     lblTime.value = time_elapsed;
     var monster = new Image();
-    monster.src = "image/monster.png";
+    monster.src = "image/monster40.png";
     var burger = new Image();
-    burger.src = "image/burger.png";
+    burger.src = "image/burger30.png";
     var life = new Image();
-    life.src = "image/pacmanlife.png";
-    for (var i = 0; i < 10; i++) {
-        for (var j = 0; j < 10; j++) {
+    life.src = "image/life.png";
+    for (var i = 0; i < 15; i++) {
+        for (var j = 0; j < 15; j++) {
             var center = new Object();
-            center.x = i * 40 + 20;
-            center.y = j * 40 + 20;
+            center.x = i * 35 + 28;
+            center.y = j * 35 + 28;
             if (board[i][j] == 8) {
-                context.drawImage(burger, center.x - 15, center.y - 15);
+                context.drawImage(burger, center.x - 15, center.y - 20);
             }else if (boardMonsters[i][j] == 9){
-                context.drawImage(monster, center.x - 10, center.y - 10);
+                context.drawImage(monster, center.x - 20, center.y - 20);
                 // } else if (board[i][j] == 9) {
                 //     context.drawImage(monster, center.x - 20, center.y - 20);
             }else if (board[i][j] == 5){
-                context.drawImage(life, center.x - 10, center.y - 10);
+                context.drawImage(life, center.x - 20, center.y - 20);
             } else if (board[i][j] == 2 && pacman_left && pacman_dead == false) {
                 context.beginPath();
                 context.arc(center.x, center.y, 20, -0.85 * Math.PI, 0.85 * Math.PI); // half circle
@@ -509,7 +609,7 @@ function Draw() {
                 context.fillStyle = pac_color; //color
                 context.fill();
                 context.beginPath();
-                context.arc(center.x + 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
+                context.arc(center.x + 5, center.y - 10, 5, 0, 2 * Math.PI); // circle
                 context.fillStyle = "black"; //color
                 context.fill();
             } else if (board[i][j] == 2 && pacman_up && pacman_dead == false) {
@@ -519,7 +619,7 @@ function Draw() {
                 context.fillStyle = pac_color; //color
                 context.fill();
                 context.beginPath();
-                context.arc(center.x + 15, center.y + 5, 5, 0, 2 * Math.PI); // circle
+                context.arc(center.x + 10, center.y + 5, 5, 0, 2 * Math.PI); // circle
                 context.fillStyle = "black"; //color
                 context.fill();
             } else if (board[i][j] == 2 && pacman_right && pacman_dead == false) {
@@ -529,7 +629,7 @@ function Draw() {
                 context.fillStyle = pac_color; //color
                 context.fill();
                 context.beginPath();
-                context.arc(center.x + 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
+                context.arc(center.x + 5, center.y - 10, 5, 0, 2 * Math.PI); // circle
                 context.fillStyle = "black"; //color
                 context.fill();
             } else if (board[i][j] == 2 && pacman_down && pacman_dead == false) {
@@ -539,25 +639,27 @@ function Draw() {
                 context.fillStyle = pac_color; //color
                 context.fill();
                 context.beginPath();
-                context.arc(center.x + 15   , center.y - 10, 5, 0, 2 * Math.PI); // circle
+                context.arc(center.x + 8   , center.y - 8, 5, 0, 2 * Math.PI); // circle
                 context.fillStyle = "black"; //color
                 context.fill();
+                /*5 point ball*/
             } else if (board[i][j] == 1) {
                 context.beginPath();
-                context.arc(center.x, center.y, 10, 0, 2 * Math.PI); // circle
+                context.arc(center.x, center.y, 8, 0, 2 * Math.PI); // circle
                 context.fillStyle = favcolor5.value; //color
                 context.fill();
                 context.fillStyle = "white"; //color
                 context.font = "bold 10px Arial";
-                context.fillText("5", center.x - 5, center.y);
+                context.fillText("5", center.x - 4, center.y + 4);
+                /*15 point ball*/
             } else if (board[i][j] == 6) {
                 context.beginPath();
-                context.arc(center.x, center.y, 10, 0, 2 * Math.PI); // circle
+                context.arc(center.x, center.y, 9, 0, 2 * Math.PI); // circle
                 context.fillStyle = favcolor15.value; //color
                 context.fill();
                 context.fillStyle = "white"; //color
                 context.font = "bold 10px Arial";
-                context.fillText("15", center.x - 5, center.y);
+                context.fillText("15", center.x - 4, center.y + 4);
             } else if (board[i][j] == 7) {
                 context.beginPath();
                 context.arc(center.x, center.y, 10, 0, 2 * Math.PI); // circle
@@ -565,10 +667,10 @@ function Draw() {
                 context.fill();
                 context.fillStyle = "black"; //color
                 context.font = "bold 10px Arial";
-                context.fillText("25", center.x - 5, center.y);
+                context.fillText("25", center.x - 4, center.y + 4);
             } else if (board[i][j] == 4) {
                 context.beginPath();
-                context.rect(center.x - 20, center.y - 20, 40, 40);
+                context.rect(center.x - 18, center.y - 20, 25, 40);
                 context.fillStyle = "grey"; //color
                 context.fill();
             }
@@ -576,11 +678,12 @@ function Draw() {
     }
 }
 
+
 function UpdateMonsterPosition() {
     let currMonsterPositions = new Array();
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 15; i++) {
         currMonsterPositions[i] = new Array();
-        for (var j = 0; j < 10; j++) {
+        for (var j = 0; j < 15; j++) {
             currMonsterPositions[i][j] = 0;
             if(boardMonsters[i][j] == 9){
                 currMonsterPositions[i][j] = 9;
@@ -588,8 +691,8 @@ function UpdateMonsterPosition() {
         }
     }
 
-    for (var i = 0; i < 10; i++) {
-        for (var j = 0; j < 10; j++) {
+    for (var i = 0; i < 15; i++) {
+        for (var j = 0; j < 15; j++) {
             if(currMonsterPositions[i][j] == 9){
                 //monster get down
                 if(Math.abs(((i+1) - shape.i) < Math.abs((i-1) - shape.i)) && board[i+1][j] != 4 && boardMonsters[i+1][j] != 9){
@@ -655,7 +758,7 @@ function UpdatePosition() {
         pacman_left = false;
         pacman_up = false;
         pacman_right = false;
-        if (shape.j < 9 && board[shape.i][shape.j + 1] != 4) {
+        if (shape.j < 14 && board[shape.i][shape.j + 1] != 4) {
             shape.j++;
         }
     }
@@ -673,7 +776,7 @@ function UpdatePosition() {
         pacman_left = false;
         pacman_up = false;
         pacman_down = false;
-        if (shape.i < 9 && board[shape.i + 1][shape.j] != 4) {
+        if (shape.i < 14 && board[shape.i + 1][shape.j] != 4) {
             shape.i++;
         }
     }
@@ -766,8 +869,8 @@ function continueGame() {
     num_of_monsters = parseInt($(document.getElementById("monsters")).val());
     pacman_remain = 1;
     cnt = 1000;
-    for (var i = 0; i < 10; i++) {
-        for (var j = 0; j < 10; j++) {
+    for (var i = 0; i < 15; i++) {
+        for (var j = 0; j < 15; j++) {
             boardMonsters[i][j] = 0;
             if(num_of_monsters > 0 && ((i == 0 && j == 0) || (i == 9 && j == 0) || (i == 9 && j == 9) || (i == 0 && j == 9))){
                 boardMonsters[i][j] = 9;
@@ -811,12 +914,7 @@ function removeLife(i) {
     if(i > 0) {
         var img_name = "#img" + i;
         $(img_name).css("display", "none");
-        // $(img_name).attr('src', ''); // Clear the src
-        // $(img_name).removeAttr('src')
     }
-    // else{
-    //     window.alert("Game Over")
-    // }
 }
 function settings_display() {
     document.getElementById('pl_name').innerHTML = playerName;
