@@ -399,6 +399,9 @@ function Start() {
         "keydown",
         function (e) {
             keysDown[e.keyCode] = true;
+            if([32,37,38,39,40].indexOf(e.keyCode) > -1){
+                e.preventDefault();
+            }
         },
         false
     );
@@ -489,19 +492,19 @@ function Draw() {
     for (var i = 0; i < 10; i++) {
         for (var j = 0; j < 10; j++) {
             var center = new Object();
-            center.x = i * 60 + 30;
-            center.y = j * 60 + 30;
+            center.x = i * 40 + 20;
+            center.y = j * 40 + 20;
             if (board[i][j] == 8) {
-                context.drawImage(burger, center.x - 25, center.y - 25);
+                context.drawImage(burger, center.x - 15, center.y - 15);
             }else if (boardMonsters[i][j] == 9){
-                context.drawImage(monster, center.x - 20, center.y - 20);
+                context.drawImage(monster, center.x - 10, center.y - 10);
                 // } else if (board[i][j] == 9) {
                 //     context.drawImage(monster, center.x - 20, center.y - 20);
             }else if (board[i][j] == 5){
-                context.drawImage(life, center.x - 20, center.y - 20);
+                context.drawImage(life, center.x - 10, center.y - 10);
             } else if (board[i][j] == 2 && pacman_left && pacman_dead == false) {
                 context.beginPath();
-                context.arc(center.x, center.y, 30, -0.85 * Math.PI, 0.85 * Math.PI); // half circle
+                context.arc(center.x, center.y, 20, -0.85 * Math.PI, 0.85 * Math.PI); // half circle
                 context.lineTo(center.x, center.y);
                 context.fillStyle = pac_color; //color
                 context.fill();
@@ -511,7 +514,7 @@ function Draw() {
                 context.fill();
             } else if (board[i][j] == 2 && pacman_up && pacman_dead == false) {
                 context.beginPath();
-                context.arc(center.x, center.y, 30, 1.7 * Math.PI, 1.35 * Math.PI); // half circle
+                context.arc(center.x, center.y, 20, 1.7 * Math.PI, 1.35 * Math.PI); // half circle
                 context.lineTo(center.x, center.y);
                 context.fillStyle = pac_color; //color
                 context.fill();
@@ -521,7 +524,7 @@ function Draw() {
                 context.fill();
             } else if (board[i][j] == 2 && pacman_right && pacman_dead == false) {
                 context.beginPath();
-                context.arc(center.x, center.y, 30, 0.15 * Math.PI, 1.85 * Math.PI); // half circle
+                context.arc(center.x, center.y, 20, 0.15 * Math.PI, 1.85 * Math.PI); // half circle
                 context.lineTo(center.x, center.y);
                 context.fillStyle = pac_color; //color
                 context.fill();
@@ -531,7 +534,7 @@ function Draw() {
                 context.fill();
             } else if (board[i][j] == 2 && pacman_down && pacman_dead == false) {
                 context.beginPath();
-                context.arc(center.x, center.y, 30, 0.75 * Math.PI, 0.35 * Math.PI); // half circle
+                context.arc(center.x, center.y, 20, 0.75 * Math.PI, 0.35 * Math.PI); // half circle
                 context.lineTo(center.x, center.y);
                 context.fillStyle = pac_color; //color
                 context.fill();
@@ -541,7 +544,7 @@ function Draw() {
                 context.fill();
             } else if (board[i][j] == 1) {
                 context.beginPath();
-                context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+                context.arc(center.x, center.y, 10, 0, 2 * Math.PI); // circle
                 context.fillStyle = favcolor5.value; //color
                 context.fill();
                 context.fillStyle = "white"; //color
@@ -549,7 +552,7 @@ function Draw() {
                 context.fillText("5", center.x - 5, center.y);
             } else if (board[i][j] == 6) {
                 context.beginPath();
-                context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+                context.arc(center.x, center.y, 10, 0, 2 * Math.PI); // circle
                 context.fillStyle = favcolor15.value; //color
                 context.fill();
                 context.fillStyle = "white"; //color
@@ -557,7 +560,7 @@ function Draw() {
                 context.fillText("15", center.x - 5, center.y);
             } else if (board[i][j] == 7) {
                 context.beginPath();
-                context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
+                context.arc(center.x, center.y, 10, 0, 2 * Math.PI); // circle
                 context.fillStyle = favcolor25.value; //color
                 context.fill();
                 context.fillStyle = "black"; //color
@@ -565,7 +568,7 @@ function Draw() {
                 context.fillText("25", center.x - 5, center.y);
             } else if (board[i][j] == 4) {
                 context.beginPath();
-                context.rect(center.x - 30, center.y - 30, 60, 60);
+                context.rect(center.x - 20, center.y - 20, 40, 40);
                 context.fillStyle = "grey"; //color
                 context.fill();
             }

@@ -105,7 +105,7 @@
   left: 35%;
 }
 .sectionHeader{
-  position: fixed;
+  /*position: fixed;*/
   top: -20%;
 }
 @font-face {
@@ -141,13 +141,14 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
 }
+/** {box-sizing: border-box}*/
 
-.gameClass{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
+/*.gameClass{*/
+/*  display: block;*/
+/*  margin-left: auto;*/
+/*  margin-right: auto;*/
+/*  width: 50%;*/
+/*}*/
 /*section#Login_Register_buttons{*/
 /*    margin-left: auto;*/
 /*    margin-right: auto;*/
@@ -260,7 +261,7 @@ body{
 
 .logoClass{
   align-items: center;
-  position: fixed;
+  position: absolute;
   min-height: 30px;
   left: 0;
   top: 0;
@@ -284,39 +285,6 @@ body{
   /* was problem with padding-top: 10; so i added px -> maybe need %*/
   padding-top: 10px;
   text-align: center
-}
-
-theGame{
-  position: absolute;
-  background-color: cornsilk;
-  box-sizing: border-box;
-  /*   background-image: url("image/packman1(2).jpg");
-   */
-}
-/*.gameSetting{*/
-/*  display: inline-flex;*/
-/*  flex-direction: row;*/
-/*  justify-content: center;*/
-/*  align-items: center;*/
-/*  color: white;*/
-/*}*/
-.arrows_setting{
-  order: 5;
-  float: right;
-  display: inline-flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  color: white;
-}
-.other_settings{
-  order: 6;
-  float: right;
-  display: inline-flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  color: white;
 }
 .arrow {
   border: solid black;
@@ -353,32 +321,6 @@ h1{
   text-align: left;
   font-size: 90%;
   font-family: Pixeled;
-  color: #3c3cef;
-}
-.game_info{
-  display: flex;
-  flex-direction: column;
-  /*flex: border-box;*/
-  border-color: #3c3cef;
-}
-.player_name{
-  order: 1;
-}
-.score{
-  color: white;
-  order: 2;
-}
-.time{
-  color: white;
-  order: 3;
-}
-.lives{
-  color: white;
-  order: 4;
-}
-.newGame_btn{
-  order: 7;
-}
-.game{
-  order: 8;
+  /*color: #3c3cef;*/
+  color: rgb(202, 221, 36);
 }
