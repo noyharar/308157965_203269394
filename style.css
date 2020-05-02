@@ -1,4 +1,3 @@
-
 .navbar {
   position: relative;
   min-height: 30px;
@@ -67,20 +66,20 @@
 
 
 .btnR {
-    position: fixed;
-    margin-top: 250px;
-    margin-left: 20%;
-    margin-right: auto;
-    /* margin-left: 200px;
-    margin-right: 100px; */
-    background-color: black;
-    color: whitesmoke;
-    font-size: 16px;
-    padding: 12px 24px;
-    border-color: #3c3cef;
-    cursor: pointer;
-    border-radius: 12px;
-    text-align: center;
+  position: fixed;
+  margin-top: 250px;
+  margin-left: 20%;
+  margin-right: auto;
+  /* margin-left: 200px;
+  margin-right: 100px; */
+  background-color: black;
+  color: whitesmoke;
+  font-size: 16px;
+  padding: 12px 24px;
+  border-color: #3c3cef;
+  cursor: pointer;
+  border-radius: 12px;
+  text-align: center;
 }
 
 .btnL {
@@ -117,24 +116,24 @@
 }
 
 @font-face {
-    font-family: 'Pixeled';
-    font-weight: 400;
-    font-style: normal;
-    src: url('Pixeled.ttf');
+  font-family: 'Pixeled';
+  font-weight: 400;
+  font-style: normal;
+  src: url('Pixeled.ttf');
 }
 
-.registerSubmit {
-    position: inherit;
-    margin-left: 100px;
-    margin-right: 150px;
-    border-color: #3c3cef;
-    background-color: black;
-    color: whitesmoke;
-    font-size: 16px;
-    padding: 12px 24px;
-    cursor: pointer;
-    border-radius: 11px;
-    text-align: center;
+.registerSubmit{
+  position: inherit;
+  margin-left: 100px;
+  margin-right: 150px;
+  border-color: #3c3cef;
+  background-color: black;
+  color: whitesmoke;
+  font-size: 16px;
+  padding: 12px 24px;
+  cursor: pointer;
+  border-radius: 11px;
+  text-align: center;
 }
 
 body{
@@ -143,11 +142,11 @@ body{
   background-size: cover;
 }
 
-.gameClass {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
+.gameClass{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 /*section#Login_Register_buttons{*/
 /*    margin-left: auto;*/
@@ -155,9 +154,9 @@ body{
 /*    background-image: url(image/welcom.jpg);*/
 /*} */
 .center {
-    display: block;
-    margin-left: 90px;
-    width: 30%;
+  display: block;
+  margin-left: 90px;
+  width: 30%;
 }
 
 .settingClass{
@@ -182,143 +181,118 @@ body{
 }
 /* Modal Content */
 .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 50%;
-    height: 50%;
-    background-image: url("image/packman1 (5).jpg");
-    background-repeat: no-repeat;
-    color: blue;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  height: 50%;
+  background-image: url("image/packman1 (5).jpg");
+  background-repeat: no-repeat;
+  color: blue;
 }
 
 /* The Close Button */
 .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.logo {
-    position: fixed;
-    display: block;
-    width: 27%;
-    margin-left: auto;
-    align-self: center;
+.logo{
+  position: fixed;
+  display: block;
+  width:27%;
+  margin-left: auto;
+  align-self: center;
 }
 
 .header {
-    /*was padding: auto; but was error so i changed it to initial*/
-    padding: initial;
-    text-align: center;
-    padding-top: 100px;
+  /*was padding: auto; but was error so i changed it to initial*/
+  padding: initial;
+  text-align: center;
+  padding-top: 100px;
 }
 
-.loginClass {
-    display: block;
-    margin-left: 40%;
-    margin-top: 10%;
-    width: 50%;
+.loginClass{
+  display: block;
+  margin-left: 40%;
+  margin-top: 10%;
+  width: 50%;
 }
 
 
-.loginSubmit {
-    position: relative;
-    /* margin-left: 30px; */
-    background-color: black;
-    color: whitesmoke;
-    font-size: 16px;
-    padding: 12px 24px;
-    border-color: #3c3cef;
-    cursor: pointer;
-    border-radius: 12px;
-    text-align: center;
-    font-family: 'Pixeled';
-}
-
-.footerClass {
-    position: fixed;
-    min-height: 30px;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: black;
-    color: #3c3cef;
-    min-height: auto;
-    font-size: 11px;
-    font-weight: bolder;
-    font-family: 'Alef', serif;
-}
-
-.logoClass {
-    align-items: center;
-    position: fixed;
-    min-height: 30px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    background-color: black;
-    color: white;
-    margin-left: auto;
-    margin-right: -550px;
-    /* was problem with padding-top: 10; so i added px -> maybe need %*/
-    padding-top: 10px;
-    text-align: center;
-    font-family: 'Alef', serif;
-    font-size: 12px;
-
-}
-
-.ourInfo {
-    position: fixed;
-    display: block;
-    margin-left: auto;
-    margin-right: -550px;
-    /* was problem with padding-top: 10; so i added px -> maybe need %*/
-    padding-top: 10px;
-    text-align: center
-}
-
-.theGame {
-    position: absolute;
-    /*background-color: cornsilk;*/
-    box-sizing: border-box;
-    /*border:1px dashed #3c3cef;*/
-    border-radius:10%;
-    display:flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    /*   background-image: url("image/packman1(2).jpg");
-     */
-}
-.game_info {
-  float: left;
-  width:border-box;
-  /*display: flex;*/
-  /*flex-direction: column;*/
-  /*flex: border-box;*/
+.loginSubmit{
   position: relative;
+  /* margin-left: 30px; */
+  background-color: black;
+  color: whitesmoke;
+  font-size: 16px;
+  padding: 12px 24px;
   border-color: #3c3cef;
-  border-style: double;
-  z-index: 0;
+  cursor: pointer;
+  border-radius: 12px;
+  text-align: center;
+  font-family: 'Pixeled';
 }
-.btn_new{
-  float: right;
-}
-/*.game{*/
-/*  border-color: #3c3cef;*/
-/*  */
-/*}*/
 
+.footerClass{
+  position: fixed;
+  min-height: 30px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color:   black;
+  color: #3c3cef;
+  min-height: auto;
+  font-size: 11px;
+  font-weight: bolder;
+  font-family: 'Alef', serif;
+}
+
+.logoClass{
+  align-items: center;
+  position: fixed;
+  min-height: 30px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color:  black;
+  color: white;
+  margin-left: auto;
+  margin-right: -550px;
+  /* was problem with padding-top: 10; so i added px -> maybe need %*/
+  padding-top: 10px;
+  text-align: center;
+  font-family: 'Alef', serif;
+  font-size: 12px;
+
+}
+.ourInfo{
+  position: fixed;
+  display: block;
+  margin-left: auto;
+  margin-right: -550px;
+  /* was problem with padding-top: 10; so i added px -> maybe need %*/
+  padding-top: 10px;
+  text-align: center
+}
+
+theGame{
+  position: absolute;
+  background-color: cornsilk;
+  box-sizing: border-box;
+  /*   background-image: url("image/packman1(2).jpg");
+   */
+}
 /*.gameSetting{*/
 /*  display: inline-flex;*/
 /*  flex-direction: row;*/
@@ -326,24 +300,23 @@ body{
 /*  align-items: center;*/
 /*  color: white;*/
 /*}*/
-.arrows_setting {
-    order: 5;
-    float: left;
-    display: inline-flex;
-    flex-direction: row;
-    justify-content: left;
-    align-items: baseline;
-    color: white;
+.arrows_setting{
+  order: 5;
+  float: right;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
-
-.other_settings {
-    order: 6;
-    float: left;
-    display: inline-flex;
-    flex-direction: row;
-    justify-content: left;
-    align-items: baseline;
-    color: white;
+.other_settings{
+  order: 6;
+  float: right;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
 .arrow {
   border: solid black;
@@ -382,12 +355,12 @@ h1{
   font-family: Pixeled;
   color: #3c3cef;
 }
-/*.game_info{*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*  !*flex: border-box;*!*/
-/*  border-color: #3c3cef;*/
-/*}*/
+.game_info{
+  display: flex;
+  flex-direction: column;
+  /*flex: border-box;*/
+  border-color: #3c3cef;
+}
 .player_name{
   order: 1;
 }

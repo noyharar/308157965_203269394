@@ -17,7 +17,6 @@
     <div class="logoClass">
         <header id="header" style="color: azure;">
             <img src="image/logo.jpg" alt="logo_pic" style="width:15%">
-            <br>
             <label> Noy Harari- 308157965 | Noa Gorengot - 203269394</label>
         </header>
     </div>
@@ -62,13 +61,13 @@
         <div id="userName">
             <input type="text" name="name" id="name" size="23" placeholder="User name" required>
         </div>
-        <br/>
+        <br />
         <div id="serPassword">
             <input type="password" id="userPassword" size="23" placeholder="Password" required>
         </div>
         <div class="enterBtn">
             <br>
-            <input type="button" class="loginSubmit" value="ENTER GAME" onclick="load_user()"/>
+            <input type="button" class="loginSubmit" value="Enter Game" onclick="load_user()"/>
         </div>
 
     </div>
@@ -111,7 +110,7 @@
 <br>
 </body>
 
-<form id="setting" onsubmit="startForNow(event)" name="setting" class="settingClass" style="display:none">
+<form id="setting"  onsubmit="startForNow(event)"  name="setting" class="settingClass" style="display:none">
     <div class="settingClass">
         <h2>Setting</h2>
         <label for="upId">Enter your UP button:</label>
@@ -146,70 +145,57 @@
         <input id="monsters" type="number" min="1" max="4">
         <br>
         <br>
-        <button id="settingSubmit" onclick="submit_setting()" class="registerSubmit" type="submit" style="float: left">
-            Submit
-        </button>
+        <button id="settingSubmit"  onclick="submit_setting()" class="registerSubmit" type="submit" style="float: left"> Submit  </button>
     </div>
 </form>
 <button id="random_btn" onclick="randomSetting()" class="registerSubmit" type="submit" style="display: none">Random</button>
 
 <div id="score_time_life" class="theGame" hidden>
-    <div class="game_info" hidden>
-        <table>
-            <tr>
-                <td>
-                    <div id="player_name">
-                        <h1>Player Name: <p id="pl_name" style="display: inline-flex"></p></h1>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <div id="score">
-                    <label for="lblScore">SCORE:</label>
-                    <input id="lblScore" type="text"/>
-                </div>
-            </tr>
-            <tr>
-                <div id="time">
-                    <label for="lbl_Time">TIME:&nbsp;&nbsp;&nbsp;</label>
-                    <input id="lblTime" type="text"/>
-                </div>
-            </tr>
-            <tr>
-                <div id="lives">
-                    <label for="lbl_Lives">Live:&nbsp;&nbsp;&nbsp;</label>
-                </div>
-            </tr>
-            <tr>
-                <div class="arrows_setting">
-                    <label id="btn_up">UP:</label>&nbsp;
-                    <p id="up"><i class="arrow up"></i></p>&nbsp;
-                    &nbsp;<label id="btn_down">DOWN:</label>&nbsp;
-                    <p id="down"><i class="arrow down"></i></p>&nbsp;
-                    &nbsp;<label id="btn_right">RIGHT:</label>&nbsp;
-                    <p id="right"><i class="arrow right"></i></p>&nbsp;
-                    &nbsp;<label id="btn_left">LEFT:</label>&nbsp;
-                    <p id="left"><i class="arrow left"></i></p>&nbsp;
-                </div>
-            </tr>
-            <tr>
-                <div class="other_settings">
-                    <label id="ball_num">NUMBER OF BALLS:</label>&nbsp;<p id="balls"></p>&nbsp;
-                    &nbsp;<label id="game_time">TIME:</label>&nbsp;<p id="timePlay"></p>&nbsp;
-                    &nbsp;<label id="num_monsters">NUMBER OF MONSTERS:</label>&nbsp;<p id="mons"></p>
-                </div>
-            </tr>
-        </table>
+    <div id="player_name">
+        <h1>Player Name: <p id="pl_name" style="display: inline-flex"></p></h1>
+
     </div>
-    <div class="btn_new">
-        <button id="newGame_btn" onclick="initNewGame()" class="registerSubmit" type="reset" style="display: none;">New
-            Game
-        </button>
+    <div id="score">
+        <label for="lblScore">SCORE:</label>
+        <input id="lblScore" type="text" />
+    </div>
+    <div id="time">
+        <label for="lblTime">TIME:&nbsp;&nbsp;&nbsp;</label>
+        <input id="lblTime" type="text" />
+    </div>
+    <div id="lives">
+        <!--        <label for="lbl_lLives">Live:&nbsp;&nbsp;&nbsp;</label>-->
+        <label>Live:&nbsp;&nbsp;&nbsp;</label>
+        <img id="img1" src ='image/pixel-pacman.png' style="display: block; float: left">
+        <img id="img2" src ='image/pixel-pacman.png' style="display: block; float: left">
+        <img id="img3" src ='image/pixel-pacman.png' style="display: block; float: left">
+        <img id="img4" src ='image/pixel-pacman.png' style="display: block; float: left">
+        <img id="img5" src ='image/pixel-pacman.png' style="display: block; float: left">
+        <img id="img6" src ='image/pixel-pacman.png' style="display: none; float: left">
+    </div>
+    <div class="gameSetting">
+        <div class="arrows_setting">
+            <label id="btn_up">UP:</label>&nbsp;
+            <p id="up"><i class="arrow up"></i></p>&nbsp;
+            &nbsp;<label id="btn_down">DOWN:</label>&nbsp;
+            <p id="down"><i class="arrow down"></i></p>&nbsp;
+            &nbsp;<label id="btn_right">RIGHT:</label>&nbsp;
+            <p id="right"><i class="arrow right"></i></p>&nbsp;
+            &nbsp;<label id="btn_left">LEFT:</label>&nbsp;
+            <p id="left"><i class="arrow left"></i></p>&nbsp;
+        </div>
+        <br/>
+        <div class="other_settings">
+            <label id="ball_num">NUMBER OF BALLS:</label>&nbsp;<p id="balls"></p>&nbsp;
+            &nbsp;<label id="game_time">TIME:</label>&nbsp;<p id="timePlay"></p>&nbsp;
+            &nbsp;<label id="num_monsters">NUMBER OF MONSTERS:</label>&nbsp;<p id="mons"></p>
+        </div>
+
     </div>
 
-    <div id="game">
-        <canvas id="canvas" class="gameClass" height="520" width="720"></canvas>
-
+    <button id="newGame_btn" onclick="initNewGame()" class="registerSubmit" type="reset" style="display: none;">New Game</button>
+    <div id="game" style="float : left">
+        <canvas id="canvas" class="gameClass" height="600" width="600"></canvas>
     </div>
 
 </div>
@@ -245,7 +231,6 @@
             $(document.getElementById("about")).hide();
             $(document.getElementById("login")).hide();
             $("#register").show(300);
-
         });
     });
 </script> -->
@@ -257,7 +242,6 @@
             $(document.getElementById("register")).hide();
             $(document.getElementById("login")).hide();
             $("#about").show(300);
-
         });
     });
 </script> -->
@@ -269,7 +253,6 @@
             $(document.getElementById("register")).hide();
             $(document.getElementById("login")).hide();
             $('#welcome').css("display", "block");
-
         });
     });
 </script> -->
@@ -281,7 +264,6 @@
             $(document.getElementById("about")).hide();
             $(document.getElementById("register")).hide();
             $(document.getElementById("login")).show(300);
-
         });
     });
 </script> -->
@@ -308,4 +290,3 @@
 	</div>
 	</div>
 	</body>
-
