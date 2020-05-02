@@ -670,8 +670,8 @@ function Draw() {
                 context.fillText("25", center.x - 4, center.y + 4);
             } else if (board[i][j] == 4) {
                 context.beginPath();
-                context.rect(center.x - 18, center.y - 20, 25, 40);
-                context.fillStyle = "grey"; //color
+                context.rect(center.x - 18, center.y - 20, 5, 40);
+                context.fillStyle = "#3c3cef"; //color
                 context.fill();
             }
         }
