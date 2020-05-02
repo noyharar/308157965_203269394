@@ -25,6 +25,7 @@
     background-image: linear-gradient(to left,#3c3cef, aquamarine);
 }
 #canvas{
+    position: sticky;
     height:auto;
     width: auto;
 }
