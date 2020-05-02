@@ -9,6 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>//noa
     <script type="text/javascript" src="app.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="gameStyle.css" />
     <link rel="icon" href="image/tit.jpg" />//noa
 </head>
 <br>
@@ -67,7 +68,7 @@
         </div>
         <div class="enterBtn">
             <br>
-            <input type="button" class="loginSubmit" value="Enter Game" onclick="load_user()"/>
+            <input type="button" class="loginSubmit" value="ENTER GAME" onclick="load_user()"/>
         </div>
 
     </div>
@@ -150,54 +151,88 @@
 </form>
 <button id="random_btn" onclick="randomSetting()" class="registerSubmit" type="submit" style="display: none">Random</button>
 
-<div id="score_time_life" class="theGame" hidden>
-    <div id="player_name">
-        <h1>Player Name: <p id="pl_name" style="display: inline-flex"></p></h1>
-
-    </div>
-    <div id="score">
-        <label for="lblScore">SCORE:</label>
-        <input id="lblScore" type="text" />
-    </div>
-    <div id="time">
-        <label for="lblTime">TIME:&nbsp;&nbsp;&nbsp;</label>
-        <input id="lblTime" type="text" />
-    </div>
-    <div id="lives">
-        <!--        <label for="lbl_lLives">Live:&nbsp;&nbsp;&nbsp;</label>-->
-        <label>Live:&nbsp;&nbsp;&nbsp;</label>
-        <img id="img1" src ='image/pixel-pacman.png' style="display: block; float: left">
-        <img id="img2" src ='image/pixel-pacman.png' style="display: block; float: left">
-        <img id="img3" src ='image/pixel-pacman.png' style="display: block; float: left">
-        <img id="img4" src ='image/pixel-pacman.png' style="display: block; float: left">
-        <img id="img5" src ='image/pixel-pacman.png' style="display: block; float: left">
-        <img id="img6" src ='image/pixel-pacman.png' style="display: none; float: left">
-    </div>
-    <div class="gameSetting">
-        <div class="arrows_setting">
-            <label id="btn_up">UP:</label>&nbsp;
-            <p id="up"><i class="arrow up"></i></p>&nbsp;
-            &nbsp;<label id="btn_down">DOWN:</label>&nbsp;
-            <p id="down"><i class="arrow down"></i></p>&nbsp;
-            &nbsp;<label id="btn_right">RIGHT:</label>&nbsp;
-            <p id="right"><i class="arrow right"></i></p>&nbsp;
-            &nbsp;<label id="btn_left">LEFT:</label>&nbsp;
-            <p id="left"><i class="arrow left"></i></p>&nbsp;
+<div id="score_time_life" class="theGame" style="display: none">
+    <div id="frame">
+        <div id="left_side">
+            <div id="player_name">
+                <h1>PLAYER NAME: <p id="pl_name" style="display: inline-flex"></p></h1>
+            </div>
+            <div id="score">
+                <label for="lblScore">SCORE:</label>
+                <input id="lblScore" type="text" />
+            </div>
+            <div id="time">
+                <label for="lblTime">TIME:&nbsp;&nbsp;&nbsp;</label>
+                <input id="lblTime" type="text" />
+            </div>
+            <div id="lives">
+                <!--        <label for="lbl_lLives">Live:&nbsp;&nbsp;&nbsp;</label>-->
+                <label>Live:&nbsp;&nbsp;&nbsp;</label>
+                <br>
+                <img id="img1" src ='image/pixel-pacman.png' style="display: block; float: left">
+                <img id="img2" src ='image/pixel-pacman.png' style="display: block; float: left">
+                <img id="img3" src ='image/pixel-pacman.png' style="display: block; float: left">
+                <img id="img4" src ='image/pixel-pacman.png' style="display: block; float: left">
+                <img id="img5" src ='image/pixel-pacman.png' style="display: block; float: left">
+                <img id="img6" src ='image/pixel-pacman.png' style="display: none; float: left">
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div id="newGame">
+                <button id="newGame_btn" onclick="initNewGame()" class="registerSubmit" type="reset" style="display: none;">New Game</button>
+            </div>
         </div>
-        <br/>
-        <div class="other_settings">
-            <label id="ball_num">NUMBER OF BALLS:</label>&nbsp;<p id="balls"></p>&nbsp;
-            &nbsp;<label id="game_time">TIME:</label>&nbsp;<p id="timePlay"></p>&nbsp;
-            &nbsp;<label id="num_monsters">NUMBER OF MONSTERS:</label>&nbsp;<p id="mons"></p>
+        <div id="gal_is_awesome">
+            <div id="game">
+                <canvas id="canvas" class="gameClass" height="600" width="600"></canvas>
+            </div>
+
+            <div id="right_side">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <label id="btn_up">UP:</label>&nbsp;
+                            <p id="up"><i class="arrow up"></i></p>&nbsp;
+                        </td>
+                        <td>
+                            &nbsp;<label id="btn_down">DOWN:</label>&nbsp;
+                            <p id="down"><i class="arrow down"></i></p>&nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;<label id="btn_right">RIGHT:</label>&nbsp;
+                            <p id="right"><i class="arrow right"></i></p>&nbsp;
+                        </td>
+                        <td>
+                            &nbsp;<label id="btn_left">LEFT:</label>&nbsp;
+                            <p id="left"><i class="arrow left"></i></p>&nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label id="ball_num">NUMBER OF BALLS:</label>&nbsp;
+                            <p id="balls"></p>&nbsp;
+                        </td>
+                        <td>
+                            &nbsp;<label id="game_time">TIME:</label>&nbsp;
+                            <p id="timePlay"></p>&nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;<label id="num_monsters">NUMBER OF MONSTERS:</label>&nbsp;
+                            <p id="mons"></p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-
     </div>
-
-    <button id="newGame_btn" onclick="initNewGame()" class="registerSubmit" type="reset" style="display: none;">New Game</button>
-    <div id="game" style="float : left">
-        <canvas id="canvas" class="gameClass" height="600" width="600"></canvas>
-    </div>
-
 </div>
 
 
@@ -224,49 +259,6 @@
     <!-- </footer> -->
 </footer>
 </html>
-<!-- <script>
-    $(document).ready(function() {
-        $("#registerBtn").click(function() {
-            $('#welcome').css("display", "none");
-            $(document.getElementById("about")).hide();
-            $(document.getElementById("login")).hide();
-            $("#register").show(300);
-        });
-    });
-</script> -->
-
-<!-- <script>
-    $(document).ready(function() {
-        $("#aboutBtn").click(function() {
-            $('#welcome').css("display", "none");
-            $(document.getElementById("register")).hide();
-            $(document.getElementById("login")).hide();
-            $("#about").show(300);
-        });
-    });
-</script> -->
-
-<!-- <script>
-    $(document).ready(function() {
-        $("#welcomeBtn").click(function() {
-            $(document.getElementById("about")).hide();
-            $(document.getElementById("register")).hide();
-            $(document.getElementById("login")).hide();
-            $('#welcome').css("display", "block");
-        });
-    });
-</script> -->
-<!--
-<script>
-    $(document).ready(function() {
-        $("#loginBtn").click(function() {
-            $(document.getElementById("welcome")).hide();
-            $(document.getElementById("about")).hide();
-            $(document.getElementById("register")).hide();
-            $(document.getElementById("login")).show(300);
-        });
-    });
-</script> -->
 
 <!-- </html>
 
