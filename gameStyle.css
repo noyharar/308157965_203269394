@@ -45,10 +45,7 @@
 }
 #right_side table{
     table-layout:fixed;
-    width:100%;
-}
-.newGame{
-    text-align: left;
-    float: left;
+    width: content-box;
+    /*width:100%;*/
 }
 
