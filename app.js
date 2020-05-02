@@ -685,15 +685,15 @@ function noteWithSleep() {
 }
 
 
-function open_login_window() {
-    document.getElementById("Welcom_buttons").hidden = true;
-    var x = document.getElementById("Login_button");
-    if (x.style.display == "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
+// function open_login_window() {
+//     document.getElementById("Welcom_buttons").hidden = true;
+//     var x = document.getElementById("Login_button");
+//     if (x.style.display == "none") {
+//         x.style.display = "block";
+//     } else {
+//         x.style.display = "none";
+//     }
+// }
 
 function life() {
 
