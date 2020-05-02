@@ -6,12 +6,10 @@
     <title>PAC-MAN</title>
     <script src="./jquery-3.4.1.slim.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    //noa
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>//noa
     <script type="text/javascript" src="app.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css"/>
-    <link rel="icon" href="image/tit.jpg"/>
-    //noa
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="icon" href="image/tit.jpg" />//noa
 </head>
 <br>
 <body>
@@ -88,30 +86,26 @@
         <br>
         <br>
         <label for="user_password"><b>Password:</b></label>
-        <input type="password" id="user_password" placeholder="Enter your Password" name="userPassword"
-               pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" required>
+        <input type="password" id = "user_password" placeholder="Enter your Password" name="userPassword" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" required>
         <br>
         <br>
         <label for="userFirstName"><b>Fisrt Name:</b></label>
-        <input type="firstName" id="userFirstName" placeholder="Enter your first name" name="firstName"
-               pattern="^[A-Za-z]+" required>
+        <input type="firstName" id = "userFirstName" placeholder="Enter your first name" name="firstName" pattern="^[A-Za-z]+" required>
         <br>
         <br>
         <label for="userLastName"><b>Last Name:</b></label>
-        <input type="lastName" id="userLastName" placeholder="Enter your last name" name="lastName" pattern="[A-Za-z]+"
-               required>
+        <input type="lastName" id = "userLastName" placeholder="Enter your last name" name="lastName" pattern="[A-Za-z]+" required>
         <br>
         <br>
         <label for="userMail"><b>Email:</b></label>
-        <input type="text" id="userMail" placeholder="Enter your Email" name="email"
-               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+        <input type="text" id = "userMail" placeholder="Enter your Email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
         <br>
         <br>
         <label for="birthday">Please insert your birthday:</label>
         <input type="date" id="birthday" name="birthday" required>
         <br>
         <br>
-        <input type="submit" class="registerSubmit" value="Register" onclick="save_user()"/>
+        <input type="submit" class="registerSubmit" value="Register" onclick="save_user()" />
     </div>
 </form>
 <br>
@@ -157,8 +151,7 @@
         </button>
     </div>
 </form>
-<button id="random_btn" onclick="randomSetting()" class="registerSubmit" type="submit" style="display: none">Random
-</button>
+<button id="random_btn" onclick="randomSetting()" class="registerSubmit" type="submit" style="display: none">Random</button>
 
 <div id="score_time_life" class="theGame" hidden>
     <div class="game_info" hidden>
@@ -280,7 +273,7 @@
         });
     });
 </script> -->
-<!-- 
+<!--
 <script>
     $(document).ready(function() {
         $("#loginBtn").click(function() {
