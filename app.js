@@ -292,14 +292,33 @@ function Start() {
         //put obstacles in (i=3,j=3) and (i=3,j=4) and (i=3,j=5), (i=6,j=1) and (i=6,j=2)
         for (var j = 0; j < 15; j++) {
             if (
-                (i == 3 && j == 3) ||
-                (i == 3 && j == 4) ||
-                (i == 3 && j == 5) ||
-                (i == 6 && j == 1) ||
-                (i == 6 && j == 2)
+                (i === 12 && j === 13) ||
+                (i === 13 && j === 9) ||
+                (i === 2 && j === 13) ||
+                (i === 7 && j === 12) ||
+                (i === 8 && j === 10) ||
+                (i === 3 && j === 11)
             ) {
                 board[i][j] = 4;
-            }else if(num_of_monsters > 0 && ((i == 0 && j == 0) || (i == 14 && j == 0) || (i == 14 && j == 14) || (i == 0 && j == 14))){
+            }else if (
+                (i === 13 && j === 14) ||
+                (i === 12 && j === 14) ||
+                (i === 11 && j === 14) ||
+                (i === 14 && j === 11) ||
+                (i === 12 && j === 9) ||
+                (i === 1 && j === 14) ||
+                (i === 2 && j === 14) ||
+                (i === 3 && j === 14) ||
+                (i === 6 && j === 12) ||
+                (i === 7 && j === 12) ||
+                (i === 7 && j === 10) ||
+                (i === 8 && j === 10) ||
+                (i === 2 && j === 11) ||
+                (i === 0 && j === 12)
+            ) {
+                board[i][j] = -4;
+            }
+            else if(num_of_monsters > 0 && ((i == 0 && j == 0) || (i == 14 && j == 0) || (i == 14 && j == 14) || (i == 0 && j == 14))){
                 board[i][j] = 9;
                 boardMonsters[i][j] = 9;
                 num_of_monsters--;
@@ -587,6 +606,11 @@ function Draw() {
             } else if (board[i][j] == 4) {
                 context.beginPath();
                 context.rect(center.x - 18, center.y - 20, 5, 40);
+                context.fillStyle = "#3c3cef"; //color
+                context.fill();
+            } else if (board[i][j] == -4) {
+                context.beginPath();
+                context.rect(center.x - 20, center.y - 18, 40, 5);
                 context.fillStyle = "#3c3cef"; //color
                 context.fill();
             }
