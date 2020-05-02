@@ -76,7 +76,7 @@
 
 </div>
 <form class=registerForm>
-    <div id="register" style="display:none" style="width: 50%;">
+    <div id="register" style="display:none;width: 50%;">
         <br>
         <h1>Register</h1>
         <p>Please fill the register form:</p>
@@ -188,7 +188,7 @@
                 <canvas id="canvas" class="gameClass" height="600px" width="600px"></canvas>
             </div>
 
-            <div id="right_side">
+            <div id="right_side" class="tableSetting">
                 <table>
                     <tbody>
                     <tr>
@@ -214,21 +214,21 @@
                     <tr>
                         <td>
                             <label id="ball_num">NUMBER OF BALLS:</label>&nbsp;
-                            <p id="balls"></p>&nbsp;
+                            <p id="balls" style="text-align: center; vertical-align: middle;"></p>&nbsp;
                         </td>
                         <td>
-                            &nbsp;<label id="game_time">TIME:</label>&nbsp;
-                            <p id="timePlay"></p>&nbsp;
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            &nbsp;<label id="num_monsters">NUMBER OF MONSTERS:</label>&nbsp;
-                            <p id="mons"></p>
+                            &nbsp;<label id="game_time" style="text-align: center; vertical-align: middle;">TIME:</label>&nbsp;
+                            <p id="timePlay" style="text-align: center; vertical-align: middle;"></p>&nbsp;
                         </td>
                     </tr>
                     </tbody>
                 </table>
+                <label id="num_monsters">NUMBER OF MONSTERS:</label>
+                <p id="mons" style="text-align: center; vertical-align: middle;"></p>
+                <div id="timeAlert" class="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    <p id="alertString"></p>
+                </div>
             </div>
         </div>
     </div>
@@ -247,8 +247,6 @@
 <!--    <div id="game">-->
 <!--        <canvas id="canvas" height="600" width="600"></canvas>-->
 <!--    </div>-->
-
-
 <div id="loading_img" hidden>
     <img src="image/loading.gif" alt="loading_gif">
 </div>

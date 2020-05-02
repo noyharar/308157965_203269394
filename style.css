@@ -44,7 +44,7 @@
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  background-color:white;
+  background-color:black;
   background-blend-mode: lighten;
   float: left;
   font-family: 'Pixeled';
@@ -322,4 +322,28 @@ h1{
   font-family: Pixeled;
   /*color: #3c3cef;*/
   color: rgb(202, 221, 36);
+}
+
+.alert {
+  display: none;
+  padding: 15px;
+  background-color: #f44336;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tableSetting{
+  font-family: 'Alef', serif;
+  font-size: 16px;
+  font-weight: bold;
 }
