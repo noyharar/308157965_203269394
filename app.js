@@ -28,6 +28,7 @@ var playerName;
 var extra_life = 1;
 var clock = 1;
 var gameSong;
+var noSound = false;
 
 function submit_setting(){
     $("#setting").css("display", "none");
@@ -284,6 +285,7 @@ function Start() {
     var pacman_remain = 1;
     gameSong = document.getElementById("gameSong");
     playSong();
+    gameSong.loop = true;
     if (food_remain == -1 && num_of_monsters == -1 && timeToPlay == -1) {
         food_remain = parseInt($(document.getElementById("food")).val());
         num_of_monsters = parseInt($(document.getElementById("monsters")).val());
@@ -734,23 +736,27 @@ function UpdatePosition() {
         window.clearInterval(intervalMonster);
     }
     /*same cell with ball - score up */
-    if (board[shape.i][shape.j] == 1 || board[shape.i][shape.j] == 6 || board[shape.i][shape.j] == 7 ) {
-        var audio = new Audio('audio/pacman_eatfruit.wav');
-        audio.play();
-        if(board[shape.i][shape.j] == 1){
+    if (board[shape.i][shape.j] === 1 || board[shape.i][shape.j] === 6 || board[shape.i][shape.j] === 7 ) {
+        if(!noSound){
+            var audio = new Audio('audio/pacman_eatfruit.wav');
+            audio.play();
+        }
+        if(board[shape.i][shape.j] === 1){
             score = score + 5;
         }
-        if(board[shape.i][shape.j] == 6){
+        if(board[shape.i][shape.j] === 6){
             score = score + 15;
         }
-        if(board[shape.i][shape.j] == 7){
+        if(board[shape.i][shape.j] === 7){
             score = score + 25;
         }
     }
     /*same cell with burger - score up*/
-    if (board[shape.i][shape.j] == 8) {
-        var audio = new Audio('audio/pacman_eatghost.wav');
-        audio.play();
+    if (board[shape.i][shape.j] === 8) {
+        if(!noSound){
+            var audio = new Audio('audio/pacman_eatghost.wav');
+            audio.play();
+        }
         document.getElementById("alertString").innerHTML = "Yummy BURGER.. You Got 50 points!!";
         $("#timeAlert").css("display", "block");
         score = score + 50;
@@ -768,8 +774,10 @@ function UpdatePosition() {
 
     /*same cell with monster - dead*/
     if (boardMonsters[shape.i][shape.j] == 9) {
-        var audio = new Audio('audio/death.mp3');
-        audio.play();
+        if(!noSound){
+            var audio = new Audio('audio/death.mp3');
+            audio.play();
+        }
         pacman_dead = true;
         board[shape.i][shape.j] = 0;
         Draw();
@@ -893,5 +901,5 @@ function settings_display() {
     document.getElementById('mons').innerHTML = document.setting.monsters.value;
 }
 function stop_soundEffect() {
-
+    noSound = true;
 }
