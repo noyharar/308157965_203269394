@@ -225,20 +225,20 @@ function myFunction() {
     $(document.getElementById("register")).show();
     $("#register").show(300);
 }
-function calculateCubeSize() {
-    numCol = 15;
-    numRow = 15;
-    tSizeMatrix = numRow * numCol;
-    canvas.width = 600;
-    canvas.height = 600;
-    size_x_to_draw = numRow*canvas.height/tSizeMatrix;
-    size_y_to_draw = numCol*canvas.width/tSizeMatrix;
-}
+// function calculateCubeSize() {
+//     numCol = 15;
+//     numRow = 15;
+//     tSizeMatrix = numRow * numCol;
+//     canvas.width = 600;
+//     canvas.height = 600;
+//     size_x_to_draw = numRow*canvas.height/tSizeMatrix;
+//     size_y_to_draw = numCol*canvas.width/tSizeMatrix;
+// }
 
 function startForNow(e) {
     e.preventDefault();
     context = canvas.getContext("2d");
-    calculateCubeSize();
+    // calculateCubeSize();
     Start();
     $("#newGame_btn").css("display","block");
     return false;
@@ -535,19 +535,19 @@ function Draw() {
     for (var i = 0; i < 15; i++) {
         for (var j = 0; j < 15; j++) {
             var center = new Object();
-            //center.x = i * 35 + 28;
-            //center.y = j * 35 + 28;
-            center.x = i * size_x_to_draw + size_x_to_draw/2;
-            center.y = j * size_y_to_draw + size_y_to_draw/2;
-            if (boardMonsters[i][j] == 9) {
+            center.x = i * 35 + 28;
+            center.y = j * 35 + 28;
+            //center.x = i * size_x_to_draw + size_x_to_draw/2;
+            //center.y = j * size_y_to_draw + size_y_to_draw/2;
+            if (boardMonsters[i][j] === 9) {
                 context.drawImage(monster, center.x - 20, center.y - 20);
-            }else if (board[i][j] == 8){
+            }else if (board[i][j] === 8){
                     context.drawImage(burger, center.x - 15, center.y - 15);
-            }else if(board[i][j] == 3){
+            }else if(board[i][j] === 3){
                 context.drawImage(clock, center.x - 15, center.y - 15);
-            }else if (board[i][j] == 5){
+            }else if (board[i][j] === 5){
                 context.drawImage(life, center.x - 15, center.y - 15);
-            } else if (board[i][j] == 2 && pacman_left && pacman_dead == false) {
+            } else if (board[i][j] === 2 && pacman_left && pacman_dead === false) {
                 context.beginPath();
                 context.arc(center.x, center.y, 20, -0.85 * Math.PI, 0.85 * Math.PI); // half circle
                 context.lineTo(center.x, center.y);
@@ -557,7 +557,7 @@ function Draw() {
                 context.arc(center.x + 5, center.y - 10, 5, 0, 2 * Math.PI); // circle
                 context.fillStyle = "black"; //color
                 context.fill();
-            } else if (board[i][j] == 2 && pacman_up && pacman_dead == false) {
+            } else if (board[i][j] === 2 && pacman_up && pacman_dead === false) {
                 context.beginPath();
                 context.arc(center.x, center.y, 20, 1.7 * Math.PI, 1.35 * Math.PI); // half circle
                 context.lineTo(center.x, center.y);
@@ -567,7 +567,7 @@ function Draw() {
                 context.arc(center.x + 10, center.y + 5, 5, 0, 2 * Math.PI); // circle
                 context.fillStyle = "black"; //color
                 context.fill();
-            } else if (board[i][j] == 2 && pacman_right && pacman_dead == false) {
+            } else if (board[i][j] === 2 && pacman_right && pacman_dead === false) {
                 context.beginPath();
                 context.arc(center.x, center.y, 20, 0.15 * Math.PI, 1.85 * Math.PI); // half circle
                 context.lineTo(center.x, center.y);
@@ -577,7 +577,7 @@ function Draw() {
                 context.arc(center.x + 5, center.y - 10, 5, 0, 2 * Math.PI); // circle
                 context.fillStyle = "black"; //color
                 context.fill();
-            } else if (board[i][j] == 2 && pacman_down && pacman_dead == false) {
+            } else if (board[i][j] === 2 && pacman_down && pacman_dead === false) {
                 context.beginPath();
                 context.arc(center.x, center.y, 20, 0.75 * Math.PI, 0.35 * Math.PI); // half circle
                 context.lineTo(center.x, center.y);
@@ -588,7 +588,7 @@ function Draw() {
                 context.fillStyle = "black"; //color
                 context.fill();
                 /*5 point ball*/
-            } else if (board[i][j] == 1) {
+            } else if (board[i][j] === 1) {
                 context.beginPath();
                 context.arc(center.x, center.y, 8, 0, 2 * Math.PI); // circle
                 context.fillStyle = favcolor5.value; //color
@@ -597,7 +597,7 @@ function Draw() {
                 context.font = "bold 10px Arial";
                 context.fillText("5", center.x - 3, center.y + 4);
                 /*15 point ball*/
-            } else if (board[i][j] == 6) {
+            } else if (board[i][j] === 6) {
                 context.beginPath();
                 context.arc(center.x, center.y, 9, 0, 2 * Math.PI); // circle
                 context.fillStyle = favcolor15.value; //color
@@ -605,7 +605,7 @@ function Draw() {
                 context.fillStyle = "white"; //color
                 context.font = "bold 10px Arial";
                 context.fillText("15", center.x - 6, center.y + 4);
-            } else if (board[i][j] == 7) {
+            } else if (board[i][j] === 7) {
                 context.beginPath();
                 context.arc(center.x, center.y, 10, 0, 2 * Math.PI); // circle
                 context.fillStyle = favcolor25.value; //color
@@ -613,11 +613,11 @@ function Draw() {
                 context.fillStyle = "black"; //color
                 context.font = "bold 10px Arial";
                 context.fillText("25", center.x - 5, center.y + 3);
-            } else if (board[i][j] == 4) {
+            } else if (board[i][j] === 4) {
                 context.beginPath();
                 context.strokeStyle = "#3c3cef";
-                //context.drawImage(wallPic,center.x - 30,center.y - 20, size_x_to_draw, size_y_to_draw);
-                context.drawImage(wallPic,center.x - size_x_to_draw/2, center.y - size_y_to_draw/2,size_x_to_draw,size_y_to_draw);
+                context.drawImage(wallPic,center.x - 18,center.y - 18);
+                //context.drawImage(wallPic,center.x - size_x_to_draw/2, center.y - size_y_to_draw/2,size_x_to_draw,size_y_to_draw);
             }
         }
     }
@@ -641,22 +641,22 @@ function UpdateMonsterPosition() {
             if(currMonsterPositions[i][j] == 9){
                 var randomNum = Math.floor(Math.random() * 2);/*0,1*/
                     //monster get down
-                    if (randomNum == 0 && Math.abs(((i + 1) - shape.i) < Math.abs((i - 1) - shape.i)) && board[i + 1][j] != 4 && board[i + 1][j] != -4 && boardMonsters[i + 1][j] != 9) {
+                    if (randomNum == 0 && Math.abs(((i + 1) - shape.i) < Math.abs((i - 1) - shape.i)) && board[i + 1][j] != 4 && boardMonsters[i + 1][j] != 9) {
                         boardMonsters[i][j] = 0;
                         boardMonsters[i + 1][j] = 9;
                     }
                     //monster get up
-                    else if(randomNum == 0 && Math.abs(((i+1) - shape.i) > Math.abs((i-1) - shape.i)) && board[i-1][j] != 4 && board[i-1][j] != -4 && boardMonsters[i-1][j] != 9){
+                    else if(randomNum == 0 && Math.abs(((i+1) - shape.i) > Math.abs((i-1) - shape.i)) && board[i-1][j] != 4 && boardMonsters[i-1][j] != 9){
                         boardMonsters[i][j] = 0;
                         boardMonsters[i-1][j] =  9;
                     }
                     //monster get right
-                    else if (randomNum == 1 && Math.abs(((j + 1) - shape.j) < Math.abs((j - 1) - shape.j)) && board[i][j + 1] != 4 && board[i][j + 1] != -4 && boardMonsters[i][j + 1] != 9) {
+                    else if (randomNum == 1 && Math.abs(((j + 1) - shape.j) < Math.abs((j - 1) - shape.j)) && board[i][j + 1] != 4 && boardMonsters[i][j + 1] != 9) {
                         boardMonsters[i][j] = 0;
                         boardMonsters[i][j + 1] = 9;
                     }
                     //monster get left
-                    else if (randomNum == 1 && Math.abs(((j + 1) - shape.j) > Math.abs((j - 1) - shape.j)) && board[i][j - 1] != 4 && board[i][j - 1] != -4 && boardMonsters[i][j - 1] != 9) {
+                    else if (randomNum == 1 && Math.abs(((j + 1) - shape.j) > Math.abs((j - 1) - shape.j)) && board[i][j - 1] != 4 && boardMonsters[i][j - 1] != 9) {
                         boardMonsters[i][j] = 0;
                         boardMonsters[i][j - 1] = 9;
                     }
@@ -674,7 +674,7 @@ function UpdatePosition() {
         pacman_right = false;
         pacman_left = false;
         pacman_down = false;
-        if (shape.j > 0 && board[shape.i][shape.j - 1] != 4 && board[shape.i][shape.j - 1] != -4) {
+        if (shape.j > 0 && board[shape.i][shape.j - 1] != 4) {
             shape.j--;
         }
     }
@@ -683,7 +683,7 @@ function UpdatePosition() {
         pacman_left = false;
         pacman_up = false;
         pacman_right = false;
-        if (shape.j < 14 && board[shape.i][shape.j + 1] != 4 && board[shape.i][shape.j + 1] != -4) {
+        if (shape.j < 14 && board[shape.i][shape.j + 1] != 4) {
             shape.j++;
         }
     }
@@ -692,7 +692,7 @@ function UpdatePosition() {
         pacman_right = false;
         pacman_up = false;
         pacman_down = false;
-        if (shape.i > 0 && board[shape.i - 1][shape.j] != 4 && board[shape.i - 1][shape.j] != -4) {
+        if (shape.i > 0 && board[shape.i - 1][shape.j] != 4) {
             shape.i--;
         }
     }
@@ -701,7 +701,7 @@ function UpdatePosition() {
         pacman_left = false;
         pacman_up = false;
         pacman_down = false;
-        if (shape.i < 14 && board[shape.i + 1][shape.j] != 4 && board[shape.i + 1][shape.j] != -4) {
+        if (shape.i < 14 && board[shape.i + 1][shape.j] != 4) {
             shape.i++;
         }
     }

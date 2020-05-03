@@ -31,13 +31,13 @@
     width: auto;
 }
 #game{
-    /*border: 3px #3c3cef;*/
     width: 60%;
     float: left;
-    /*border: 3px solid #3c3cef;*/
+    border: 3px solid #3c3cef;
     border-radius:5px;
 }
 #right_side{
+    clear: right;
     position:relative;
     width: 15%;
     overflow: auto;
