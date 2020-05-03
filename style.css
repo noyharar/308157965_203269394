@@ -68,9 +68,9 @@
 
 .btnR {
   position: fixed;
-  margin-top: 250px;
+  margin-top: 180px;
   margin-left: 20%;
-  margin-right: auto;
+  /*margin-right: auto;*/
   /* margin-left: 200px;
   margin-right: 100px; */
   background-color: black;
@@ -85,7 +85,7 @@
 
 .btnL {
   position: fixed;
-  margin-top: 250px;
+  margin-top: 180px;
   /* margin-left: 270px;
    margin-right: 100px;*/
   margin-left: 5%;

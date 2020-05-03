@@ -66,7 +66,8 @@ $(document).ready(function () {
         $(document.getElementById("register")).hide();
         $(document.getElementById("login")).hide();
         $("#about").show(300);
-        $(document.getElementById("setting")).hide();
+        $(document.getElementById("setting")).hide()
+        $("#random_btn").css("display", "none");
         $('#score_time_life').css('display', 'none');
         $("#foot").css("position","fixed");
 
