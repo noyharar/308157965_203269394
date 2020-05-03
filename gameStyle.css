@@ -1,40 +1,46 @@
-.theGame{
-    /*display: block;*/
+.theGame {
     color: rgb(202, 221, 36);
     background: black;
+    /*border-style: double;*/
+    /*border-color: #3c3cef;*/
 }
-#frame{
+
+#frame {
     border-style: double;
     border-color: #3c3cef;
-    /*flex-wrap: nowrap;*/
     overflow: auto;
+    display: inline-flex;
+    width: -moz-max-content;
 }
-#left_side{
-    position:relative;
+
+#left_side {
+    position: relative;
     float: left;
     /*width: 20%;*/
     /*width: fit-content;*/
     width: border-box;
     text-align: center;
     border: 3px solid grey;
-    border-radius:5px;
-    background-image: linear-gradient(to left,#3c3cef, aquamarine);
+    border-radius: 5px;
+    background-image: linear-gradient(to left, #3c3cef, aquamarine);
     overflow: auto;
 }
+
 /*#canvas{*/
 /*    position: sticky;*/
 /*    height:auto;*/
 /*    width: auto;*/
 /*    float: right;*/
 /*}*/
-#game{
+#game {
     /*width: 45.5%;*/
     width: fit-content;
     border: 3px solid yellow;
     /*border: 3px solid #3c3cef;*/
-    border-radius:10px;
+    border-radius: 10px;
     overflow: auto;
 }
+
 /*#right_side{*/
 /*    !*float: right;*!*/
 /*    !*position: marker;*!*/
@@ -53,7 +59,7 @@
 /*    width: border-box;*/
 /*    !*width:100%;*!*/
 /*}*/
-.gameButtons{
+.gameButtons {
     /*position: center;*/
     border-color: #3c3cef;
     background-color: black;
@@ -65,19 +71,20 @@
     text-align: center;
     overflow: auto;
 }
-.tableSetting{
+
+.tableSetting {
     font-family: 'Alef', serif;
     font-size: 16px;
     font-weight: bold;
-    /*width: fit-content;*/
+    width: fit-content;
     /*width: content-box;*/
-    width: border-box;
-    float:right;
+    /*width: border-box;*/
+    float: right;
     border: 3px solid grey;
-    border-radius:5px;
+    border-radius: 5px;
     text-align: left;
     overflow: auto;
-    position:relative;
-    display: inline-flex;
+    /*position:relative;*/
+    /*display: inline-flex;*/
 }
 
