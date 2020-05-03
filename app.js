@@ -585,7 +585,7 @@ function Draw() {
             } else if (board[i][j] === 4) {
                 context.beginPath();
                 context.strokeStyle = "#3c3cef";
-                context.drawImage(wallPic,center.x - 18,center.y - 18);
+                context.drawImage(wallPic,center.x - 18,center.y - 17.5);
                 //context.drawImage(wallPic,center.x - size_x_to_draw/2, center.y - size_y_to_draw/2,size_x_to_draw,size_y_to_draw);
             }
         }
