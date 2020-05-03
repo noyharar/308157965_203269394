@@ -180,13 +180,22 @@
             <br>
             <br>
             <div id="newGame">
-                <button id="newGame_btn" onclick="initNewGame()" class="registerSubmit" type="reset" style="display: none;">New Game</button>
+                <button id="newGame_btn" onclick="initNewGame()" class="gameButtons" type="reset">New Game</button>
+                <button id="playSong" type="button" onclick="playSong()" class="gameButtons">Play Music</button>
+                <button id="stopSong" type="button" class="gameButtons" onclick="stopSong()">Stop Music</button>
+                <button id="stopEffect" type="button" class="gameButtons" onclick="stop_soundEffect()">Stop Sound Effect</button>
+            </div>
+            <div>
+                <audio id="gameSong">
+                    <source src="audio/pacman_beginning.wav" type="audio/wav">
+                </audio>
             </div>
         </div>
         <div id="gal_is_awesome">
             <div id="game">
                 <canvas id="canvas" class="gameClass" height="600px" width="600px"></canvas>
             </div>
+            <audio id="myAudio"></audio>
 
             <div id="right_side" class="tableSetting">
                 <br>

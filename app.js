@@ -27,6 +27,7 @@ var numOfLifes = 5;
 var playerName;
 var extra_life = 1;
 var clock = 1;
+var gameSong;
 
 function submit_setting(){
     $("#setting").css("display", "none");
@@ -35,6 +36,14 @@ function submit_setting(){
     $('#random_btn').css('display', 'none');
     // life();
     settings_display();
+}
+function playSong() {
+    gameSong.play();
+
+}
+function stopSong() {
+    gameSong.pause();
+
 }
 
 
@@ -273,6 +282,8 @@ function Start() {
     pac_color = "yellow";
     var cnt = 100;
     var pacman_remain = 1;
+    gameSong = document.getElementById("gameSong");
+    playSong();
     if (food_remain == -1 && num_of_monsters == -1 && timeToPlay == -1) {
         food_remain = parseInt($(document.getElementById("food")).val());
         num_of_monsters = parseInt($(document.getElementById("monsters")).val());
@@ -674,39 +685,39 @@ function UpdateMonsterPosition() {
 function UpdatePosition() {
     board[shape.i][shape.j] = 0;
     var x = GetKeyPressed();
-    if (x == 1) {
+    if (x === 1) {
         pacman_up = true;
         pacman_right = false;
         pacman_left = false;
         pacman_down = false;
-        if (shape.j > 0 && board[shape.i][shape.j - 1] != 4) {
+        if (shape.j > 0 && board[shape.i][shape.j - 1] != 4 && board[shape.i][shape.j - 1] != -4) {
             shape.j--;
         }
     }
-    if (x == 2) {
+    if (x === 2) {
         pacman_down = true;
         pacman_left = false;
         pacman_up = false;
         pacman_right = false;
-        if (shape.j < 14 && board[shape.i][shape.j + 1] != 4) {
+        if (shape.j < 14 && board[shape.i][shape.j + 1] != 4 && board[shape.i][shape.j + 1] != -4) {
             shape.j++;
         }
     }
-    if (x == 3) {
+    if (x === 3) {
         pacman_left = true;
         pacman_right = false;
         pacman_up = false;
         pacman_down = false;
-        if (shape.i > 0 && board[shape.i - 1][shape.j] != 4) {
+        if (shape.i > 0 && board[shape.i - 1][shape.j] != 4 && board[shape.i - 1][shape.j] != -4) {
             shape.i--;
         }
     }
-    if (x == 4) {
+    if (x === 4) {
         pacman_right = true;
         pacman_left = false;
         pacman_up = false;
         pacman_down = false;
-        if (shape.i < 14 && board[shape.i + 1][shape.j] != 4) {
+        if (shape.i < 14 && board[shape.i + 1][shape.j] != 4 && board[shape.i + 1][shape.j] != -4) {
             shape.i++;
         }
     }
@@ -880,4 +891,7 @@ function settings_display() {
     document.getElementById('balls').innerHTML = document.setting.food.value;
     document.getElementById('timePlay').innerHTML = document.setting.lblTimeSetting.value;
     document.getElementById('mons').innerHTML = document.setting.monsters.value;
+}
+function stop_soundEffect() {
+
 }

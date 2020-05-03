@@ -4,6 +4,7 @@
 }
 #score_time_life{
     background: black;
+    /*background-image: url("image/wallpaper-kid-plays-pacman-1366x768.jpg");*/
     /*display:inline-block;*/
 }
 #frame{
@@ -50,6 +51,19 @@
     table-layout:fixed;
     width: content-box;
     /*width:100%;*/
+}
+.gameButtons{
+    position: center;
+    border-color: #3c3cef;
+    background-color: black;
+    color: whitesmoke;
+    font-size: 16px;
+    padding: 12px 24px;
+    cursor: pointer;
+    border-radius: 11px;
+    text-align: center;
+    /*display: inline-block;*/
+    overflow: auto;
 }
 
 
