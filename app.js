@@ -67,6 +67,8 @@ $(document).ready(function () {
         $(document.getElementById("login")).hide();
         $("#about").show(300);
         $(document.getElementById("setting")).hide();
+        $('#score_time_life').css('display', 'none');
+        $("#foot").css("position","fixed");
 
     });
 });
@@ -79,6 +81,8 @@ $(document).ready(function () {
         $('#welcome').css("display", "block");
         $(document.getElementById("setting")).hide();
         $("#random_btn").css("display", "none");
+        $('#score_time_life').css('display', 'none');
+        $("#foot").css("position","fixed");
     });
 });
 
@@ -90,6 +94,8 @@ $(document).ready(function () {
         $(document.getElementById("login")).show(300);
         $(document.getElementById("setting")).hide();
         $("#random_btn").css("display", "none");
+        $('#score_time_life').css('display', 'none');
+        $("#foot").css("position","fixed");
     });
 });
 
@@ -100,6 +106,8 @@ $(document).ready(function () {
         $(document.getElementById("login")).hide();
         $("#register").show(300);
         $(document.getElementById("setting")).hide();
+        $('#score_time_life').css('display', 'none');
+        $("#foot").css("position","fixed");
     });
 });
 
