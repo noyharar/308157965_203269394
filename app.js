@@ -33,9 +33,6 @@ var noSound = false;
 var intervalExtraScore;
 var n;
 var k;
-var numRow;
-var numCol;
-var tSizeMatrix;
 var size_x_to_draw;
 var size_y_to_draw;
 
@@ -70,6 +67,8 @@ $(document).ready(function () {
         $(document.getElementById("login")).hide();
         $("#about").show(300);
         $(document.getElementById("setting")).hide();
+        $('#score_time_life').css('display', 'none');
+        $("#foot").css("position","fixed");
 
     });
 });
@@ -82,6 +81,8 @@ $(document).ready(function () {
         $('#welcome').css("display", "block");
         $(document.getElementById("setting")).hide();
         $("#random_btn").css("display", "none");
+        $('#score_time_life').css('display', 'none');
+        $("#foot").css("position","fixed");
     });
 });
 
@@ -93,6 +94,8 @@ $(document).ready(function () {
         $(document.getElementById("login")).show(300);
         $(document.getElementById("setting")).hide();
         $("#random_btn").css("display", "none");
+        $('#score_time_life').css('display', 'none');
+        $("#foot").css("position","fixed");
     });
 });
 
@@ -103,6 +106,8 @@ $(document).ready(function () {
         $(document.getElementById("login")).hide();
         $("#register").show(300);
         $(document.getElementById("setting")).hide();
+        $('#score_time_life').css('display', 'none');
+        $("#foot").css("position","fixed");
     });
 });
 /* defult user */
@@ -231,9 +236,6 @@ function myFunction() {
     $("#register").show(300);
 }
 function calculateCubeSize() {
-    // numCol = 15;
-    // numRow = 15;
-    // tSizeMatrix = 15 * 15;
     size_x_to_draw = 15*canvas.height/225;
     size_y_to_draw = 15*canvas.width/225;
 }
