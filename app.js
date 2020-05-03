@@ -246,7 +246,7 @@ function startForNow(e) {
     calculateCubeSize();
     $("#foot").css("position","relative");
     Start();
-    $("#newGame_btn").css("display","block");
+    //$("#newGame_btn").css("display","block");
     return false;
 }
 

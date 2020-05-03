@@ -1,11 +1,7 @@
 .theGame{
-    display: block;
+    /*display: block;*/
     color: rgb(202, 221, 36);
-}
-#score_time_life{
     background: black;
-    /*background-image: url("image/wallpaper-kid-plays-pacman-1366x768.jpg");*/
-    /*display:inline-block;*/
 }
 #frame{
     border-style: double;
@@ -19,40 +15,45 @@
     float: left;
     /*left:0;*/
     /*top:10%;*/
-    width: 15%;
+    width: 20%;
     text-align: center;
     border: 3px solid grey;
     border-radius:5px;
     background-image: linear-gradient(to left,#3c3cef, aquamarine);
 }
-#canvas{
-    position: sticky;
-    height:auto;
-    width: auto;
-}
+/*#canvas{*/
+/*    position: sticky;*/
+/*    height:auto;*/
+/*    width: auto;*/
+/*    float: right;*/
+/*}*/
 #game{
-    width: 70%;
-    border: 3px solid #3c3cef;
-    border-radius:5px;
+    width: 60%;
+    border: 3px solid yellow;
+    /*border: 3px solid #3c3cef;*/
+    border-radius:10px;
+    overflow: auto;
+    /*float: right;*/
 }
 #right_side{
-    clear: right;
-    position:relative;
+    float: right;
+    position: marker;
     width: 15%;
     overflow: auto;
     float:right;
     border: 3px solid grey;
     border-radius:5px;
-    /*background-image: linear-gradient(to left,#3c3cef, aquamarine);*/
-
+    background-image: linear-gradient(to left,aquamarine, #3c3cef);
 }
 #right_side table{
-    table-layout:fixed;
-    width: content-box;
+    border: 2px solid grey;
+    table-layout:auto;
+    /*width: content-box;*/
+    width: border-box;
     /*width:100%;*/
 }
 .gameButtons{
-    position: center;
+    /*position: center;*/
     border-color: #3c3cef;
     background-color: black;
     color: whitesmoke;
@@ -61,8 +62,8 @@
     cursor: pointer;
     border-radius: 11px;
     text-align: center;
-    /*display: inline-block;*/
     overflow: auto;
 }
+
 
 

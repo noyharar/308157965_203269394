@@ -151,7 +151,7 @@
 
 <div id="score_time_life" class="theGame" style="display: none">
     <div id="frame">
-        <div id="left_side">
+        <div id="left_side" style="margin-left: auto">
             <div id="player_name">
                 <h1>PLAYER NAME: <p id="pl_name" style="display: inline-flex"></p></h1>
             </div>
@@ -180,6 +180,11 @@
             <br>
             <div id="newGame">
                 <button id="newGame_btn" type="reset" onclick="initNewGame()" class="gameButtons">New Game</button>
+<!--                <button id="playSong" type="button" onclick="playSong()" class="gameButtons">Play Music</button>-->
+<!--                <button id="stopSong" type="button" class="gameButtons" onclick="stopSong()">Stop Music</button>-->
+<!--                <button id="stopEffect" type="button" class="gameButtons" onclick="stop_soundEffect()">Stop Sound Effect</button>-->
+            </div>
+            <div id="music">
                 <button id="playSong" type="button" onclick="playSong()" class="gameButtons">Play Music</button>
                 <button id="stopSong" type="button" class="gameButtons" onclick="stopSong()">Stop Music</button>
                 <button id="stopEffect" type="button" class="gameButtons" onclick="stop_soundEffect()">Stop Sound Effect</button>
@@ -190,12 +195,11 @@
                 </audio>
             </div>
         </div>
-        <div id="gal_is_awesome">
+        <div id="game_and_settings">
             <div id="game">
-                <canvas id="canvas" class="gameClass" height="600px" width="600px" style="border:1px solid #3c3cef; float: right"></canvas>
+                <canvas id="canvas" class="gameClass" height="600" width="600"></canvas>
+<!--                <canvas id="canvas" class="gameClass" height="600px" width="600px" style="border:1px solid #3c3cef; float: right"></canvas>-->
             </div>
-            <audio id="myAudio"></audio>
-
             <div id="right_side" class="tableSetting">
                 <br>
                 <br>
