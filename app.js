@@ -230,20 +230,19 @@ function myFunction() {
     $(document.getElementById("register")).show();
     $("#register").show(300);
 }
-// function calculateCubeSize() {
-//     numCol = 15;
-//     numRow = 15;
-//     tSizeMatrix = numRow * numCol;
-//     canvas.width = 600;
-//     canvas.height = 600;
-//     size_x_to_draw = numRow*canvas.height/tSizeMatrix;
-//     size_y_to_draw = numCol*canvas.width/tSizeMatrix;
-// }
+function calculateCubeSize() {
+    // numCol = 15;
+    // numRow = 15;
+    // tSizeMatrix = 15 * 15;
+    size_x_to_draw = 15*canvas.height/225;
+    size_y_to_draw = 15*canvas.width/225;
+}
 
 function startForNow(e) {
     e.preventDefault();
     context = canvas.getContext("2d");
-    // calculateCubeSize();
+    calculateCubeSize();
+    $("#foot").css("position","relative");
     Start();
     $("#newGame_btn").css("display","block");
     return false;
@@ -504,12 +503,12 @@ function Draw() {
     for (var i = 0; i < 15; i++) {
         for (var j = 0; j < 15; j++) {
             var center = new Object();
-            center.x = i * 35 + 28;
-            center.y = j * 35 + 28;
-            //center.x = i * size_x_to_draw + size_x_to_draw/2;
-            //center.y = j * size_y_to_draw + size_y_to_draw/2;
+            //center.x = i * 35 + 28;
+            //center.y = j * 35 + 28;
+            center.x = i * size_x_to_draw + size_x_to_draw/2;
+            center.y = j * size_y_to_draw + size_y_to_draw/2;
             if (boardMonsters[i][j] === 9) {
-                context.drawImage(monster, center.x - 20, center.y - 20);
+                context.drawImage(monster, center.x - size_x_to_draw/2, center.y - size_y_to_draw/2);
             }else if (boardExtraScore[i][j] === 8){
                     context.drawImage(burger, center.x - 15, center.y - 15);
             }else if(board[i][j] === 3){
@@ -585,8 +584,8 @@ function Draw() {
             } else if (board[i][j] === 4) {
                 context.beginPath();
                 context.strokeStyle = "#3c3cef";
-                context.drawImage(wallPic,center.x - 18,center.y - 17.5);
-                //context.drawImage(wallPic,center.x - size_x_to_draw/2, center.y - size_y_to_draw/2,size_x_to_draw,size_y_to_draw);
+                //context.drawImage(wallPic,center.x - 18,center.y - 17);
+                context.drawImage(wallPic,center.x - size_x_to_draw/2, center.y - size_y_to_draw/2,size_x_to_draw,size_y_to_draw);
             }
         }
     }

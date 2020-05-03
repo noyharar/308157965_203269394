@@ -31,8 +31,7 @@
     width: auto;
 }
 #game{
-    width: 60%;
-    float: left;
+    width: 70%;
     border: 3px solid #3c3cef;
     border-radius:5px;
 }
