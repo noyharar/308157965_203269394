@@ -858,9 +858,9 @@ function UpdatePosition() {
         window.clearInterval(interval);
         window.clearInterval(intervalMonster);
         window.clearInterval(intervalExtraScore);
-        alertNote("Winner!",1000)
+        alertNote("Winner!!!",1000)
     }
-    if (score == scoreOfTotalBoard) {
+    if (gameOver()) {
         Draw();
         stopSong();
         window.clearInterval(interval);
@@ -969,4 +969,15 @@ function settings_display() {
 }
 function stop_soundEffect() {
     noSound = true;
+}
+
+function gameOver() {
+    for (var i = 0; i < 15; i++) {
+        for(var j = 0; j < 15; j++){
+            if(board[i][j] == 1 || board[i][j] == 6 || board[i][j] == 7){
+                return false;
+            }
+        }
+    }
+    return true;
 }
