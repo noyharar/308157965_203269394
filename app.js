@@ -29,13 +29,18 @@ var extra_life = 1;
 var clock = 1;
 var gameSong;
 var noSound = false;
+var numRow;
+var numCol;
+var tSizeMatrix;
+var size_x_to_draw;
+var size_y_to_draw;
+
 
 function submit_setting(){
     $("#setting").css("display", "none");
     $("#random_btn").css("display", "none");
     $('#score_time_life').css('display', 'block');
     $('#random_btn').css('display', 'none');
-    // life();
     settings_display();
 }
 function playSong() {
@@ -44,22 +49,7 @@ function playSong() {
 }
 function stopSong() {
     gameSong.pause();
-
 }
-
-
-/* $(document).ready(function () {
-    let userScreenWidth = window.innerWidth;
-    console.log(userScreenWidth);
-    let userScreenHeigth = window.innerHeight;
-    console.log(userScreenHeigth);
-    if (userScreenHeigth < 768 || userScreenWidth < 1366) {
-        window.resizeTo(1366 , 768);
-        window.focus();
-        console.log("working");
-    }
-}); */
-
 function myFunctionLogin() {
     $(document.getElementById("welcome")).hide();
     $(document.getElementById("about")).hide();
@@ -201,13 +191,10 @@ function hide() {
 function open_about() {
     // Get the modal
     var modal = document.getElementById("myModal");
-
     // Get the button that opens the modal
     var btn = document.getElementById("myBtn");
-
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
-
     // When the user clicks the button, open the modal
     btn.onclick = function () {
         modal.style.display = "block";
@@ -238,11 +225,20 @@ function myFunction() {
     $(document.getElementById("register")).show();
     $("#register").show(300);
 }
-
+function calculateCubeSize() {
+    numCol = 15;
+    numRow = 15;
+    tSizeMatrix = numRow * numCol;
+    canvas.width = 600;
+    canvas.height = 600;
+    size_x_to_draw = numRow*canvas.height/tSizeMatrix;
+    size_y_to_draw = numCol*canvas.width/tSizeMatrix;
+}
 
 function startForNow(e) {
     e.preventDefault();
     context = canvas.getContext("2d");
+    calculateCubeSize();
     Start();
     $("#newGame_btn").css("display","block");
     return false;
@@ -309,30 +305,16 @@ function Start() {
         for (var j = 0; j < 15; j++) {
             if (
                 (i === 12 && j === 13) ||
-                (i === 13 && j === 9) ||
-                (i === 2 && j === 13) ||
-                (i === 7 && j === 12) ||
+                (i === 11 && j === 13) ||
+                (i === 6 && j === 1) ||
+                (i === 6 && j === 2) ||
                 (i === 8 && j === 10) ||
-                (i === 3 && j === 11)
+                (i === 9 && j === 4) ||
+                (i === 10 && j === 4) ||
+                (i === 11 && j === 4) ||
+                (i === 8 && j === 11)
             ) {
                 board[i][j] = 4;
-            }else if (
-                (i === 13 && j === 14) ||
-                (i === 12 && j === 14) ||
-                (i === 11 && j === 14) ||
-                (i === 14 && j === 11) ||
-                (i === 12 && j === 9) ||
-                (i === 1 && j === 14) ||
-                (i === 2 && j === 14) ||
-                (i === 3 && j === 14) ||
-                (i === 6 && j === 12) ||
-                (i === 7 && j === 12) ||
-                (i === 7 && j === 10) ||
-                (i === 8 && j === 10) ||
-                (i === 2 && j === 11) ||
-                (i === 0 && j === 12)
-            ) {
-                board[i][j] = -4;
             }
             else if(num_of_monsters > 0 && ((i == 0 && j == 0) || (i == 14 && j == 0) || (i == 14 && j == 14) || (i == 0 && j == 14))){
                 board[i][j] = 9;
@@ -547,11 +529,16 @@ function Draw() {
     life.src = "image/life.png";
     var clock = new Image();
     clock.src = "image/clock.png";
+    var wallPic = new Image();
+    wallPic.src = "image/wall2.jpeg";
+
     for (var i = 0; i < 15; i++) {
         for (var j = 0; j < 15; j++) {
             var center = new Object();
-            center.x = i * 35 + 28;
-            center.y = j * 35 + 28;
+            //center.x = i * 35 + 28;
+            //center.y = j * 35 + 28;
+            center.x = i * size_x_to_draw + size_x_to_draw/2;
+            center.y = j * size_y_to_draw + size_y_to_draw/2;
             if (boardMonsters[i][j] == 9) {
                 context.drawImage(monster, center.x - 20, center.y - 20);
             }else if (board[i][j] == 8){
@@ -628,14 +615,9 @@ function Draw() {
                 context.fillText("25", center.x - 5, center.y + 3);
             } else if (board[i][j] == 4) {
                 context.beginPath();
-                context.rect(center.x - 18, center.y - 20, 5, 40);
-                context.fillStyle = "#3c3cef"; //color
-                context.fill();
-            } else if (board[i][j] == -4) {
-                context.beginPath();
-                context.rect(center.x - 20, center.y - 18, 40, 5);
-                context.fillStyle = "#3c3cef"; //color
-                context.fill();
+                context.strokeStyle = "#3c3cef";
+                //context.drawImage(wallPic,center.x - 30,center.y - 20, size_x_to_draw, size_y_to_draw);
+                context.drawImage(wallPic,center.x - size_x_to_draw/2, center.y - size_y_to_draw/2,size_x_to_draw,size_y_to_draw);
             }
         }
     }
@@ -659,22 +641,22 @@ function UpdateMonsterPosition() {
             if(currMonsterPositions[i][j] == 9){
                 var randomNum = Math.floor(Math.random() * 2);/*0,1*/
                     //monster get down
-                    if (randomNum == 0 && Math.abs(((i + 1) - shape.i) < Math.abs((i - 1) - shape.i)) && board[i + 1][j] != 4 && boardMonsters[i + 1][j] != 9) {
+                    if (randomNum == 0 && Math.abs(((i + 1) - shape.i) < Math.abs((i - 1) - shape.i)) && board[i + 1][j] != 4 && board[i + 1][j] != -4 && boardMonsters[i + 1][j] != 9) {
                         boardMonsters[i][j] = 0;
                         boardMonsters[i + 1][j] = 9;
                     }
                     //monster get up
-                    else if(randomNum == 0 && Math.abs(((i+1) - shape.i) > Math.abs((i-1) - shape.i)) && board[i-1][j] != 4 && boardMonsters[i-1][j] != 9){
+                    else if(randomNum == 0 && Math.abs(((i+1) - shape.i) > Math.abs((i-1) - shape.i)) && board[i-1][j] != 4 && board[i-1][j] != -4 && boardMonsters[i-1][j] != 9){
                         boardMonsters[i][j] = 0;
                         boardMonsters[i-1][j] =  9;
                     }
                     //monster get right
-                    else if (randomNum == 1 && Math.abs(((j + 1) - shape.j) < Math.abs((j - 1) - shape.j)) && board[i][j + 1] != 4 && boardMonsters[i][j + 1] != 9) {
+                    else if (randomNum == 1 && Math.abs(((j + 1) - shape.j) < Math.abs((j - 1) - shape.j)) && board[i][j + 1] != 4 && board[i][j + 1] != -4 && boardMonsters[i][j + 1] != 9) {
                         boardMonsters[i][j] = 0;
                         boardMonsters[i][j + 1] = 9;
                     }
                     //monster get left
-                    else if (randomNum == 1 && Math.abs(((j + 1) - shape.j) > Math.abs((j - 1) - shape.j)) && board[i][j - 1] != 4 && boardMonsters[i][j - 1] != 9) {
+                    else if (randomNum == 1 && Math.abs(((j + 1) - shape.j) > Math.abs((j - 1) - shape.j)) && board[i][j - 1] != 4 && board[i][j - 1] != -4 && boardMonsters[i][j - 1] != 9) {
                         boardMonsters[i][j] = 0;
                         boardMonsters[i][j - 1] = 9;
                     }
