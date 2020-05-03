@@ -70,6 +70,7 @@ function myFunctionLogin() {
     $(document.getElementById("register")).hide();
     $(document.getElementById("login")).show();
     $(document.getElementById("setting")).hide();
+    $("#random_btn").css("display", "none");
 }
 
 $(document).ready(function () {
@@ -90,7 +91,7 @@ $(document).ready(function () {
         $(document.getElementById("login")).hide();
         $('#welcome').css("display", "block");
         $(document.getElementById("setting")).hide();
-
+        $("#random_btn").css("display", "none");
     });
 });
 
@@ -101,7 +102,7 @@ $(document).ready(function () {
         $(document.getElementById("register")).hide();
         $(document.getElementById("login")).show(300);
         $(document.getElementById("setting")).hide();
-
+        $("#random_btn").css("display", "none");
     });
 });
 
@@ -277,6 +278,7 @@ function initNewGame() {
         window.clearInterval(intervalExtraScore);
         Start();
         Draw();
+        playSong();
     return false;
 }
 
@@ -778,6 +780,7 @@ function UpdatePosition() {
     }
     if(numOfLifes == 0){
         alertNote("Loser!",1500);
+        stopSong();
         window.clearInterval(interval);
         window.clearInterval(intervalMonster);
         window.clearInterval(intervalExtraScore);
@@ -859,10 +862,12 @@ function UpdatePosition() {
     }
     if (score == scoreOfTotalBoard) {
         Draw();
+        stopSong();
         window.clearInterval(interval);
         window.clearInterval(intervalMonster);
         window.clearInterval(intervalExtraScore);
         alertNote("Game completed - You got the total score - Winner!",1000);
+
         initNewGame();
     } else {
         Draw();

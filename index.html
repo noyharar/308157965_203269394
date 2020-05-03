@@ -6,11 +6,11 @@
     <title>PAC-MAN</title>
     <script src="./jquery-3.4.1.slim.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>//noa
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="stylesheet" type="text/css" href="gameStyle.css" />
-    <link rel="icon" href="image/tit.jpg" />//noa
+    <link rel="icon" href="image/tit.jpg" />
 </head>
 <body>
 <section class="sectionHeader">
@@ -108,7 +108,6 @@
         <input type="submit" class="registerSubmit" value="Register" onclick="save_user()" />
     </div>
 </form>
-</body>
 
 <form id="setting"  onsubmit="startForNow(event)"  name="setting" class="settingClass" style="display:none">
     <div class="settingClass">
@@ -193,7 +192,7 @@
         </div>
         <div id="gal_is_awesome">
             <div id="game">
-                <canvas id="canvas" class="gameClass" height="600px" width="600px" style="border:1px solid #3c3cef"></canvas>
+                <canvas id="canvas" class="gameClass" height="600px" width="600px" style="border:1px solid #3c3cef; float: right"></canvas>
             </div>
             <audio id="myAudio"></audio>
 
@@ -244,49 +243,13 @@
         </div>
     </div>
 </div>
-
-
-<!--<div style="display:block">-->
-<!--    <div id="score">-->
-<!--        <label for="lblScore">SCORE:</label>-->
-<!--        <input id="lblScore" type="text" />-->
-<!--    </div>-->
-<!--    <div id="time">-->
-<!--        <label for="lblTime">TIME:</label>-->
-<!--        <input id="lblTime" type="text" />-->
-<!--    </div>-->
-<!--    <div id="game">-->
-<!--        <canvas id="canvas" height="600" width="600"></canvas>-->
-<!--    </div>-->
 <div id="loading_img" hidden>
     <img src="image/loading.gif" alt="loading_gif">
 </div>
+</body>
 <footer class="footerClass">
     <!-- <footer id="footer" class=footerClass style="text-decoration: white;"> -->
     <p><Strong>Pacman</Strong> | Noa Gorengot - noagoren@post.bgu.ac.il | Noy Harari - noyHarar@post.bgu.ac.il</p>
     <!-- </footer> -->
 </footer>
 </html>
-
-<!-- </html>
-
-	<body>
-		<div style="display:block">
-			<div id="score">
-				<label for="lblScore">SCORE:</label>
-				<input id="lblScore" type="text" />
-			</div>
-			<div id="time">
-				<label for="lblTime">TIME:</label>
-				<input id="lblTime" type="text" />
-			</div>
-			<div id="game">
-				<canvas id="canvas" height="600" width="600"></canvas>
-				</div>
-
-	</body>
-
-	</html>
-	</div>
-	</div>
-	</body>
