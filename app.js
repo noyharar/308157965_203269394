@@ -69,6 +69,7 @@ $(document).ready(function () {
         $(document.getElementById("setting")).hide();
         $('#score_time_life').css('display', 'none');
         $("#foot").css("position","fixed");
+        stopSong();
 
     });
 });
@@ -83,6 +84,8 @@ $(document).ready(function () {
         $("#random_btn").css("display", "none");
         $('#score_time_life').css('display', 'none');
         $("#foot").css("position","fixed");
+        stopSong();
+
     });
 });
 
@@ -96,6 +99,7 @@ $(document).ready(function () {
         $("#random_btn").css("display", "none");
         $('#score_time_life').css('display', 'none');
         $("#foot").css("position","fixed");
+        stopSong();
     });
 });
 
@@ -108,6 +112,7 @@ $(document).ready(function () {
         $(document.getElementById("setting")).hide();
         $('#score_time_life').css('display', 'none');
         $("#foot").css("position","fixed");
+        stopSong();
     });
 });
 /* defult user */
@@ -317,12 +322,16 @@ function Start() {
             if (
                 (i === 12 && j === 13) ||
                 (i === 11 && j === 13) ||
+                (i === 11 && j === 12) ||
                 (i === 6 && j === 1) ||
                 (i === 6 && j === 2) ||
                 (i === 8 && j === 10) ||
                 (i === 9 && j === 4) ||
                 (i === 10 && j === 4) ||
                 (i === 11 && j === 4) ||
+                (i === 10 && j === 3) ||
+                (i === 1 && j === 3) ||
+                (i === 1 && j === 4) ||
                 (i === 8 && j === 11)
             ) {
                 board[i][j] = 4;

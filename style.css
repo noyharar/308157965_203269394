@@ -336,7 +336,6 @@ h1{
   background-color: #f44336;
   color: white;
 }
-
 .closebtn {
   margin-left: 15px;
   color: white;
@@ -346,10 +345,4 @@ h1{
   line-height: 20px;
   cursor: pointer;
   transition: 0.3s;
-}
-
-.tableSetting{
-  font-family: 'Alef', serif;
-  font-size: 16px;
-  font-weight: bold;
 }
