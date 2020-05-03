@@ -13,7 +13,7 @@ var right = 39;
 var food_remain = -1;
 var num_of_monsters = -1;
 var timeToPlay = -1;
-var extra_food = 2;
+var extra_food = 1;
 var pacman_right = true;
 var pacman_left = false;
 var pacman_up = false;
@@ -22,6 +22,7 @@ var num_of_25_pt;
 var scoreOfTotalBoard = 0;
 var pacman_dead = false;
 var boardMonsters;
+var boardExtraScore;
 var intervalMonster;
 var numOfLifes = 5;
 var playerName;
@@ -29,6 +30,9 @@ var extra_life = 1;
 var clock = 1;
 var gameSong;
 var noSound = false;
+var intervalExtraScore;
+var n;
+var k;
 
 function submit_setting(){
     $("#setting").css("display", "none");
@@ -249,7 +253,8 @@ function startForNow(e) {
 }
 
 function initNewGame() {
-        pacman_dead = false;
+    $("#timeAlert").css("display", "none");
+    pacman_dead = false;
         context.clearRect(0, 0, canvas.width, canvas.height);
         context = canvas.getContext("2d");
         food_remain = food_remain = parseInt($(document.getElementById("food")).val());
@@ -259,7 +264,7 @@ function initNewGame() {
         pacman_left = false;
         pacman_up = false;
         pacman_down = false;
-        extra_food = 2;
+        extra_food = 1;
         clock = 1;
         if(numOfLifes == 6){
             removeLife(6);
@@ -269,6 +274,7 @@ function initNewGame() {
         life();
         window.clearInterval(interval);
         window.clearInterval(intervalMonster);
+        window.clearInterval(intervalExtraScore);
         Start();
         Draw();
     return false;
@@ -297,8 +303,10 @@ function Start() {
     scoreOfTotalBoard = (5*num_of_5_pt + 15*num_of_15_pt + 25*num_of_25_pt + 50*extra_food);
     start_time = new Date();
     boardMonsters = new Array();
+    boardExtraScore = new Array();
     for (var i = 0; i < 15; i++) {
         boardMonsters[i] = new Array();
+        boardExtraScore[i] = new Array();
         for(var j = 0; j < 15; j++){
             boardMonsters[i][j] = 0;
         }
@@ -395,7 +403,7 @@ function Start() {
 
     if(pacman_remain > 0 ){
         var emptyCell = findRandomEmptyCell(board);
-        board[emptyCell[0]][emptyCell[1]] = 5;
+        board[emptyCell[0]][emptyCell[1]] = 2;
         shape.i = emptyCell[0];
         shape.j = emptyCell[1];
         pacman_remain--;
@@ -414,7 +422,10 @@ function Start() {
 
     while (extra_food > 0) {
         var emptyCell = findRandomEmptyCell(board);
-        board[emptyCell[0]][emptyCell[1]] = 8;
+        n = emptyCell[0];
+        k = emptyCell[1];
+        board[n][k] = 8;
+        boardExtraScore[n][k] = 8;
         extra_food--;
     }
 
@@ -456,8 +467,8 @@ function Start() {
         false
     );
     interval = setInterval(UpdatePosition, 150);
-    intervalMonster = setInterval(UpdateMonsterPosition, 1000);
-
+    intervalMonster = setInterval(UpdateMonsterPosition, 800);
+    intervalExtraScore = setInterval(UpdateExtraScorePosition, 1000);
 }
 
 function findRandomEmptyCell(board) {
@@ -554,7 +565,7 @@ function Draw() {
             center.y = j * 35 + 28;
             if (boardMonsters[i][j] == 9) {
                 context.drawImage(monster, center.x - 20, center.y - 20);
-            }else if (board[i][j] == 8){
+            }else if (boardExtraScore[i][j] == 8){
                     context.drawImage(burger, center.x - 15, center.y - 15);
             }else if(board[i][j] == 3){
                 context.drawImage(clock, center.x - 15, center.y - 15);
@@ -651,6 +662,9 @@ function UpdateMonsterPosition() {
             if(boardMonsters[i][j] == 9){
                 currMonsterPositions[i][j] = 9;
             }
+            // if(boardMonsters[i][j] == 8){
+            //     currMonsterPositions[i][j] = 8;
+            // }
         }
     }
 
@@ -682,6 +696,38 @@ function UpdateMonsterPosition() {
         }
     }
     Draw();
+}
+
+
+function UpdateExtraScorePosition() {
+    var randomNumExtra = Math.floor(Math.random() * 4);/*0,1,2,3*/
+    if(boardExtraScore[n][k] === 8) {
+        // get down
+        if (randomNumExtra == 0 && board[n + 1][k] != 4) {
+            boardExtraScore[n][k] = 0;
+            boardExtraScore[n + 1][k] = 8;
+            n = n + 1;
+        }
+        // get up
+        else if (randomNumExtra == 1 && board[n - 1][k] != 4) {
+            boardExtraScore[n][k] = 0;
+            boardExtraScore[n - 1][k] = 8;
+            n = n - 1;
+        }
+        // get right
+        else if (randomNumExtra == 2 && board[n][k + 1] != 4) {
+            boardExtraScore[n][k] = 0;
+            boardExtraScore[n][k + 1] = 8;
+            k = k + 1;
+        }
+        //get left
+        else if (randomNumExtra == 3 && board[n][k - 1] != 4) {
+            boardExtraScore[n][k] = 0;
+            boardExtraScore[n][k - 1] = 8;
+            k = k - 1;
+        }
+        Draw();
+    }
 }
 
 function UpdatePosition() {
@@ -734,6 +780,7 @@ function UpdatePosition() {
         alertNote("Loser!",1500);
         window.clearInterval(interval);
         window.clearInterval(intervalMonster);
+        window.clearInterval(intervalExtraScore);
     }
     /*same cell with ball - score up */
     if (board[shape.i][shape.j] === 1 || board[shape.i][shape.j] === 6 || board[shape.i][shape.j] === 7 ) {
@@ -752,11 +799,12 @@ function UpdatePosition() {
         }
     }
     /*same cell with burger - score up*/
-    if (board[shape.i][shape.j] === 8) {
+    if (boardExtraScore[shape.i][shape.j] === 8) {
         if(!noSound){
             var audio = new Audio('audio/pacman_eatghost.wav');
             audio.play();
         }
+        boardExtraScore[shape.i][shape.j] = 0;
         document.getElementById("alertString").innerHTML = "Yummy BURGER.. You Got 50 points!!";
         $("#timeAlert").css("display", "block");
         score = score + 50;
@@ -780,30 +828,40 @@ function UpdatePosition() {
         }
         pacman_dead = true;
         board[shape.i][shape.j] = 0;
+        score = score - 10;
         Draw();
         window.clearInterval(interval);
         window.clearInterval(intervalMonster);
+        window.clearInterval(intervalExtraScore);
         setTimeout(continueGame, 1500);
     }
 
-    if (score >= scoreOfTotalBoard/2 && time_elapsed <= 10) {
+    if (score >= scoreOfTotalBoard/2) {
         pac_color = getRandomColor();
+        document.getElementById("alertString").innerHTML = "Keep going.. You got half of the total points!";
+        $("#timeAlert").css("display", "block");
     }
     if(score < 100 && time_elapsed >= timeToPlay){
         let note = "You better than " + score + " points!";
         time_elapsed = timeToPlay;
         lblTime.value = time_elapsed;
         window.clearInterval(interval);
+        window.clearInterval(intervalMonster);
+        window.clearInterval(intervalExtraScore);
         alertNote(note,1000)
     }else if(score >= 100 && time_elapsed >= timeToPlay){
         time_elapsed = timeToPlay;
         lblTime.value = time_elapsed;
         window.clearInterval(interval);
+        window.clearInterval(intervalMonster);
+        window.clearInterval(intervalExtraScore);
         alertNote("Winner!",1000)
     }
     if (score == scoreOfTotalBoard) {
         Draw();
         window.clearInterval(interval);
+        window.clearInterval(intervalMonster);
+        window.clearInterval(intervalExtraScore);
         alertNote("Game completed - You got the total score - Winner!",1000);
         initNewGame();
     } else {
@@ -826,6 +884,9 @@ function continueGame() {
     pacman_remain = 1;
     for (var i = 0; i < 15; i++) {
         for (var j = 0; j < 15; j++) {
+            if(board[i][j] === 8){
+                boardMonsters[i][j] = 8;
+            }
             boardMonsters[i][j] = 0;
             if(num_of_monsters > 0 && ((i == 0 && j == 0) || (i == 14 && j == 0) || (i == 14 && j == 14) || (i == 0 && j == 14))){
                 boardMonsters[i][j] = 9;
@@ -841,7 +902,8 @@ function continueGame() {
         pacman_remain--;
     }
     interval = setInterval(UpdatePosition, 150);
-    intervalMonster = setInterval(UpdateMonsterPosition, 1000);
+    intervalMonster = setInterval(UpdateMonsterPosition, 800);
+    intervalExtraScore = setInterval(UpdateExtraScorePosition, 1000);
 }
 
 
