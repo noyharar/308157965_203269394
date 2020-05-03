@@ -33,9 +33,6 @@ var noSound = false;
 var intervalExtraScore;
 var n;
 var k;
-var numRow;
-var numCol;
-var tSizeMatrix;
 var size_x_to_draw;
 var size_y_to_draw;
 
@@ -105,6 +102,7 @@ $(document).ready(function () {
         $(document.getElementById("setting")).hide();
     });
 });
+
 /* defult user */
 $(document).ready(function () {
     let defUserName = {
@@ -231,9 +229,6 @@ function myFunction() {
     $("#register").show(300);
 }
 function calculateCubeSize() {
-    // numCol = 15;
-    // numRow = 15;
-    // tSizeMatrix = 15 * 15;
     size_x_to_draw = 15*canvas.height/225;
     size_y_to_draw = 15*canvas.width/225;
 }
@@ -249,8 +244,9 @@ function startForNow(e) {
 }
 
 function initNewGame() {
-    $("#timeAlert").css("display", "none");
-    pacman_dead = false;
+        $("#timeAlert").css("display", "none");
+        calculateCubeSize();
+        pacman_dead = false;
         context.clearRect(0, 0, canvas.width, canvas.height);
         context = canvas.getContext("2d");
         food_remain = food_remain = parseInt($(document.getElementById("food")).val());
@@ -268,17 +264,18 @@ function initNewGame() {
         numOfLifes = 5;
         extra_life = 1;
         life();
-        window.clearInterval(interval);
-        window.clearInterval(intervalMonster);
-        window.clearInterval(intervalExtraScore);
+        clearIntervals()
         Start();
         Draw();
         playSong();
     return false;
 }
 
-$(document).ready(function () {
-});
+function clearIntervals() {
+    window.clearInterval(interval);
+    window.clearInterval(intervalMonster);
+    window.clearInterval(intervalExtraScore);
+}
 
 function Start() {
     board = new Array();
@@ -297,7 +294,7 @@ function Start() {
     num_of_5_pt = parseInt(0.6 * food_remain);
     num_of_15_pt = parseInt(0.3 * food_remain);
     num_of_25_pt = food_remain - num_of_5_pt - num_of_15_pt;
-    scoreOfTotalBoard = (5*num_of_5_pt + 15*num_of_15_pt + 25*num_of_25_pt + 50*extra_food);
+    scoreOfTotalBoard = (5*num_of_5_pt + 15*num_of_15_pt + 25*num_of_25_pt);
     start_time = new Date();
     boardMonsters = new Array();
     boardExtraScore = new Array();
@@ -483,7 +480,6 @@ function getRandomColor() {
 
 
 function Draw() {
-
     context.clearRect(0, 0, canvas.width, canvas.height);
     context = canvas.getContext("2d");
     canvas.width = canvas.width; //clean board
@@ -636,6 +632,7 @@ function UpdateMonsterPosition() {
 
 
 function UpdateExtraScorePosition() {
+    //get random number to to move
     var randomNumExtra = Math.floor(Math.random() * 4);/*0,1,2,3*/
     if(boardExtraScore[n][k] === 8) {
         // get down
@@ -705,6 +702,7 @@ function UpdatePosition() {
             shape.i++;
         }
     }
+    /*pacman take extra life*/
     if(board[shape.i][shape.j] == 5){
         numOfLifes++;
         life();
@@ -712,12 +710,11 @@ function UpdatePosition() {
         $("#timeAlert").css("display", "block");
         Draw();
     }
+    /*no lifes any more*/
     if(numOfLifes == 0){
         alertNote("Loser!",1500);
         stopSong();
-        window.clearInterval(interval);
-        window.clearInterval(intervalMonster);
-        window.clearInterval(intervalExtraScore);
+        clearIntervals()
     }
     /*same cell with ball - score up */
     if (board[shape.i][shape.j] === 1 || board[shape.i][shape.j] === 6 || board[shape.i][shape.j] === 7 ) {
@@ -746,6 +743,7 @@ function UpdatePosition() {
         $("#timeAlert").css("display", "block");
         score = score + 50;
     }
+    /*extra time when pacman arrived to clock*/
     if(board[shape.i][shape.j] == 3){
         timeToPlay = timeToPlay + 15;
         lblTimeSetting.value = timeToPlay;
@@ -767,12 +765,10 @@ function UpdatePosition() {
         board[shape.i][shape.j] = 0;
         score = score - 10;
         Draw();
-        window.clearInterval(interval);
-        window.clearInterval(intervalMonster);
-        window.clearInterval(intervalExtraScore);
+        clearIntervals()
         setTimeout(continueGame, 1500);
     }
-
+    /*when got hald of points - pacman changes color*/
     if (score >= scoreOfTotalBoard/2) {
         pac_color = getRandomColor();
         document.getElementById("alertString").innerHTML = "Keep going.. You got half of the total points!";
@@ -782,26 +778,20 @@ function UpdatePosition() {
         let note = "You better than " + score + " points!";
         time_elapsed = timeToPlay;
         lblTime.value = time_elapsed;
-        window.clearInterval(interval);
-        window.clearInterval(intervalMonster);
-        window.clearInterval(intervalExtraScore);
+        clearIntervals()
         alertNote(note,1000)
     }else if(score >= 100 && time_elapsed >= timeToPlay){
         time_elapsed = timeToPlay;
         lblTime.value = time_elapsed;
-        window.clearInterval(interval);
-        window.clearInterval(intervalMonster);
-        window.clearInterval(intervalExtraScore);
+        clearIntervals()
         alertNote("Winner!!!",1000)
     }
     if (gameOver()) {
-        Draw();
         stopSong();
-        window.clearInterval(interval);
-        window.clearInterval(intervalMonster);
-        window.clearInterval(intervalExtraScore);
+        clearIntervals()
+        Draw();
         alertNote("Game completed - You got the total score - Winner!",1000);
-        initNewGame();
+        setTimeout(initNewGame, 1000);
     } else {
         Draw();
     }
@@ -864,7 +854,6 @@ function life() {
 }
 
 function removeLife(i) {
-        // var img = "<img src ='image/pixel-pacman.png' id='lives"+i+"'/>"
     if(i > 0) {
         var img_name = "#img" + i;
         $(img_name).css("display", "none");
