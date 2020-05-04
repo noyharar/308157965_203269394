@@ -52,16 +52,29 @@ function stopSong() {
     gameSong.pause();
 }
 function myFunctionLogin() {
+    clearIntervals();
+    document.getElementById("name").value = null;
+    document.getElementById("userPassword").value = null;
     $(document.getElementById("welcome")).hide();
     $(document.getElementById("about")).hide();
     $(document.getElementById("register")).hide();
     $(document.getElementById("login")).show();
     $(document.getElementById("setting")).hide();
     $("#random_btn").css("display", "none");
+    $('#score_time_life').css('display', 'none');
+    $("#foot").css("position","fixed");
+    stopSong();
 }
+
+
+    jQuery.validator.addMethod("lettersonly", function(value, element) {
+        window.alert(value);
+        return this.optional(element) || /^[a-z]+$/i.test(value);
+    }, "Letters only please");
 
 $(document).ready(function () {
     $("#aboutBtn").click(function () {
+        clearIntervals();
         $('#welcome').css("display", "none");
         $(document.getElementById("register")).hide();
         $(document.getElementById("login")).hide();
@@ -77,6 +90,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $("#welcomeBtn").click(function () {
+        clearIntervals();
         $(document.getElementById("about")).hide();
         $(document.getElementById("register")).hide();
         $(document.getElementById("login")).hide();
@@ -86,31 +100,24 @@ $(document).ready(function () {
         $('#score_time_life').css('display', 'none');
         $("#foot").css("position","fixed");
         stopSong();
-
     });
 });
 
 $(document).ready(function () {
     $("#loginBtn").click(function () {
-        $(document.getElementById("welcome")).hide();
-        $(document.getElementById("about")).hide();
-        $(document.getElementById("register")).hide();
-        $(document.getElementById("login")).show(300);
-        $(document.getElementById("setting")).hide();
-        $("#random_btn").css("display", "none");
-        $('#score_time_life').css('display', 'none');
-        $("#foot").css("position","fixed");
-        stopSong();
+        myFunctionLogin();
     });
 });
 
 $(document).ready(function () {
     $("#registerBtn").click(function () {
+        clearIntervals();
         $('#welcome').css("display", "none");
         $(document.getElementById("about")).hide();
         $(document.getElementById("login")).hide();
         $("#register").show(300);
         $(document.getElementById("setting")).hide();
+        $("#random_btn").css("display", "none");
         $('#score_time_life').css('display', 'none');
         $("#foot").css("position","fixed");
         stopSong();
@@ -142,42 +149,87 @@ function save_user() {
     var lastName = document.getElementById("userLastName").value;
     var userMail = document.getElementById("userMail").value;
     var date = document.getElementById("birthday").value;
-    /*validation labels*/
-    if(user_name == null || password == null || firstName == null || lastName == null || userMail == null || date == null ||
-        user_name == "" || password == "" || firstName == "" || lastName == "" || userMail == "" || date == ""){
-        window.alert("Please fill all labels");
-    }
-    else if(hasNumber.test(firstName) ||hasNumber.test(lastName)){
-        window.alert("Name must be written only with letters!");
-    }
-    else if(!hasNumber.test(password) || password.length != 6 || !hasLetter.test(password)){
-        window.alert("Please choose 6 characters for password includes letters ans numbers!");
-    }
-    else if(!hasMail.test(userMail)){
-        window.alert("Please insert legal email address!");
-    }
+    // /*validation labels*/
+    // if(user_name == null || password == null || firstName == null || lastName == null || userMail == null || date == null ||
+    //     user_name == "" || password == "" || firstName == "" || lastName == "" || userMail == "" || date == ""){
+    //     window.alert("Please fill all labels");
+    // }
+    // else if(hasNumber.test(firstName) ||hasNumber.test(lastName)){
+    //     window.alert("Name must be written only with letters!");
+    // }
+    // else if(!hasNumber.test(password) || password.length != 6 || !hasLetter.test(password)){
+    //     window.alert("Please choose 6 characters for password includes letters ans numbers!");
+    // }
+    // else if(!hasMail.test(userMail)){
+    //     window.alert("Please insert legal email address!");
+    // }
+
+   // var valid = validationRegisterForm();
+    // validationRegisterForm();
     // let nameForKey = document.getElementById("user_name").value;
-    if (localStorage.getItem(user_name) == null) {
-        let data = {
-            userName: user_name,
-            userPassword: password,
-            firstName: firstName,
-            lastName: lastName,
-            mail: userMail,
-            birthDay: date
-        };
-        document.forms[0].reset();
-        let str = JSON.stringify(data);
-        localStorage.setItem(user_name, str);
-        $('#register').css('display', 'none');
-        $("#loading_img").css("display","block");
-        setTimeout(hide,2000);
-        playerName = userMail;
-    }
-    else {
-        alert("this user already exist");
-    }
+    // if(valid) {
+        if (localStorage.getItem(user_name) == null) {
+            let data = {
+                user_name: user_name,
+                userPassword: password,
+                firstName: firstName,
+                lastName: lastName,
+                mail: userMail,
+                birthDay: date
+            };
+            document.forms[0].reset();
+            let str = JSON.stringify(data);
+            localStorage.setItem(user_name, str);
+            $('#register').css('display', 'none');
+            $("#loading_img").css("display", "block");
+            setTimeout(hide, 2000);
+            playerName = userMail;
+        } else {
+            alert("this user already exist");
+        }
+    // }
 }
+$(document).ready(function () {
+    $("form[name='registration']").validate({
+        rules: {
+            user_name: 'required',
+            userFirstName: {
+                required: true,
+                // lettersonly: true,
+            },
+            userLastName:{
+                required: true,
+                // lettersonly: true,
+            },
+            userMail: {
+                required: true,
+                email: true,
+            },
+            user_password: {
+                required: true,
+                minlength: 6,
+            },
+            // birthDay:{
+            // }
+        },
+        messages: {
+            userName: 'This field is required',
+            userFirstName: 'This field is required',
+            userLastName: 'This field is required',
+            userMail: 'Enter a valid email',
+            user_password: {
+                minlength: 'Password must be at least 6 characters long'
+            }
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+});
+
+// function validationRegisterForm() {
+//     return
+// }
 
 function load_user() {
     let userName = document.getElementById("name").value;
@@ -199,10 +251,24 @@ function load_user() {
         }
     }
 }
+
+
 function hide() {
     $("#loading_img").css("display","none");
+    initSetting();
     $('#setting').css('display', 'block');
     $("#random_btn").css("display","block");
+}
+
+function initSetting() {
+    up = 38;
+    down = 40;
+    left = 37;
+    right = 39;
+    document.getElementById("food").value = null;
+    document.getElementById("monsters").value = null;
+    document.getElementById("lblTimeSetting").value = null;
+
 }
 
 function open_about() {
@@ -236,6 +302,7 @@ function open_about() {
 }
 
 function myFunction() {
+    clearIntervals();
     $('#welcome').css("display", "none");
     $(document.getElementById("about")).hide();
     $(document.getElementById("login")).hide();

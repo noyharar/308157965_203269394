@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PAC-MAN</title>
     <script src="./jquery-3.4.1.slim.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./jquery.validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/additional-methods.min.js"></script>
+<!--    <script src="https://ajax.microsoft.com/ajax/jquery.validate/1.7/additional-methods.js"></script>-->
     <script type="text/javascript" src="app.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <link rel="stylesheet" type="text/css" href="gameStyle.css"/>
@@ -95,37 +96,34 @@
 <div id="result">
 
 </div>
-<form class=registerForm>
+<form id="registerForm" class=registerForm name="registration">
     <div id="register" style="display:none;width: 50%;">
         <br>
         <h1>Register</h1>
         <p>Please fill the register form:</p>
-        <label for="userName"><b>user Name:</b></label>
-        <input type="userName" id="user_name" placeholder="Enter your user name" name="userName" required>
+        <label for="user_name"><b>user Name:</b></label>
+        <input type="text" id="user_name" placeholder="Enter your user name" name="userName">
         <br>
         <br>
         <label for="user_password"><b>Password:</b></label>
-        <input type="password" id="user_password" placeholder="Enter your Password" name="userPassword"
-               pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" required>
+        <input type="password" id="user_password" placeholder="Enter your Password" name="userPassword">
         <br>
         <br>
         <label for="userFirstName"><b>Fisrt Name:</b></label>
-        <input type="firstName" id="userFirstName" placeholder="Enter your first name" name="firstName"
-               pattern="^[A-Za-z]+" required>
+        <input type="text" id="userFirstName" placeholder="Enter your first name" name="firstName">
         <br>
         <br>
         <label for="userLastName"><b>Last Name:</b></label>
-        <input type="lastName" id="userLastName" placeholder="Enter your last name" name="lastName" pattern="[A-Za-z]+"
-               required>
+        <input type="text" id="userLastName" placeholder="Enter your last name" name="lastName">
         <br>
         <br>
         <label for="userMail"><b>Email:</b></label>
-        <input type="text" id="userMail" placeholder="Enter your Email" name="email"
-               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+        <input type="email" id="userMail" placeholder="Enter your Email" name="email">
+<!--               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>-->
         <br>
         <br>
         <label for="birthday">Please insert your birthday:</label>
-        <input type="date" id="birthday" name="birthday" required>
+        <input type="date" id="birthday" name="birthday">
         <br>
         <br>
         <input type="submit" class="registerSubmit" value="Register" onclick="save_user()"/>
@@ -176,7 +174,7 @@
 </button>
 
 <div id="score_time_life" class="theGame" style="display: none">
-    <div id="frame">
+    <div id="frame" style="position: center">
         <div id="left_side" style="margin-left: auto">
             <div id="player_name">
                 <h1>PLAYER NAME: <p id="pl_name" style="display: inline-flex"></p></h1>
