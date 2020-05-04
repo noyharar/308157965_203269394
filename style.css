@@ -142,18 +142,6 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
 }
-/** {box-sizing: border-box}*/
-
-/*  display: block;*/
-/*  margin-left: auto;*/
-/*  margin-right: auto;*/
-/*  width: 50%;*/
-/*}*/
-/*section#Login_Register_buttons{*/
-/*    margin-left: auto;*/
-/*    margin-right: auto;*/
-/*    background-image: url(image/welcom.jpg);*/
-/*} */
 .center {
   display: block;
   margin-left: 90px;
@@ -172,11 +160,15 @@ body{
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 250px; /* Location of the box */
-  left: 0;
-  top: 0;
+  padding-top: 100px; /* Location of the box */
+  /*left: 0;*/
+  /*top: 0;*/
+  text-align: left;
+  /*width: -moz-fit-content;*/
+  /*width: fit-content;*/
+  height: fit-content;
   width: 100%; /* Full width */
-  height: 100%; /* Full height */
+  /*height: 100%; !* Full height *!*/
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -186,12 +178,14 @@ body{
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid #3c3cef;
   width: 50%;
-  height: 50%;
-  background-image: url("image/packman1 (5).jpg");
+  height: 70%;
+  /*background-image: url("image/packman1 (5).jpg");*/
+  background-image: url("image/g.jpg");
+  background-size: cover;
   background-repeat: no-repeat;
-  color: blue;
+  color: white;
 }
 
 /* The Close Button */
@@ -346,7 +340,17 @@ h1{
   cursor: pointer;
   transition: 0.3s;
 }
-.h3{
+h3{
+  font-family: Alef;
+  font-size: small;
+}
+h4{
+  text-align: left;
+  font-size: 65%;
   font-family: Pixeled;
-  font-size: larger;
+  color: #3c3cef;
+  float: left;
+}
+.clearFix{
+  overflow: auto;
 }
