@@ -346,3 +346,7 @@ h1{
   cursor: pointer;
   transition: 0.3s;
 }
+.h3{
+  font-family: Pixeled;
+  font-size: larger;
+}
