@@ -37,6 +37,77 @@ var size_x_to_draw;
 var size_y_to_draw;
 
 
+// Wait for the DOM to be ready
+$(function() {
+    $.validator.addMethod("lettersonly", function(value, element) {
+        return this.optional(element) || /^ [a-z]+$/i.test(value);
+    }, "Letters only please");
+
+    $.validator.addMethod("alphanumeric", function(value, element) {
+        return this.optional(element) || /^.*(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9]+$/i.test(value);
+    }, "Please use with letters and numbers");
+
+    // Initialize form validation on the registration form.
+    // It has the name attribute "registration"
+    $("form[name='registration']").validate({
+        // Specify validation rules
+        rules: {
+            user_name: "required",
+            user_password: {
+                required: true,
+                minlength: 6,
+                alphanumeric: true,
+            },
+            userFirstName: {
+                required: true,
+                lettersonly: true
+            },
+            userLastName: {
+                required: true,
+                lettersonly: true
+            },
+            userMail: {
+                required: true,
+                email: true
+            },
+            birthday: "required",
+        },
+        // Specify validation error messages
+        messages: {
+            user_name: "Username is required",
+            user_password: {
+                required: "Password is required",
+                minlength: "Password length should be 6",
+                maxlength: "Password length should be 6"
+            },
+            userFirstName: {
+                required: "First name is required",
+                lettersonly: "First name should contains only letters"
+            },
+            userLastName: {
+                required: "Last name is required",
+                lettersonly: "Last name should contains only letters"
+            },
+            userMail: {
+                required: "Email is required",
+                email: "Please enter a valid email address"
+            },
+            birthday: "Birthday is required",
+        },
+        // Make sure the form is submitted to the destination defined
+        // in the "action" attribute of the form when valid
+        submitHandler: function(form) {
+            // alert("Hi");
+            save_user();
+            // form.submit();
+        },
+        invalidHandler: function(event, validator) {
+            alert("Please check your registration values!")
+        }
+    });
+});
+
+
 function submit_setting(){
     $("#setting").css("display", "none");
     $("#random_btn").css("display", "none");
@@ -52,29 +123,16 @@ function stopSong() {
     gameSong.pause();
 }
 function myFunctionLogin() {
-    clearIntervals();
-    document.getElementById("name").value = null;
-    document.getElementById("userPassword").value = null;
     $(document.getElementById("welcome")).hide();
     $(document.getElementById("about")).hide();
     $(document.getElementById("register")).hide();
     $(document.getElementById("login")).show();
     $(document.getElementById("setting")).hide();
     $("#random_btn").css("display", "none");
-    $('#score_time_life').css('display', 'none');
-    $("#foot").css("position","fixed");
-    stopSong();
 }
-
-
-    jQuery.validator.addMethod("lettersonly", function(value, element) {
-        window.alert(value);
-        return this.optional(element) || /^[a-z]+$/i.test(value);
-    }, "Letters only please");
 
 $(document).ready(function () {
     $("#aboutBtn").click(function () {
-        clearIntervals();
         $('#welcome').css("display", "none");
         $(document.getElementById("register")).hide();
         $(document.getElementById("login")).hide();
@@ -90,7 +148,6 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $("#welcomeBtn").click(function () {
-        clearIntervals();
         $(document.getElementById("about")).hide();
         $(document.getElementById("register")).hide();
         $(document.getElementById("login")).hide();
@@ -100,24 +157,31 @@ $(document).ready(function () {
         $('#score_time_life').css('display', 'none');
         $("#foot").css("position","fixed");
         stopSong();
+
     });
 });
 
 $(document).ready(function () {
     $("#loginBtn").click(function () {
-        myFunctionLogin();
+        $(document.getElementById("welcome")).hide();
+        $(document.getElementById("about")).hide();
+        $(document.getElementById("register")).hide();
+        $(document.getElementById("login")).show(300);
+        $(document.getElementById("setting")).hide();
+        $("#random_btn").css("display", "none");
+        $('#score_time_life').css('display', 'none');
+        $("#foot").css("position","fixed");
+        stopSong();
     });
 });
 
 $(document).ready(function () {
     $("#registerBtn").click(function () {
-        clearIntervals();
         $('#welcome').css("display", "none");
         $(document.getElementById("about")).hide();
         $(document.getElementById("login")).hide();
         $("#register").show(300);
         $(document.getElementById("setting")).hide();
-        $("#random_btn").css("display", "none");
         $('#score_time_life').css('display', 'none');
         $("#foot").css("position","fixed");
         stopSong();
@@ -140,9 +204,9 @@ $(document).ready(function () {
 
 
 function save_user() {
-    var hasNumber = /\d/;
-    var hasLetter =/[a-zA-Z]/;
-    var hasMail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    // var hasNumber = /\d/;
+    // var hasLetter =/[a-zA-Z]/;
+    // var hasMail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     var user_name = document.getElementById("user_name").value;
     var password =  document.getElementById("user_password").value;
     var firstName = document.getElementById("userFirstName").value;
@@ -163,73 +227,28 @@ function save_user() {
     // else if(!hasMail.test(userMail)){
     //     window.alert("Please insert legal email address!");
     // }
-
-   // var valid = validationRegisterForm();
-    // validationRegisterForm();
     // let nameForKey = document.getElementById("user_name").value;
-    // if(valid) {
-        if (localStorage.getItem(user_name) == null) {
-            let data = {
-                user_name: user_name,
-                userPassword: password,
-                firstName: firstName,
-                lastName: lastName,
-                mail: userMail,
-                birthDay: date
-            };
-            document.forms[0].reset();
-            let str = JSON.stringify(data);
-            localStorage.setItem(user_name, str);
-            $('#register').css('display', 'none');
-            $("#loading_img").css("display", "block");
-            setTimeout(hide, 2000);
-            playerName = userMail;
-        } else {
-            alert("this user already exist");
-        }
-    // }
+    if (localStorage.getItem(user_name) == null) {
+        let data = {
+            userName: user_name,
+            userPassword: password,
+            firstName: firstName,
+            lastName: lastName,
+            mail: userMail,
+            birthDay: date
+        };
+        document.forms[0].reset();
+        let str = JSON.stringify(data);
+        localStorage.setItem(user_name, str);
+        $('#register').css('display', 'none');
+        $("#loading_img").css("display","block");
+        setTimeout(hide,2000);
+        playerName = userMail;
+    }
+    else {
+        alert("this user already exist");
+    }
 }
-$(document).ready(function () {
-    $("form[name='registration']").validate({
-        rules: {
-            user_name: 'required',
-            userFirstName: {
-                required: true,
-                // lettersonly: true,
-            },
-            userLastName:{
-                required: true,
-                // lettersonly: true,
-            },
-            userMail: {
-                required: true,
-                email: true,
-            },
-            user_password: {
-                required: true,
-                minlength: 6,
-            },
-            // birthDay:{
-            // }
-        },
-        messages: {
-            userName: 'This field is required',
-            userFirstName: 'This field is required',
-            userLastName: 'This field is required',
-            userMail: 'Enter a valid email',
-            user_password: {
-                minlength: 'Password must be at least 6 characters long'
-            }
-        },
-        submitHandler: function(form) {
-            form.submit();
-        }
-    });
-});
-
-// function validationRegisterForm() {
-//     return
-// }
 
 function load_user() {
     let userName = document.getElementById("name").value;
@@ -251,24 +270,10 @@ function load_user() {
         }
     }
 }
-
-
 function hide() {
     $("#loading_img").css("display","none");
-    initSetting();
     $('#setting').css('display', 'block');
     $("#random_btn").css("display","block");
-}
-
-function initSetting() {
-    up = 38;
-    down = 40;
-    left = 37;
-    right = 39;
-    document.getElementById("food").value = null;
-    document.getElementById("monsters").value = null;
-    document.getElementById("lblTimeSetting").value = null;
-
 }
 
 function open_about() {
@@ -302,7 +307,6 @@ function open_about() {
 }
 
 function myFunction() {
-    clearIntervals();
     $('#welcome').css("display", "none");
     $(document.getElementById("about")).hide();
     $(document.getElementById("login")).hide();
@@ -325,30 +329,30 @@ function startForNow(e) {
 }
 
 function initNewGame() {
-        $("#timeAlert").css("display", "none");
-        calculateCubeSize();
-        pacman_dead = false;
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        context = canvas.getContext("2d");
-        food_remain = food_remain = parseInt($(document.getElementById("food")).val());
-        num_of_monsters = parseInt($(document.getElementById("monsters")).val());
-        timeToPlay = parseInt($(document.getElementById("lblTimeSetting")).val());
-        pacman_right = true;
-        pacman_left = false;
-        pacman_up = false;
-        pacman_down = false;
-        extra_food = 1;
-        clock = 1;
-        if(numOfLifes == 6){
-            removeLife(6);
-        }
-        numOfLifes = 5;
-        extra_life = 1;
-        life();
-        clearIntervals()
-        Start();
-        Draw();
-        playSong();
+    $("#timeAlert").css("display", "none");
+    calculateCubeSize();
+    pacman_dead = false;
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context = canvas.getContext("2d");
+    food_remain = food_remain = parseInt($(document.getElementById("food")).val());
+    num_of_monsters = parseInt($(document.getElementById("monsters")).val());
+    timeToPlay = parseInt($(document.getElementById("lblTimeSetting")).val());
+    pacman_right = true;
+    pacman_left = false;
+    pacman_up = false;
+    pacman_down = false;
+    extra_food = 1;
+    clock = 1;
+    if(numOfLifes == 6){
+        removeLife(6);
+    }
+    numOfLifes = 5;
+    extra_life = 1;
+    life();
+    clearIntervals()
+    Start();
+    Draw();
+    playSong();
     return false;
 }
 
@@ -616,7 +620,7 @@ function Draw() {
             if (boardMonsters[i][j] === 9) {
                 context.drawImage(monster, center.x - size_x_to_draw/2, center.y - size_y_to_draw/2);
             }else if (boardExtraScore[i][j] === 8){
-                    context.drawImage(burger, center.x - 15, center.y - 15);
+                context.drawImage(burger, center.x - 15, center.y - 15);
             }else if(board[i][j] === 3){
                 context.drawImage(clock, center.x - 15, center.y - 15);
             }else if (board[i][j] === 5){
@@ -714,26 +718,26 @@ function UpdateMonsterPosition() {
         for (var j = 0; j < 15; j++) {
             if(currMonsterPositions[i][j] == 9){
                 var randomNum = Math.floor(Math.random() * 2);/*0,1*/
-                    //monster get down
-                    if (randomNum == 0 && Math.abs(((i + 1) - shape.i) < Math.abs((i - 1) - shape.i)) && board[i + 1][j] != 4 && boardMonsters[i + 1][j] != 9) {
-                        boardMonsters[i][j] = 0;
-                        boardMonsters[i + 1][j] = 9;
-                    }
-                    //monster get up
-                    else if(randomNum == 0 && Math.abs(((i+1) - shape.i) > Math.abs((i-1) - shape.i)) && board[i-1][j] != 4 && boardMonsters[i-1][j] != 9){
-                        boardMonsters[i][j] = 0;
-                        boardMonsters[i-1][j] =  9;
-                    }
-                    //monster get right
-                    else if (randomNum == 1 && Math.abs(((j + 1) - shape.j) < Math.abs((j - 1) - shape.j)) && board[i][j + 1] != 4 && boardMonsters[i][j + 1] != 9) {
-                        boardMonsters[i][j] = 0;
-                        boardMonsters[i][j + 1] = 9;
-                    }
-                    //monster get left
-                    else if (randomNum == 1 && Math.abs(((j + 1) - shape.j) > Math.abs((j - 1) - shape.j)) && board[i][j - 1] != 4 && boardMonsters[i][j - 1] != 9) {
-                        boardMonsters[i][j] = 0;
-                        boardMonsters[i][j - 1] = 9;
-                    }
+                //monster get down
+                if (randomNum == 0 && Math.abs(((i + 1) - shape.i) < Math.abs((i - 1) - shape.i)) && board[i + 1][j] != 4 && boardMonsters[i + 1][j] != 9) {
+                    boardMonsters[i][j] = 0;
+                    boardMonsters[i + 1][j] = 9;
+                }
+                //monster get up
+                else if(randomNum == 0 && Math.abs(((i+1) - shape.i) > Math.abs((i-1) - shape.i)) && board[i-1][j] != 4 && boardMonsters[i-1][j] != 9){
+                    boardMonsters[i][j] = 0;
+                    boardMonsters[i-1][j] =  9;
+                }
+                //monster get right
+                else if (randomNum == 1 && Math.abs(((j + 1) - shape.j) < Math.abs((j - 1) - shape.j)) && board[i][j + 1] != 4 && boardMonsters[i][j + 1] != 9) {
+                    boardMonsters[i][j] = 0;
+                    boardMonsters[i][j + 1] = 9;
+                }
+                //monster get left
+                else if (randomNum == 1 && Math.abs(((j + 1) - shape.j) > Math.abs((j - 1) - shape.j)) && board[i][j - 1] != 4 && boardMonsters[i][j - 1] != 9) {
+                    boardMonsters[i][j] = 0;
+                    boardMonsters[i][j - 1] = 9;
+                }
             }
         }
     }
