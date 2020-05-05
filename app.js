@@ -195,6 +195,7 @@ function myFunctionLogin() {
     if(!noSound) {
         stopSong();
         stop_soundEffect();
+        noSound = false;
     }
     clearIntervals();
 }
@@ -210,6 +211,8 @@ $(document).ready(function () {
         $('#score_time_life').css('display', 'none');
         $("#foot").css("position","fixed")
         stopSong();
+        stop_soundEffect()
+        noSound = false;
     });
 });
 
@@ -225,7 +228,6 @@ $(document).ready(function () {
         $('#score_time_life').css('display', 'none');
         $("#foot").css("position","fixed");
         stopSong();
-
     });
 });
 
