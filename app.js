@@ -108,18 +108,18 @@ $(function() {
     $("form[name='setting']").validate({
         // Specify validation rules
         rules: {
-            upId:{
-                maxlength: 1,
-            },
-            downId:{
-                maxlength: 1,
-            },
-            rightId:{
-                maxlength: 1,
-            },
-            leftId:{
-                maxlength: 1,
-            },
+            // upId:{
+            //     maxlength: 1,
+            // },
+            // downId:{
+            //     maxlength: 1,
+            // },
+            // rightId:{
+            //     maxlength: 1,
+            // },
+            // leftId:{
+            //     maxlength: 1,
+            // },
             food: {
                 required: true,
                 min: 50,
@@ -137,10 +137,10 @@ $(function() {
         },
         // Specify validation error messages
         messages: {
-            upId: "Please insert only one keyboard",
-            leftId: "Please insert only one keyboard",
-            upId: "Please insert only one keyboard",
-            rightId: "Please insert only one keyboard",
+            // upId: "Please insert only one keyboard",
+            // leftId: "Please insert only one keyboard",
+            // upId: "Please insert only one keyboard",
+            // rightId: "Please insert only one keyboard",
             food: {
                 required: "Number of balls is required",
                 min: "Please insert Number between 50 to 90",
@@ -324,18 +324,18 @@ function hide() {
 }
 
 function initSetting() {
-    document.getElementById("upId").value = null;
-    document.getElementById("downId").value = null;
-    document.getElementById("leftId").value = null;
-    document.getElementById("rightId").value = null;
+    document.getElementById("upId").value = "ArrowUP";
+    document.getElementById("downId").value = "ArrowDown";
+    document.getElementById("leftId").value = "ArrowLeft";
+    document.getElementById("rightId").value = "ArrowRight";
     up = 38;
     down = 40;
     left = 37;
     right = 39;
-    upId.placeholder = "ArrowUp";
-    downId.placeholder = "ArrowDown";
-    leftId.placeholder = "ArrowLeft";
-    rightId.placeholder = "ArrowRight";
+    // upId.placeholder = "ArrowUp";
+    // downId.placeholder = "ArrowDown";
+    // leftId.placeholder = "ArrowLeft";
+    // rightId.placeholder = "ArrowRight";
     document.getElementById("food").value = null;
     document.getElementById("monsters").value = null;
     document.getElementById("lblTimeSetting").value = null;
@@ -391,6 +391,7 @@ function startForNow() {
     calculateCubeSize();
     $("#foot").css("position","relative");
     initNewGame();
+    settings_display();
     //$("#newGame_btn").css("display","block");
 }
 
@@ -610,21 +611,32 @@ function GetKeyPressed() {
 
 function changeValueToKey(event) {
     //set key from event's id
-    if (event.target.id == "upId") {
+    if (event.target.id === "upId") {
         up = event.keyCode;
-        upId.placeholder = event.key;
+        // upId.value = event.key;
+        if(event.key.length > 1) {
+            upId.value = event.key;
+        }
     }
     if (event.target.id == "downId") {
         down = event.keyCode;
-        downId.placeholder = event.key;
+        if(event.key.length > 1) {
+            downId.value = event.key;
+        }
+
     }
     if (event.target.id == "leftId") {
         left = event.keyCode;
-        leftId.placeholder = event.key;
+        if(event.key.length > 1) {
+            leftId.value = event.key;
+        }
+
     }
     if (event.target.id == "rightId") {
         right = event.keyCode;
-        rightId.placeholder = event.key;
+        if(event.key.length > 1) {
+            rightId.value = event.key;
+        }
     }
 }
 
@@ -1073,25 +1085,25 @@ function settings_display() {
     // initSetting();
     document.getElementById('pl_name').innerHTML = playerName;
     if($('#upId').val()){
-        document.getElementById('up').innerHTML = document.getElementById("upId").placeholder;
+        document.getElementById('up').innerHTML = document.getElementById("upId").value;
     }
     else {
         document.getElementById('up').innerHTML;
     }
     if($('#downId').val()){
-        document.getElementById('down').innerHTML = document.getElementById("downId").placeholder;
+        document.getElementById('down').innerHTML = document.getElementById("downId").value;
     }
     else {
         document.getElementById('down').innerHTML;
     }
     if($('#rightId').val()){
-        document.getElementById('right').innerHTML = document.getElementById("rightId").placeholder;
+        document.getElementById('right').innerHTML = document.getElementById("rightId").value;
     }
     else {
         document.getElementById('right').innerHTML;
     }
     if($('#leftId').val()){
-        document.getElementById('left').innerHTML = document.getElementById("leftId").placeholder;
+        document.getElementById('left').innerHTML = document.getElementById("leftId").value;
     }
     else{
         document.getElementById('left').innerHTML;
