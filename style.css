@@ -175,13 +175,13 @@ body{
 }
 /* Modal Content */
 .modal-content {
-  background-color: #fefefe;
+  /*background-color: #fefefe;*/
   margin: auto;
   padding: 20px;
   border: 1px solid #3c3cef;
   width: 50%;
   height: 70%;
-  /*background-image: url("image/packman1 (5).jpg");*/
+  background-color: rgba(255,255,255,0.6);
   background-image: url("image/g.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -343,6 +343,7 @@ h1{
 h3{
   font-family: Alef;
   font-size: small;
+  color: rgb(202, 221, 36);
 }
 h4{
   text-align: left;
