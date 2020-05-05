@@ -102,89 +102,79 @@
     <form class="registerForm" action="#" name="registration">
         <label for="user_name"><b>user Name:</b></label>
         <input type="text" id="user_name" placeholder="Enter your user name" name="user_name">
-
         <br>
         <br>
-
         <label for="user_password"><b>Password:</b></label>
         <input type="password" id="user_password" placeholder="Enter your Password" name="user_password">
         <!--                   pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" required>-->
         <br>
         <br>
-
         <label for="userFirstName"><b>Fisrt Name:</b></label>
         <input type="text" id="userFirstName" placeholder="Enter your first name" name="userFirstName">
         <!--                   pattern="^[A-Za-z]+">-->
         <br>
         <br>
-
         <label for="userLastName"><b>Last Name:</b></label>
         <input type="text" id="userLastName" placeholder="Enter your last name" name="userLastName">
         <!--                   pattern="[A-Za-z]+" required>-->
-
         <br>
         <br>
-
         <label for="userMail"><b>Email:</b></label>
         <input type="text" id="userMail" placeholder="Enter your Email" name="userMail">
         <!--                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>-->
-
         <br>
         <br>
-
         <label for="birthday">Please insert your birthday:</label>
         <input type="date" id="birthday" name="birthday">
-
         <br>
         <br>
-
         <button type="submit" class="registerSubmit">Register</button>
     </form>
 
 </div>
 
-<form id="setting" onsubmit="startForNow(event)" name="setting" class="settingClass" style="display:none">
-    <div class="settingClass">
+<div>
+<form id="setting" name="setting" action="#" class="settingClass" style="display:none">
         <h2>Setting</h2>
         <label for="upId">Enter your UP button:</label>
-        <input id="upId" type="text" placeholder="UP button" onkeypress="changeValueToKey(event)" pattern="{1}">
+        <input id="upId" name="upId" type="text" placeholder="UP button" onkeypress="changeValueToKey(event)">
         <br>
         <label for="downId">Enter your DOWN button:</label>
-        <input id="downId" type="text" placeholder="DOWN button" onkeypress="changeValueToKey(event)" pattern="{1}">
+        <input id="downId" name="downId" type="text" placeholder="DOWN button" onkeypress="changeValueToKey(event)">
         <br>
         <label for="rightId">Enter your RIGHT button:</label>
-        <input id="rightId" type="text" placeholder="RIGHT button" onkeypress="changeValueToKey(event)" pattern="{1}">
+        <input id="rightId" name="rightId" type="text" placeholder="RIGHT button" onkeypress="changeValueToKey(event)">
         <br>
         <label for="leftId">Enter your LEFT button:</label>
-        <input id="leftId" type="text" placeholder="LEFT button" onkeypress="changeValueToKey(event)" pattern="{1}">
+        <input id="leftId" name="leftId" type="text" placeholder="LEFT button" onkeypress="changeValueToKey(event)">
         <br>
         <label for="food">Enter num of balls to the game:</label>
-        <input id="food" type="number" min="50" max="90">
+        <input id="food" type="number" name="food">
         <p>Please choose the colors of the balls:</p>
         <label for="favcolor5">Select your color for ball with 5 points:</label>
-        <input type="color" id="favcolor5" name="favcolor" value="#ff0000">
+        <input type="color" id="favcolor5" name="favcolor5" value="#ff0000">
         <br>
         <label for="favcolor15">Select your color for ball with 15 points:</label>
-        <input type="color" id="favcolor15" name="favcolor" value="#0000ff">
+        <input type="color" id="favcolor15" name="favcolor15" value="#0000ff">
         <br>
         <label for="favcolor25">Select your color for ball with 25 points:</label>
-        <input type="color" id="favcolor25" name="favcolor" value="#ffff00">
+        <input type="color" id="favcolor25" name="favcolor25" value="#ffff00">
         <br>
         <br>
         <label for="lblTimeSetting">Enter num of seconds to the game:</label>
-        <input id="lblTimeSetting" type="number" min="60">
+        <input id="lblTimeSetting" type="number" name="lblTimeSetting">
         <br>
         <label for="monsters">Enter num of monsters</label>
-        <input id="monsters" type="number" min="1" max="4">
+        <input id="monsters" type="number" name="monsters">
         <br>
         <br>
-        <button id="settingSubmit" onclick="submit_setting()" class="registerSubmit" type="submit" style="float: left">
+        <button class="registerSubmit" type="submit" style="float: left">
             Submit
         </button>
-    </div>
 </form>
-<button id="random_btn" onclick="randomSetting()" class="registerSubmit" type="submit" style="display: none">Random
-</button>
+    <button id="random_btn" onclick="randomSetting()" class="registerSubmit" type="submit" style="display: none">Random
+    </button>
+</div>
 
 <div id="score_time_life" class="theGame" style="display: none">
     <div id="frame">
@@ -214,11 +204,7 @@
             <br>
             <br>
             <div id="newGame">
-                <button id="newGame_btn" type="reset" onclick="initNewGame()" class="gameButtons">New Game</button>
-                <!--                <button id="playSong" type="button" onclick="playSong()" class="gameButtons">Play Music</button>-->
-                <!--                <button id="stopSong" type="button" class="gameButtons" onclick="stopSong()">Stop Music</button>-->
-                <!--                <button id="stopEffect" type="button" class="gameButtons" onclick="stop_soundEffect()">Stop Sound Effect</button>-->
-            </div>
+                <button id="newGame_btn" type="reset" onclick="initNewGame()" class="gameButtons">New Game</button></div>
             <br>
             <div id="music">
                 <button id="playSong" type="button" onclick="playSong()" class="gameButtons">Play Music</button>
