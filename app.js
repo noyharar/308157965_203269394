@@ -39,7 +39,7 @@ var size_y_to_draw;
 
 $(function() {
     $.validator.addMethod("lettersonly", function(value, element) {
-        return this.optional(element) || /^ [a-z]+$/i.test(value);
+        return this.optional(element) || /^[a-z]+$/i.test(value);
     }, "Letters only please");
 
     $.validator.addMethod("alphanumeric", function(value, element) {
