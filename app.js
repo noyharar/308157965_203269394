@@ -192,12 +192,12 @@ function myFunctionLogin() {
     $("#random_btn").css("display", "none");
     $('#score_time_life').css('display', 'none');
     $("#foot").css("position","fixed");
+    clearIntervals();
     if(!noSound) {
         stopSong();
         stop_soundEffect();
         noSound = false;
     }
-    clearIntervals();
 }
 
 $(document).ready(function () {
@@ -629,6 +629,7 @@ function changeValueToKey(event) {
 }
 
 function randomSetting() {
+    clearIntervals();
     initSetting();
     food_remain = -1;
     num_of_monsters = -1;
