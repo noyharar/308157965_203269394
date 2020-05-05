@@ -396,6 +396,7 @@ function startForNow() {
 }
 
 function initNewGame() {
+    clearIntervals();
     $("#timeAlert").css("display", "none");
     calculateCubeSize();
     pacman_dead = false;
