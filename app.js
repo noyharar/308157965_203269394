@@ -946,7 +946,7 @@ function UpdatePosition() {
     /*no lifes any more*/
     if(numOfLifes === 0){
         alertNote("Loser!",1500);
-        if(notWantSound == false){
+        if(notWantSound === false){
             stopSong();
             stop_soundEffect();
         }
