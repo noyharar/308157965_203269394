@@ -39,7 +39,7 @@ var size_y_to_draw;
 
 $(function() {
     $.validator.addMethod("lettersonly", function(value, element) {
-        return this.optional(element) || /^ [a-z]+$/i.test(value);
+        return this.optional(element) || /^[a-z]+$/i.test(value);
     }, "Letters only please");
 
     $.validator.addMethod("alphanumeric", function(value, element) {
@@ -182,18 +182,22 @@ function stopSong() {
     gameSong.pause();
 }
 function myFunctionLogin() {
-    clearIntervals();
     document.getElementById("name").value = null;
     document.getElementById("userPassword").value = null;
     $(document.getElementById("welcome")).hide();
     $(document.getElementById("about")).hide();
     $(document.getElementById("register")).hide();
-    $(document.getElementById("login")).show();
     $(document.getElementById("setting")).hide();
+    $(document.getElementById("login")).show();
     $("#random_btn").css("display", "none");
     $('#score_time_life').css('display', 'none');
     $("#foot").css("position","fixed");
-    stopSong();
+    if(!noSound) {
+        stopSong();
+        stop_soundEffect();
+        noSound = false;
+    }
+    clearIntervals();
 }
 
 $(document).ready(function () {
@@ -205,9 +209,10 @@ $(document).ready(function () {
         $(document.getElementById("setting")).hide()
         $("#random_btn").css("display", "none");
         $('#score_time_life').css('display', 'none');
-        $("#foot").css("position","fixed");
+        $("#foot").css("position","fixed")
         stopSong();
-
+        stop_soundEffect()
+        noSound = false;
     });
 });
 
@@ -223,7 +228,6 @@ $(document).ready(function () {
         $('#score_time_life').css('display', 'none');
         $("#foot").css("position","fixed");
         stopSong();
-
     });
 });
 
@@ -320,14 +324,21 @@ function hide() {
 }
 
 function initSetting() {
+    document.getElementById("upId").value = null;
+    document.getElementById("downId").value = null;
+    document.getElementById("leftId").value = null;
+    document.getElementById("rightId").value = null;
     up = 38;
     down = 40;
     left = 37;
     right = 39;
+    upId.placeholder = "ArrowUp";
+    downId.placeholder = "ArrowDown";
+    leftId.placeholder = "ArrowLeft";
+    rightId.placeholder = "ArrowRight";
     document.getElementById("food").value = null;
     document.getElementById("monsters").value = null;
     document.getElementById("lblTimeSetting").value = null;
-
 }
 
 function open_about() {
@@ -379,7 +390,7 @@ function startForNow() {
     context = canvas.getContext("2d");
     calculateCubeSize();
     $("#foot").css("position","relative");
-    Start();
+    initNewGame();
     //$("#newGame_btn").css("display","block");
 }
 
@@ -389,7 +400,6 @@ function initNewGame() {
     pacman_dead = false;
     context.clearRect(0, 0, canvas.width, canvas.height);
     context = canvas.getContext("2d");
-
     food_remain = food_remain = parseInt($(document.getElementById("food")).val());
     num_of_monsters = parseInt($(document.getElementById("monsters")).val());
     timeToPlay = parseInt($(document.getElementById("lblTimeSetting")).val());
@@ -399,7 +409,7 @@ function initNewGame() {
     pacman_down = false;
     extra_food = 1;
     clock = 1;
-    if(numOfLifes == 6){
+    if(numOfLifes === 6){
         removeLife(6);
     }
     numOfLifes = 5;
@@ -481,9 +491,9 @@ function Start() {
                 (i === 4 && j === 13) ||
                 (i === 5 && j === 13) ||
                 (i === 3 && j === 12) ||
-                (i === 4 && j === 7) ||
-                (i === 4 && j === 6) ||
-                (i === 4 && j === 5) ||
+                // (i === 4 && j === 7) ||
+                // (i === 4 && j === 6) ||
+                // (i === 4 && j === 5) ||
                 (i === 5 && j === 6) ||
                 (i === 8 && j === 6) ||
                 (i === 8 && j === 5) ||
@@ -494,7 +504,7 @@ function Start() {
                 board[i][j] = 4;
             }
             else if(num_of_monsters > 0 && ((i == 0 && j == 0) || (i == 14 && j == 0) || (i == 14 && j == 14) || (i == 0 && j == 14))){
-                // board[i][j] = 9;
+                board[i][j] = 9;
                 boardMonsters[i][j] = 9;
                 num_of_monsters--;
             }
@@ -569,7 +579,7 @@ function Start() {
         false
     );
     interval = setInterval(UpdatePosition, 150);
-    intervalMonster = setInterval(UpdateMonsterPosition, 500);
+    intervalMonster = setInterval(UpdateMonsterPosition, 300);
     intervalExtraScore = setInterval(UpdateExtraScorePosition, 1000);
 }
 
@@ -602,23 +612,27 @@ function changeValueToKey(event) {
     //set key from event's id
     if (event.target.id == "upId") {
         up = event.keyCode;
+        upId.placeholder = event.key;
     }
     if (event.target.id == "downId") {
         down = event.keyCode;
+        downId.placeholder = event.key;
     }
     if (event.target.id == "leftId") {
         left = event.keyCode;
+        leftId.placeholder = event.key;
     }
     if (event.target.id == "rightId") {
         right = event.keyCode;
+        rightId.placeholder = event.key;
     }
 }
 
 function randomSetting() {
-    up = 38;
-    down = 40;
-    left = 37;
-    right = 39;
+    initSetting();
+    food_remain = -1;
+    num_of_monsters = -1;
+    timeToPlay = -1;
     while (food_remain < 50 || food_remain > 90) {
         food_remain = parseInt(100 * Math.random());
     }
@@ -770,7 +784,6 @@ function UpdateMonsterPosition() {
         for (var j = 0; j < 15; j++) {
             if(currMonsterPositions[i][j] === 9) {
                 var randomNum = Math.floor(Math.random() * 2);/*0,1*/
-                var randomMoveIfStack = Math.floor(Math.random() * 4);/*0,1*/
                 //monster get down
                 if (randomNum === 0 && Math.abs(((i + 1) - shape.i) < Math.abs((i - 1) - shape.i)) && board[i + 1][j] != 4 && boardMonsters[i + 1][j] != 9) {
                     boardMonsters[i][j] = 0;
@@ -795,23 +808,29 @@ function UpdateMonsterPosition() {
                     boardMonsters[i][j - 1] = 9;
                     notMove = false;
                 } else if(notMove || shape.i == i || shape.j == j){
-                    if(randomMoveIfStack === 0 &&  board[i - 1][j] !== 4 && boardMonsters[i - 1][j] !== 9){
-                        boardMonsters[i][j] = 0;
-                        boardMonsters[i-1][j] =  9;
-                    }
-                    else if(randomMoveIfStack === 1 && board[i + 1][j] !== 4 && boardMonsters[i + 1][j] !== 9){
-                        boardMonsters[i][j] = 0;
-                        boardMonsters[i + 1][j] =  9;
-                    }
-                    //get right
-                    else if (randomMoveIfStack === 2 && board[i][j + 1] !== 4 && boardMonsters[i][j + 1] !== 9) {
-                        boardMonsters[i][j] = 0;
-                        boardMonsters[i][j + 1] = 9;
-                    }
-                    //get left
-                    else if (randomMoveIfStack === 3 &&  board[i][j - 1] !== 4 && boardMonsters[i][j - 1] !== 9) {
-                        boardMonsters[i][j] = 0;
-                        boardMonsters[i][j - 1] = 9;
+                    while(notMove) {
+                        var randomMoveIfStack = Math.floor(Math.random() * 4);/*0,1*/
+                        if (randomMoveIfStack === 0 && board[i - 1][j] !== 4 && boardMonsters[i - 1][j] !== 9) {
+                            boardMonsters[i][j] = 0;
+                            boardMonsters[i - 1][j] = 9;
+                            notMove = false;
+                        } else if (randomMoveIfStack === 1 && board[i + 1][j] !== 4 && boardMonsters[i + 1][j] !== 9) {
+                            boardMonsters[i][j] = 0;
+                            boardMonsters[i + 1][j] = 9;
+                            notMove = false;
+                        }
+                        //get right
+                        else if (randomMoveIfStack === 2 && board[i][j + 1] !== 4 && boardMonsters[i][j + 1] !== 9) {
+                            boardMonsters[i][j] = 0;
+                            boardMonsters[i][j + 1] = 9;
+                            notMove = false;
+                        }
+                        //get left
+                        else if (randomMoveIfStack === 3 && board[i][j - 1] !== 4 && boardMonsters[i][j - 1] !== 9) {
+                            boardMonsters[i][j] = 0;
+                            boardMonsters[i][j - 1] = 9;
+                            notMove = false;
+                        }
                     }
                 }
             }
@@ -826,25 +845,25 @@ function UpdateExtraScorePosition() {
     var randomNumExtra = Math.floor(Math.random() * 4);/*0,1,2,3*/
     if(boardExtraScore[n][k] === 8) {
         // get down
-        if (randomNumExtra === 0 && board[n + 1][k] != 4) {
+        if (randomNumExtra === 0 && n-1 >= 0 && n-1 <= 14 && board[n + 1][k] !== 4 ) {
             boardExtraScore[n][k] = 0;
             boardExtraScore[n + 1][k] = 8;
             n = n + 1;
         }
         // get up
-        else if (randomNumExtra === 1 && board[n - 1][k] != 4) {
+        else if (randomNumExtra === 1 && n-1 >= 0 && n-1 <= 14  && board[n - 1][k] !== 4) {
             boardExtraScore[n][k] = 0;
             boardExtraScore[n - 1][k] = 8;
             n = n - 1;
         }
         // get right
-        else if (randomNumExtra === 2 && board[n][k + 1] != 4) {
+        else if (randomNumExtra === 2 && k+1 >= 0 && k+1 <= 14 && board[n][k + 1] !== 4 ) {
             boardExtraScore[n][k] = 0;
             boardExtraScore[n][k + 1] = 8;
             k = k + 1;
         }
         //get left
-        else if (randomNumExtra === 3 && board[n][k - 1] != 4) {
+        else if (randomNumExtra === 3  && k-1 >= 0 && k-1 <= 14 && board[n][k - 1] !== 4) {
             boardExtraScore[n][k] = 0;
             boardExtraScore[n][k - 1] = 8;
             k = k - 1;
@@ -934,7 +953,7 @@ function UpdatePosition() {
         score = score + 50;
     }
     /*extra time when pacman arrived to clock*/
-    if(board[shape.i][shape.j] == 3){
+    if(board[shape.i][shape.j] === 3){
         timeToPlay = timeToPlay + 15;
         lblTimeSetting.value = timeToPlay;
         document.getElementById("alertString").innerHTML = "You Got extra 15 seconds!!";
@@ -1020,7 +1039,7 @@ function continueGame() {
         pacman_remain--;
     }
     interval = setInterval(UpdatePosition, 150);
-    intervalMonster = setInterval(UpdateMonsterPosition, 500);
+    intervalMonster = setInterval(UpdateMonsterPosition, 300);
     intervalExtraScore = setInterval(UpdateExtraScorePosition, 1000);
 }
 
