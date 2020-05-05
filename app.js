@@ -182,20 +182,21 @@ function stopSong() {
     gameSong.pause();
 }
 function myFunctionLogin() {
-    clearIntervals();
     document.getElementById("name").value = null;
     document.getElementById("userPassword").value = null;
     $(document.getElementById("welcome")).hide();
     $(document.getElementById("about")).hide();
     $(document.getElementById("register")).hide();
-    $(document.getElementById("login")).show();
     $(document.getElementById("setting")).hide();
+    $(document.getElementById("login")).show();
     $("#random_btn").css("display", "none");
     $('#score_time_life').css('display', 'none');
     $("#foot").css("position","fixed");
-    if(noSound) {
+    if(!noSound) {
         stopSong();
+        stop_soundEffect();
     }
+    clearIntervals();
 }
 
 $(document).ready(function () {
@@ -207,9 +208,8 @@ $(document).ready(function () {
         $(document.getElementById("setting")).hide()
         $("#random_btn").css("display", "none");
         $('#score_time_life').css('display', 'none');
-        $("#foot").css("position","fixed");
+        $("#foot").css("position","fixed")
         stopSong();
-
     });
 });
 
@@ -322,10 +322,18 @@ function hide() {
 }
 
 function initSetting() {
+    document.getElementById("upId").value = null;
+    document.getElementById("downId").value = null;
+    document.getElementById("leftId").value = null;
+    document.getElementById("rightId").value = null;
     up = 38;
     down = 40;
     left = 37;
     right = 39;
+    upId.placeholder = "ArrowUp";
+    downId.placeholder = "ArrowDown";
+    leftId.placeholder = "ArrowLeft";
+    rightId.placeholder = "ArrowRight";
     document.getElementById("food").value = null;
     document.getElementById("monsters").value = null;
     document.getElementById("lblTimeSetting").value = null;
@@ -380,7 +388,7 @@ function startForNow() {
     context = canvas.getContext("2d");
     calculateCubeSize();
     $("#foot").css("position","relative");
-    Start();
+    initNewGame();
     //$("#newGame_btn").css("display","block");
 }
 
@@ -390,7 +398,6 @@ function initNewGame() {
     pacman_dead = false;
     context.clearRect(0, 0, canvas.width, canvas.height);
     context = canvas.getContext("2d");
-
     food_remain = food_remain = parseInt($(document.getElementById("food")).val());
     num_of_monsters = parseInt($(document.getElementById("monsters")).val());
     timeToPlay = parseInt($(document.getElementById("lblTimeSetting")).val());
@@ -400,7 +407,7 @@ function initNewGame() {
     pacman_down = false;
     extra_food = 1;
     clock = 1;
-    if(numOfLifes == 6){
+    if(numOfLifes === 6){
         removeLife(6);
     }
     numOfLifes = 5;
@@ -603,15 +610,19 @@ function changeValueToKey(event) {
     //set key from event's id
     if (event.target.id == "upId") {
         up = event.keyCode;
+        upId.placeholder = event.key;
     }
     if (event.target.id == "downId") {
         down = event.keyCode;
+        downId.placeholder = event.key;
     }
     if (event.target.id == "leftId") {
         left = event.keyCode;
+        leftId.placeholder = event.key;
     }
     if (event.target.id == "rightId") {
         right = event.keyCode;
+        rightId.placeholder = event.key;
     }
 }
 
@@ -620,10 +631,6 @@ function randomSetting() {
     food_remain = -1;
     num_of_monsters = -1;
     timeToPlay = -1;
-    up = 38;
-    down = 40;
-    left = 37;
-    right = 39;
     while (food_remain < 50 || food_remain > 90) {
         food_remain = parseInt(100 * Math.random());
     }
