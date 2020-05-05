@@ -1070,27 +1070,28 @@ function removeLife(i) {
     }
 }
 function settings_display() {
+    // initSetting();
     document.getElementById('pl_name').innerHTML = playerName;
     if($('#upId').val()){
-        document.getElementById('up').innerHTML = document.getElementById("upId").value;
+        document.getElementById('up').innerHTML = document.getElementById("upId").placeholder;
     }
     else {
         document.getElementById('up').innerHTML;
     }
     if($('#downId').val()){
-        document.getElementById('down').innerHTML = document.getElementById("downId").value;
+        document.getElementById('down').innerHTML = document.getElementById("downId").placeholder;
     }
     else {
         document.getElementById('down').innerHTML;
     }
     if($('#rightId').val()){
-        document.getElementById('right').innerHTML = document.getElementById("rightId").value;
+        document.getElementById('right').innerHTML = document.getElementById("rightId").placeholder;
     }
     else {
         document.getElementById('right').innerHTML;
     }
     if($('#leftId').val()){
-        document.getElementById('left').innerHTML = document.getElementById("leftId").value;
+        document.getElementById('left').innerHTML = document.getElementById("leftId").placeholder;
     }
     else{
         document.getElementById('left').innerHTML;
