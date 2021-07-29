@@ -4,7 +4,7 @@
 ###Noa Gorengot && Noy Harari
 
 #Our web address to the Pacman's Game:
-https://sise-web-development-environments.github.io/308157965_203269394/
+https://sise-web-development-environments.github.io/NoyHarari_NoaGorengot/
 
 #How To Play?
 First, you must have subscriber to the game.
