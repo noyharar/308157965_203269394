@@ -1,7 +1,7 @@
 # Assignment2
  
 #Created by:
-###Noa Gorengot 203269394 && Noy Harari 308157965
+###Noa Gorengot && Noy Harari
 
 #Our web address to the Pacman's Game:
 https://sise-web-development-environments.github.io/308157965_203269394/
